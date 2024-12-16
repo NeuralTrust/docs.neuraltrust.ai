@@ -1,11 +1,1 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" fill="#000000"/>
-    <g transform="translate(4,4) scale(0.75)">
-        <!-- Simplified version of the NeuralTrust logo for favicon -->
-        <path d="M0 4h4v24H0V4z" fill="white"/>
-        <path d="M6 4h4v24H6V4z" fill="white"/>
-        <path d="M12 4h4v24h-4V4z" fill="white"/>
-        <path d="M18 4h4v24h-4V4z" fill="white"/>
-        <path d="M24 4h4v24h-4V4z" fill="white"/>
-    </g>
-</svg> 
+<svg width="20" height="20" viewBox="0 0 163 163" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M96.1583 109.045C94.9647 110.82 93.1732 111.035 92.4924 111.047C91.8027 111.011 89.9731 110.917 88.7146 109.139L70.6583 83.6745L60.9819 97.7177L75.65 118.401C79.495 123.822 85.7563 127.058 92.4029 127.058L92.6626 127.056C99.4099 126.971 105.656 123.619 109.364 118.098L162.917 41.4686H143.378L96.1583 109.045Z" fill="#202E3A"></path><path d="M70.7862 52.0117C71.3819 51.931 73.2003 52.1236 74.4745 53.9219L92.1814 78.8933L101.856 64.8523L87.5369 44.6597C83.6918 39.2382 77.4282 36 70.784 36L70.522 36.0022C63.7747 36.0896 57.5178 39.4621 53.787 45.0158L1.56433 120.998L1 121.818H20.4335L67.033 54.0137C68.2288 52.2334 70.0136 52.0229 70.7862 52.0117Z" fill="#202E3A"></path></svg>
