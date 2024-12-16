@@ -5,7 +5,7 @@
   "description": "Documentation for NeuralTrust's AI security platform",
   "repository": {
     "type": "git",
-    "url": "https://github.com/neuraltrust/docs"
+    "url": "git+https://github.com/neuraltrust/docs.git"
   },
   "scripts": {
     "docusaurus": "docusaurus",
@@ -45,5 +45,15 @@
   },
   "engines": {
     "node": ">=18.0"
-  }
+  },
+  "main": "docusaurus.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neuraltrust/docs/issues"
+  },
+  "homepage": "https://github.com/neuraltrust/docs#readme"
 }
