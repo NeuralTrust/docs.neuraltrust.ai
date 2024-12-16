@@ -3,6 +3,18 @@
   align-items: center;
   padding: 2rem 0;
   width: 100%;
+  background-color: #f8f8f8;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.featureDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 .featureSvg {

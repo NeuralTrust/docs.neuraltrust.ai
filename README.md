@@ -1,6 +1,13 @@
-# Website
+# NeuralTrust Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This repository contains the documentation for NeuralTrust's AI security platform. Built with [Docusaurus](https://docusaurus.io/).
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js version 18.0 or above
+- npm or yarn
 
 ### Installation
 

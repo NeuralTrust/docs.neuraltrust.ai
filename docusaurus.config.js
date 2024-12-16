@@ -10,9 +10,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'NeuralTrust Docs',
+  tagline: 'Documentation for the leading security platform for Generative AI',
+  favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
   url: 'https://github.io',
@@ -76,25 +76,26 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/neuraltrust-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'NeuralTrust',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'NeuralTrust Logo',
           src: 'img/logo.svg',
+          srcDark: 'img/logo.svg',
+          height: 32,
         },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Documentation',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/neuraltrust',
             label: 'GitHub',
-            position: 'right',
+            position: 'left',
           },
         ],
       },
@@ -105,7 +106,7 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Documentation',
                 to: '/docs/intro',
               },
             ],
@@ -114,16 +115,12 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/company/neuraltrust',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: 'Twitter',
+                href: 'https://twitter.com/neuraltrust',
               },
             ],
           },
@@ -136,12 +133,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/neuraltrust',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} NeuralTrust. All rights reserved.`,
       },
       prism: {
         theme: prismThemes.github,
