@@ -1,6 +1,11 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M27.8 0H4.2C1.88 0 0 1.88 0 4.2V27.8C0 30.12 1.88 32 4.2 32H27.8C30.12 32 32 30.12 32 27.8V4.2C32 1.88 30.12 0 27.8 0Z" fill="black"/>
-    <path d="M9.6 8H7.2V24H9.6V8Z" fill="white"/>
-    <path d="M17.6 8H15.2V24H17.6V8Z" fill="white"/>
-    <path d="M25.6 8H23.2V24H25.6V8Z" fill="white"/>
+    <rect width="32" height="32" fill="#000000"/>
+    <g transform="translate(4,4) scale(0.75)">
+        <!-- Simplified version of the NeuralTrust logo for favicon -->
+        <path d="M0 4h4v24H0V4z" fill="white"/>
+        <path d="M6 4h4v24H6V4z" fill="white"/>
+        <path d="M12 4h4v24h-4V4z" fill="white"/>
+        <path d="M18 4h4v24h-4V4z" fill="white"/>
+        <path d="M24 4h4v24h-4V4z" fill="white"/>
+    </g>
 </svg> 

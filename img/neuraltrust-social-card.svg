@@ -1,12 +1,17 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="1200" height="630" fill="#000000"/>
-    <g transform="translate(300,150) scale(2)">
-        <path d="M27.8 0H4.2C1.88 0 0 1.88 0 4.2V27.8C0 30.12 1.88 32 4.2 32H27.8C30.12 32 32 30.12 32 27.8V4.2C32 1.88 30.12 0 27.8 0Z" fill="white"/>
-        <path d="M9.6 8H7.2V24H9.6V8Z" fill="black"/>
-        <path d="M17.6 8H15.2V24H17.6V8Z" fill="black"/>
-        <path d="M25.6 8H23.2V24H25.6V8Z" fill="black"/>
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00C1FF"/>
+            <stop offset="100%" stop-color="#CE2EFB"/>
+        </linearGradient>
+    </defs>
+    <!-- Logo centered at top -->
+    <g transform="translate(217.5,180)">
+        <image href="https://a.storyblok.com/f/309114/765x92/9f49821e5b/neuraltrust_white.svg" 
+               width="765" height="92"/>
     </g>
-    <text x="600" y="400" text-anchor="middle" fill="white" font-family="system-ui" font-size="64" font-weight="bold">
+    <text x="600" y="400" text-anchor="middle" font-family="system-ui" font-size="64" font-weight="bold" fill="url(#gradient)">
         Documentation
     </text>
 </svg> 
