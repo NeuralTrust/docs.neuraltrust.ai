@@ -46,6 +46,22 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           routeBasePath: '/', // Set this value to '/'.
+          editUrl: ({ versionDocsDirPath, docPath, locale }) => {
+            if (locale != 'en') {
+              return 'https://docs.neuraltrust.ai';
+            }
+            let match;
+            if ((match = docPath.match(/Gateway\/(.*)\.md/)) != null) {
+              return `https://github.com/NeuralTrust/neuraltrust/blob/main/docs/AI%20Gateway/${match[1]}.md`;
+            }
+            if ((match = docPath.match(/Observability\/(.*)\.md/)) != null) {
+              return `https://github.com/NeuralTrust/neuraltrust/blob/main/docs/Observability/${match[1]}.md`;
+            }
+            if ((match = docPath.match(/Red Teaming\/(.*)\.md/)) != null) {
+              return `https://github.com/NeuralTrust/neuraltrust/blob/main/docs/Red%20Teaming/${match[1]}.md`;
+            }
+            return `https://github.com/NeuralTrust/neuraltrust/blob/main/${versionDocsDirPath}/${docPath}`;
+          },
         },
         blog: false,
         theme: {
@@ -60,6 +76,44 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/neuraltrust-social-card.jpg',
+      // announcementBar: {
+      //   id: 'announcement-bar',
+      //   content:
+      //     '<a href="https://neuraltrust.ai" target="_blank" rel="noopener"><span>Back to NeuralTrust.ai →</span></a>',
+      //   isCloseable: false,
+      // },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'YOUR_APP_ID',
+  
+        // Public API key: it is safe to commit it
+        apiKey: 'YOUR_SEARCH_API_KEY',
+  
+        indexName: 'YOUR_INDEX_NAME',
+  
+        // Optional: see doc section below
+        contextualSearch: true,
+  
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        externalUrlRegex: 'external\\.com|domain\\.com',
+  
+        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+        replaceSearchResultPathname: {
+          from: '/docs/', // or as RegExp: /\/docs\//
+          to: '/',
+        },
+  
+        // Optional: Algolia search parameters
+        searchParameters: {},
+  
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+  
+        // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+        insights: false,
+  
+        //... other Algolia params
+      },
       navbar: {
         title: 'NeuralTrust',
         logo: {
@@ -70,38 +124,28 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/neuraltrust',
+            type: 'search',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/NeuralTrust',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            href: 'https://discord.gg/JGV4q3tr',
+            label: 'Discord',
+            position: 'right',
+          },
+          {
+            href: 'https://linkedin.com/company/neuraltrust',
+            label: 'LinkedIn',
             position: 'right',
           },
         ],
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'LinkedIn',
-                href: 'https://www.linkedin.com/company/neuraltrust',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/neuraltrust',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/neuraltrust',
-              },
-            ],
-          },
-        ],
         copyright: `Copyright © ${new Date().getFullYear()} NeuralTrust. All rights reserved.`,
       },
       prism: {
