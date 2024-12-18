@@ -70,15 +70,9 @@ const config = {
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Documentation',
-          },
-          {
             href: 'https://github.com/neuraltrust',
             label: 'GitHub',
-            position: 'left',
+            position: 'right',
           },
         ],
       },
