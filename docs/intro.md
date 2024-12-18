@@ -3,14 +3,7 @@ sidebar_position: 1
 slug: /
 ---
 
-<<<<<<< HEAD
-
-
-
-# Welcome to NeuralTrust Docs
-=======
 # Welcome
->>>>>>> 96cbc28 (fix)
 
 Let's discover how to secure and monitor your AI applications with NeuralTrust.
 

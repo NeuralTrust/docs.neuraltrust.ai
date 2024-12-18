@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Rate Limiting System
+# Rate Limiting
 
 ## Overview
 The gateway implements a sophisticated rate limiting system with:
