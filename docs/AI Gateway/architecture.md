@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Architechture
+# Architecture
 
 
 The gateway consists of two main components:

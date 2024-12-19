@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-# API Usage
 
-## Admin API (Port 8080)
+
+# Admin API (Port 8080)
 
 1. Create a tenant:
 ```bash
