@@ -82,14 +82,19 @@ const config = {
       //     '<a href="https://neuraltrust.ai" target="_blank" rel="noopener"><span>Back to NeuralTrust.ai →</span></a>',
       //   isCloseable: false,
       // },
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
       algolia: {
         // The application ID provided by Algolia
-        appId: 'YOUR_APP_ID',
+        appId: 'HW1BIJOXAK',
   
         // Public API key: it is safe to commit it
-        apiKey: 'YOUR_SEARCH_API_KEY',
+        apiKey: '3d6824f8974966996459cc83fcabc8c7',
   
-        indexName: 'YOUR_INDEX_NAME',
+        indexName: 'neuraltrustio',
   
         // Optional: see doc section below
         contextualSearch: true,
@@ -143,10 +148,6 @@ const config = {
             position: 'right',
           },
         ],
-      },
-      footer: {
-        style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} NeuralTrust. All rights reserved.`,
       },
       prism: {
         theme: prismThemes.github,
