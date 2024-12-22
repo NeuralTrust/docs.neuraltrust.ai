@@ -152,5 +152,5 @@ try {
 ## Next Steps
 
 - [Platform Overview](../getting-started/quickstart.md)
-- [Knowledge Base Guide](../red-team/knowledge-bases.md)
-- [Evaluation Sets](../red-team/evaluation-sets.md)
+- [Knowledge Base Guide](../red-teaming/knowledge-bases.md)
+- [Evaluation Sets](../red-teaming/evaluation-sets.md)

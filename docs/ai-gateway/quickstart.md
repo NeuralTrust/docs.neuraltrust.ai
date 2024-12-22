@@ -168,9 +168,9 @@ curl -X GET "http://multirate.example.com:8081/api" \
 
 ## Next Steps
 
-- [Plugin System Documentation](../concepts/plugin-system.md)
-- [Traffic Management Guide](../concepts/traffic-management.md)
-- [Rate Limiting Configuration](../concepts/rate-limiting.md)
-- [Consumer Groups (Enterprise)](../concepts/consumer-groups.md)
+- [Forwarding Rules](./concepts/forwarding-rules.md)
+- [Plugin System Documentation](./concepts/plugin-system.md)
+- [Traffic Management Guide](./concepts/traffic-management.md)
+- [Consumer Groups (Enterprise)](./concepts/consumer-groups.md)
 
 

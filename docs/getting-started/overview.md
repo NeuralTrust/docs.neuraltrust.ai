@@ -9,25 +9,32 @@ Welcome to NeuralTrust's developer documentation. Learn how to secure, monitor, 
 
 ## Getting Started
 
-- [Quick Start Guide](./getting-started/quickstart.md) - Set up NeuralTrust in 5 minutes
-- [Key Concepts](./getting-started/concepts.md) - Essential concepts and terminology
-- [Installation](./getting-started/installation.md) - Detailed installation instructions
+- [Quick Start Guide](./quickstart.md) - Set up NeuralTrust in 5 minutes
+- [Installation](./installation.md) - Detailed installation instructions
 
 ## Core Features
 
 ### AI Gateway
-- [Overview](./ai-gateway/overview.md)
-- [Authentication](./ai-gateway/authentication.md)
-- [Rate Limiting](./ai-gateway/rate-limiting.md)
-- [Prompt Validation](./ai-gateway/prompt-validation.md)
-- [Response Filtering](./ai-gateway/response-filtering.md)
+- [Quick Start](../ai-gateway/quickstart.md)
+
+#### Concepts
+- [Consumer Groups](../ai-gateway/concepts/consumer-groups.md)
+- [Traffic Management](../ai-gateway/concepts/traffic-management.md)
+- [Forwarding Rules](../ai-gateway/concepts/forwarding-rules.md)
+- [Plugins System](../ai-gateway/concepts/plugin-system.md)
+
+#### Plugins
+- [Rate Limiting](../ai-gateway/plugins/rate-limiting.md)
+
+#### Benchmark
+- [Benchmark](../ai-gateway/benchmark.md)
 
 ### Observability
-- [Overview](./observability/overview.md)
-- [Tracing](./observability/tracing.md)
+- [Overview](../observability/overview.md)
+- [Tracing](../observability/tracing.md)
 
-## SDKs & Libraries
-- [Python SDK](./sdks/python.md)
-- [Node.js SDK](./sdks/nodejs.md)
-- [Go SDK](./sdks/go.md)
-- [Java SDK](./sdks/java.md)
+### SDKs & Libraries
+- [Python SDK](../sdks/python.md)
+- [Node.js SDK](../sdks/nodejs.md)
+- [Go SDK](../sdks/go.md)
+- [Java SDK](../sdks/java.md)

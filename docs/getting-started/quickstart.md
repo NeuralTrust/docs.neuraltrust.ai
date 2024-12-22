@@ -171,6 +171,6 @@ NEURALTRUST_BASE_URL=https://custom.api.url  # Optional
 ## Next Steps
 
 - [Detailed Tracing Guide](../observability/tracing.md)
-- [Evaluation Sets Documentation](../red-team/evaluation-sets.md)
-- [Knowledge Base Guide](../red-team/knowledge-bases.md)
-- [Test Sets Documentation](../red-team/testsets.md) 
+- [Evaluation Sets Documentation](../red-teaming/evaluation-sets.md)
+- [Knowledge Base Guide](../red-teaming/knowledge-bases.md)
+- [Test Sets Documentation](../red-teaming/testsets.md) 

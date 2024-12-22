@@ -2,37 +2,48 @@
 sidebar_position: 1
 ---
 
-# Red Team Overview
+# Overview
 
-Monitor, track, and analyze your LLM applications with NeuralTrust's red team tools.
+NeuralTrust's Red Team tools help evaluate, test, and secure your LLM applications through comprehensive testing and analysis.
 
-## Features
+## Components
 
-- Real-time metrics
-- Detailed logging
-- Request tracing
-- Performance analytics
-- Cost tracking
-- Usage insights
+### Evaluation Sets
+- Structured test scenarios
+- Performance metrics
+- Quality assessments
+- Automated evaluations
 
-## Dashboard
+### Knowledge Bases
+- Document management
+- Context validation
+- Data security testing
+- Information retrieval testing
 
-Access your metrics through our comprehensive dashboard:
-- Request volumes
-- Response times
-- Error rates
-- Token usage
-- Cost analysis
+### Test Sets
+- Adversarial testing
+- Security validation
+- Compliance checking
+- Performance benchmarking
 
-## Integration
+## Getting Started
 
-```javascript
-const nt = new NeuralTrust({
-  observability: {
-    metrics: true,
-    logging: true,
-    tracing: true,
-    alerting: true
-  }
+```typescript
+import { NeuralTrust } from 'neuraltrust';
+
+const client = new NeuralTrust({ 
+  apiKey: "your_api_key_here" 
+});
+
+// Create and run tests
+const evalSet = await client.createEvaluationSet({
+  name: "Security Test Suite",
+  description: "Comprehensive security validation"
+});
+
+const testset = await client.createTestset({
+  name: "Adversarial Tests",
+  type: "adversarial",
+  evaluationSetId: evalSet.id
 });
 ``` 

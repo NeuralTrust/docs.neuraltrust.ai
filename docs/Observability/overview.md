@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Observability Overview
+# Overview
 
 Monitor, track, and analyze your LLM applications with NeuralTrust's observability tools.
 
