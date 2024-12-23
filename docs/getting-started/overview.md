@@ -18,10 +18,10 @@ Welcome to NeuralTrust's developer documentation. Learn how to secure, monitor, 
 - [Quick Start](../ai-gateway/quickstart.md)
 
 #### Concepts
-- [Consumer Groups](../ai-gateway/concepts/consumer-groups.md)
-- [Traffic Management](../ai-gateway/concepts/traffic-management.md)
 - [Forwarding Rules](../ai-gateway/concepts/forwarding-rules.md)
 - [Plugins System](../ai-gateway/concepts/plugin-system.md)
+- [Traffic Management](../ai-gateway/concepts/traffic-management.md)
+- [Consumer Groups](../ai-gateway/concepts/consumer-groups.md)
 
 #### Plugins
 - [Rate Limiting](../ai-gateway/plugins/rate-limiting.md)
