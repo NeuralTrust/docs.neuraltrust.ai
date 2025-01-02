@@ -3,6 +3,6 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "The AI Gateway is a robust middleware solution that provides secure, controlled access to various AI models and services. It acts as a centralized access point for managing API calls, handling authentication, implementing rate limiting, and monitoring usage across different AI providers. This enterprise-grade solution ensures consistent policy enforcement, cost management, and seamless integration of AI capabilities into your applications while maintaining full control over your AI infrastructure."
+    "description": "The AI Gateway is a robust middleware solution that provides secure, controlled access to various AI models and services. It acts as a centralized access point for managing API calls, handling authentication, implementing rate limiting, and monitoring usage across different AI providers."
   }
 }

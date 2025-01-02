@@ -4,10 +4,13 @@ sidebar_position: 1
 
 # Quick Start Guide
 
-Get started with AI Gateway in minutes. This guide will help you set up and run your first AI Gateway instance.
 
-![AI Gateway](ai-gateway.png)
+AI Gateway is an open-source proxy server that provides advanced rate limiting, load balancing, and plugin capabilities for your AI API endpoints. Whether you're managing access to LLM APIs, computer vision services, or other AI endpoints, this guide will walk you through:
 
+- Basic installation and configuration
+- Setting up rate limiting and API keys
+- Configuring load balancing rules
+- Making your first requests
 
 ## Prerequisites
 
