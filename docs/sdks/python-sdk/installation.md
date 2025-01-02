@@ -2,15 +2,27 @@
 sidebar_position: 1
 ---
 
-# Python SDK
+# Installation
 
-NeuralTrust Python SDK documentation.
-
-## Installation
+You can install the Neural Trust Python SDK using pip, Python's package installer:
 
 ```bash
 pip install neuraltrust
 ```
+
+To use the NeuralTrust Python SDK, you need to initialize the client with your API key:
+```python
+from neuraltrust import NeuralTrust
+
+# Initialize the client with your API key
+client = NeuralTrust(api_key="your_api_key_here")
+
+# Optionally, you can specify a custom base URL and SDK version
+client = NeuralTrust(api_key="your_api_key_here", base_url="https://custom.api.url", sdk_version="v2")
+```
+## Dependencies
+
+
 
 ## Quick Start
 

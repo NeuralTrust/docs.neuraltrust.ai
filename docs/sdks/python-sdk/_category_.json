@@ -1,0 +1,8 @@
+{
+  "label": "Python SDK",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "The NeuralTrust Python SDK provides a powerful interface to control and secure your AI agents. With this SDK, you can implement robust safety measures, monitor AI behavior, and ensure responsible AI deployment in your Python applications."
+  }
+}

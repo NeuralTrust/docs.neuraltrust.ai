@@ -6,13 +6,15 @@ sidebar_position: 1
 
 Get started with AI Gateway in minutes. This guide will help you set up and run your first AI Gateway instance.
 
+![AI Gateway](ai-gateway.png)
+
+
 ## Prerequisites
 
 - Go 1.21+
 - Docker and Docker Compose
 
 ## Installation
-
 1. Clone the repository:
 
     ```bash
