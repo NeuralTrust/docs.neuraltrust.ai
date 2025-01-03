@@ -1,54 +1,49 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Test Sets
 
-Test Sets provide automated testing and validation for LLM applications.
+Test Sets are a fundamental component of the NeuralTrust platform that enable you to create and manage collections of test cases for AI model evaluation. They work in conjunction with Evaluation Sets to provide comprehensive testing capabilities.
 
-## Usage
+With Test Sets, you can:
 
-```typescript
-import { NeuralTrust } from 'neuraltrust';
+- Create collections of test cases with specific testing objectives
+- Generate test cases automatically from knowledge bases
+- Organize tests by type (functional, security, compliance, etc.)
+- Reuse test cases across multiple evaluation sets
+- Track test results and metrics over time
 
-const client = new NeuralTrust({ apiKey: "your_api_key_here" });
+Test Sets are particularly useful for:
 
-// Create a test set
-const testset = await client.createTestset({
-    name: "My Testset",
-    type: "adversarial",
-    evaluationSetId: "eval_set_id",
-    knowledgeBaseId: "kb_id",
-    numQuestions: 10
-});
+- Systematic testing of model capabilities
+- Security and vulnerability assessment
+- Compliance verification
+- Performance benchmarking
+- Regression testing
 
-// Get test results
-const results = await client.getTestset({ 
-    id: "testset_id" 
-});
+## Test Set API Methods
 
-// Delete test set
-await client.deleteTestset({ 
-    id: "testset_id" 
-});
+```python
+from neuraltrust import NeuralTrustApi
+
+client = NeuralTrustApi(api_key="YOUR_API_KEY")
+
+# List all test sets
+client.testset.list()
+
+# Create a new test set
+client.testset.create(
+    name="My Test Set",
+    type="functional",
+    evaluation_set_id="eval-123",
+    knowledge_base_id="kb-456",
+    num_questions=10
+)
+
+# Get a specific test set
+client.testset.get(id="testset_123")
+
+# Delete a test set
+client.testset.delete(id="testset_123")
 ```
-
-## Features
-
-### Test Types
-- Functional testing
-- Security testing
-- Performance testing
-- Compliance testing
-
-### Automation
-- Test generation
-- Result analysis
-- Report creation
-- Trend tracking
-
-### Integration
-- CI/CD pipeline support
-- Automated workflows
-- Results notification
-- Historical analysis
