@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Compliance scann
+# Compliance scan
 
 This guide demonstrates how to use the Neural Trust scanning capabilities to analyze your AI system for potential vulnerabilities.
 
