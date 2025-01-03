@@ -4,63 +4,48 @@ sidebar_position: 1
 
 # Installation
 
-You can install the Neural Trust Python SDK using pip, Python's package installer:
+You can install the Neural Trust Python SDK using pip or other package managers with access to [PyPI](https://pypi.org/project/neuraltrust/):
 
 ```bash
 pip install neuraltrust
 ```
 
-To use the NeuralTrust Python SDK, you need to initialize the client with your API key:
-```python
-from neuraltrust import NeuralTrust
+You can also install the SDK from source:
 
-# Initialize the client with your API key
-client = NeuralTrust(api_key="your_api_key_here")
-
-# Optionally, you can specify a custom base URL and SDK version
-client = NeuralTrust(api_key="your_api_key_here", base_url="https://custom.api.url", sdk_version="v2")
-```
-## Dependencies
-
-
-
-## Quick Start
-
-```python
-from neuraltrust import NeuralTrust
-
-nt = NeuralTrust(api_key="your_api_key")
-
-# Secure an LLM request
-response = nt.secure({
-    "provider": "openai",
-    "model": "gpt-4",
-    "messages": [
-        {"role": "user", "content": "Hello, world!"}
-    ]
-})
-
-# Access monitoring
-metrics = nt.metrics.get_recent()
-
-# Configure alerts
-nt.alerts.create(
-    name="High Error Rate",
-    condition={
-        "metric": "error_rate",
-        "threshold": 0.05
-    }
-)
+```bash
+git clone https://github.com/neuraltrust/neuraltrust-python.git
+cd neuraltrust-python
+pip install .
 ```
 
-## Error Handling
+## Validate Installation
+
+You can validate the installation by running the following command:
+
+```bash
+python -c "import neuraltrust; print(neuraltrust.__version__)"
+```
+
+This should print the version of the SDK installed.
+
+## Check connection
+
+You can check if the SDK is connected to the NeuralTrust API by running the following script:
 
 ```python
-from neuraltrust.exceptions import NeuralTrustError
+from neuraltrust import NeuralTrustApi
 
-try:
-    response = nt.secure({"prompt": "Hello"})
-except NeuralTrustError as e:
-    print(f"Error: {e.message}")
-    print(f"Code: {e.code}")
-``` 
+client = NeuralTrustApi(api_key="YOUR_API_KEY")
+
+evaluation_sets = client.evaluation_sets.list()
+
+print(evaluation_sets)
+```
+
+This should print a list of evaluation sets. If you don't have any evaluation sets, you can create one by running the following script:
+
+```python
+evaluation_set = client.evaluation_set.create(name="My Evaluation Set")
+
+print(evaluation_set)
+```
