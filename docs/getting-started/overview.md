@@ -16,7 +16,6 @@ NeuralTrust is a comprehensive AI security and observability platform that helps
 
 :::info[**[Let's get started](./quickstart.md)**]
 - Here is the link to our **[Quick Start Guide](./quickstart.md)** so you can set up NeuralTrust and begin securing your AI application in less than **5 minutes**. This streamlined process walks you through the essential steps to get your **NeuralTrust** instance up and running quickly, empowering you to protect and monitor your AI interactions right from the start.
-- For more detailed installation instructions, please refer to our **[Installation](./installation.md)** guide.
 :::
 
 
@@ -203,14 +202,48 @@ The AI Gateway includes comprehensive benchmarking capabilities to help you unde
 The benchmark tools help ensure optimal gateway performance, identify potential bottlenecks before deployment to production, and make data-driven decisions when comparing different setups.
 
 
+### **[Red Teaming](../red-teaming/overview.md)**
 
+NeuralTrust provides comprehensive red teaming capabilities to systematically evaluate both the security and functional aspects of your LLM applications. Our tools help identify vulnerabilities, assess model behavior, validate functional capabilities, and ensure compliance with security standards.
+
+Key Features:
+
+1. **Functional Evaluation**
+   - Task performance testing
+   - Edge case identification
+   - Response consistency checks
+   - Domain expertise validation
+   - Instruction following assessment
+
+2. **[Compliance Scanner](../red-teaming/scanner.md)**
+   - Automated compliance checks
+   - Toxicity detection
+   - Policy adherence validation
+   - Output quality monitoring
+
+3. **[Evaluation Framework](../red-teaming/evaluation-sets.md)**
+   - Customizable evaluation criteria
+   - Response quality metrics
+   - Comparative analysis
+   - Performance benchmarking
+   - Statistical reporting
+
+4. **[Domain-Specific Testing](../red-teaming/scanner.md#attack-endpoint)**
+   - Industry-specific test scenarios
+   - Custom evaluation criteria
+   - Specialized knowledge validation
+   - Context-aware testing
+
+5. **Automated Evaluation Pipeline**
+   - Scheduled testing runs
+   - Continuous model monitoring
+   - Automated regression detection
+   - Performance trend analysis
+   - Alert notifications for issues
 
 ### Observability
 - [Overview](../observability/overview.md)
 - [Tracing](../observability/tracing.md)
 
 ### SDKs & Libraries
-- [Python SDK](../sdks/python.md)
-- [Node.js SDK](../sdks/nodejs.md)
-- [Go SDK](../sdks/go.md)
-- [Java SDK](../sdks/java.md)
+- [Python SDK](../sdks/python-sdk/installation.md)
