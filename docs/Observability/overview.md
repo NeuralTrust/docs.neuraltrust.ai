@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# What is LLM Observability?
+# What's LLM Observability?
 
 LLM Observability is the practice of monitoring, tracking, and analyzing the behavior and performance of Large Language Models (LLMs) in production environments. As organizations increasingly rely on AI and LLMs for critical business operations, having robust observability becomes essential for maintaining reliability, safety, and compliance.
 

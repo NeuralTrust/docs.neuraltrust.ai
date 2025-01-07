@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# What is Red Teaming for LLMs?
+# What's Red Teaming for LLMs?
 
 Red teaming is a critical practice for evaluating Large Language Models (LLMs) by systematically challenging their behaviors, safety measures, and potential vulnerabilities. While traditionally associated with security testing, LLM red teaming encompasses both security assessment and functional evaluation of model capabilities.
 
@@ -70,7 +70,7 @@ NeuralTrust defines the following components to support the above use cases:
 #### [Evaluation Sets](./evaluation-sets.md)
 Set of Test Sets and evaluation criteria that form the foundation of model assessment. Each evaluation set defines specific test scenarios, success metrics, and evaluation parameters needed to thoroughly assess model behavior. These sets can be customized for different testing objectives, from security validation to functional performance evaluation.
 
-#### [Test Sets](./test-sets.md)
+#### [Test Sets](./testsets.md)
 Define prompt and expected model response pairs used in testing. Test sets include the input context.
 
 #### [Knowledge Bases](./knowledge-bases.md)
