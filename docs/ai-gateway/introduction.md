@@ -1,8 +1,13 @@
 ---
 sidebar_position: 1
+sidebar_label: "Overview"
 ---
 
-# Introduction to the AI Gateway
+# NeuralTrust AI Gateway
+
+**NeuralTrust AI Gateway** is a robust security and management layer for Large Language Model (LLM) interactions. It provides comprehensive protection, monitoring, and governance for AI applications while enabling organizations to safely deploy and scale their LLM-powered solutions with confidence.
+
+## What is an AI Gateway?
 
 An AI Gateway can be viewed as a specialized system similar to an API Gateway, but designed specifically for Agents and LLM workloads. Traditional API Gateways act as middlemen between clients and multiple backend services—handling important tasks like:
 :::tip
@@ -22,7 +27,10 @@ Set up your AI Gateway in minutes with our [quickstart guide](./quickstart.md)
   <img src="./ai-gateway.png" alt="AI Gateway Overview"  />
 </div>
 <!-- This section introduces the key differentiators of AI Gateways compared to traditional API Gateways -->
-However, when working with AI models and machine learning pipelines, additional considerations come into play. This is where an AI Gateway excels:
+
+## Why use an AI Gateway?
+
+When working with AI Agents, additional considerations come into play. This is where an AI Gateway excels:
 
 1. **AI Model Routing:** Instead of sending requests to microservices, the AI Gateway helps direct requests to the most suitable AI model (e.g., choosing between a fast model or a more accurate model, or automatically picking a specialized LLM for a certain use case).
 

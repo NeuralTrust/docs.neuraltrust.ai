@@ -2,65 +2,48 @@
 sidebar_position: 1
 ---
 
-# Quick Start Guide
+# Quickstart Guide
 
+## Overview
+The AI Gateway acts as an intelligent proxy server designed specifically for AI workloads. It provides advanced rate limiting, load balancing, and monitoring capabilities optimized for Large Language Models (LLMs) and other AI services.
 
-AI Gateway is an open-source proxy server that provides advanced rate limiting, load balancing, and plugin capabilities for your AI API endpoints. Whether you're managing access to LLM APIs, computer vision services, or other AI endpoints, this guide will walk you through:
+## Installation & Setup
 
-- Basic installation and configuration
-- Setting up rate limiting and API keys
-- Configuring load balancing rules
-- Making your first requests
+### Basic Setup
+```bash
+git clone https://github.com/ai-gateway/ai-gateway.git
+cd ai-gateway
+```
 
-## Prerequisites
+The setup process is straightforward and focuses on AI-specific configurations out of the box.
 
-- Go 1.21+
-- Docker and Docker Compose
+### Configuration Structure
+```yaml
+server:
+    admin_port: 8080    # Port for administrative API
+    proxy_port: 8081    # Main proxy port for AI traffic
+    base_domain: example.com
 
-## Installation
-1. Clone the repository:
+redis:
+    host: localhost     # Redis for high-performance rate limiting
+    port: 6379
+    password: ""
+    db: 0
 
-    ```bash
-    git clone https://github.com/ai-gateway/ai-gateway.git
-    cd ai-gateway
-    ```
-2. There is a config.yaml file in the root of the repository. You can modify it to your needs.
-    ```yaml
-    server:
-        admin_port: 8080
-        proxy_port: 8081
-        base_domain: example.com
+database:
+    host: localhost     # PostgreSQL for configuration storage
+    port: 5432
+    user: postgres
+    password: postgres
+    dbname: ai_gateway
+    ssl_mode: disable 
+```
 
-    redis:
-        host: localhost
-        port: 6379
-        password: ""
-        db: 0
+This configuration is optimized for AI workloads, using Redis for real-time rate limiting and PostgreSQL for persistent configuration storage.
 
-    database:
-        host: localhost
-        port: 5432
-        user: postgres
-        password: postgres
-        dbname: ai_gateway
-        ssl_mode: disable 
-    ```
-3. Start Redis:
+## Gateway Configuration
 
-    ```bash
-    docker-compose up -d
-    ```
-
-4. Start the servers.
-
-    ```bash
-    ./scripts/run_local.sh
-    ```
-
-## Basic Configuration
-
-### 1. Create a Gateway with Advanced Rate Limiting
-
+### Creating a Gateway Instance
 ```bash
 curl -X POST http://localhost:8080/api/v1/gateways \
   -H "Content-Type: application/json" \
@@ -100,8 +83,13 @@ curl -X POST http://localhost:8080/api/v1/gateways \
 }'
 ```
 
-### 2. Create an API Key
+The rate limiter is specifically designed for AI workloads with:
+- Global limits for overall API capacity
+- Per-IP limits to prevent abuse
+- Per-user limits for fair resource allocation
+- Token-based quotas for LLM interactions
 
+### API Key Management
 ```bash
 curl -X POST http://localhost:8080/api/v1/gateways/{gateway_id}/keys \
   -H "Content-Type: application/json" \
@@ -110,8 +98,9 @@ curl -X POST http://localhost:8080/api/v1/gateways/{gateway_id}/keys \
 }'
 ```
 
-### 3. Create Forwarding Rules with Load Balancing
+API keys include metadata specific to AI usage tracking, including token consumption and model access patterns.
 
+### Load Balancing Configuration
 ```bash
 curl -X POST http://localhost:8080/api/v1/gateways/{gateway_id}/rules \
   -H "Content-Type: application/json" \
@@ -132,12 +121,15 @@ curl -X POST http://localhost:8080/api/v1/gateways/{gateway_id}/rules \
 }'
 ```
 
-## Using the Gateway
+Our intelligent routing system considers:
+- Model performance requirements
+- Cost optimization across different AI providers
+- Response time requirements
+- Token quota management
 
-### Make Requests
+## Testing the Setup
 
-Test different rate limit types:
-
+### Rate Limit Testing
 ```bash
 # Test IP-based rate limit
 curl -X GET "http://multirate.example.com:8081/api" \
@@ -172,10 +164,63 @@ curl -X GET "http://multirate.example.com:8081/api" \
 - Built-in plugins for common tasks
 
 ## Next Steps
+After completing the basic setup, explore these advanced features:
 
-- [Forwarding Rules](./concepts/forwarding-rules.md)
-- [Plugin System Documentation](./concepts/plugin-system.md)
-- [Traffic Management Guide](./concepts/traffic-management.md)
-- [Consumer Groups (Enterprise)](./concepts/consumer-groups.md)
+<div style={{
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "20px",
+    marginTop: "20px"
+}}>
+    <a href="./concepts/forwarding-rules" style={{
+        padding: "20px",
+        border: "1px solid #eee",
+        borderRadius: "8px",
+        textDecoration: "none", 
+        color: "inherit",
+        transition: "all 0.2s ease",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+    }}>
+        <h3>🔄 Forwarding Rules</h3>
+        <p>Learn about intelligent request routing and traffic management for AI workloads</p>
+    </a>
 
+    <a href="./concepts/plugin-system" style={{
+        padding: "20px",
+        border: "1px solid #eee", 
+        borderRadius: "8px",
+        textDecoration: "none",
+        color: "inherit",
+        transition: "all 0.2s ease",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+    }}>
+        <h3>🔌 Plugin System</h3>
+        <p>Explore AI-specific security and monitoring capabilities through our plugin architecture</p>
+    </a>
 
+    <a href="./concepts/traffic-management" style={{
+        padding: "20px",
+        border: "1px solid #eee",
+        borderRadius: "8px",
+        textDecoration: "none",
+        color: "inherit", 
+        transition: "all 0.2s ease",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+    }}>
+        <h3>🚦 Traffic Management</h3>
+        <p>Optimize your LLM workloads with advanced traffic management features</p>
+    </a>
+
+    <a href="./concepts/consumer-groups" style={{
+        padding: "20px",
+        border: "1px solid #eee",
+        borderRadius: "8px",
+        textDecoration: "none",
+        color: "inherit",
+        transition: "all 0.2s ease",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+    }}>
+        <h3>👥 Consumer Groups (Enterprise)</h3>
+        <p>Manage access control and usage policies for different user groups</p>
+    </a>
+</div>
