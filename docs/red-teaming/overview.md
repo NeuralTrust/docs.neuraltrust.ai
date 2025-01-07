@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Introduction to Red Teaming for LLMs
+# Overview
 
 Red teaming is a critical practice for evaluating Large Language Models (LLMs) by systematically challenging their behaviors, safety measures, and potential vulnerabilities. While traditionally associated with security testing, LLM red teaming encompasses both security assessment and functional evaluation of model capabilities.
 

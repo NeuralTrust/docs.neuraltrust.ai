@@ -241,9 +241,34 @@ Key Features:
    - Performance trend analysis
    - Alert notifications for issues
 
-### Observability
-- [Overview](../observability/overview.md)
-- [Tracing](../observability/tracing.md)
+### **[Observability](../observability/overview.md)**
+
+NeuralTrust provides comprehensive observability tools designed specifically for LLM applications, helping organizations monitor, track, and analyze AI behavior in production environments. Our observability suite addresses unique challenges that traditional monitoring solutions don't cover, from model unpredictability to compliance requirements.
+
+Key Features:
+
+1. **[Analytics](../observability/analytics.md)**
+   - User interaction patterns analysis
+   - Performance metrics tracking
+   - Usage statistics and trends
+   - Automatic topic classification
+   - Cost and efficiency metrics
+
+2. **[Traces](../observability/tracing.md)**
+   - End-to-end request tracking
+   - Input/output logging
+   - Model version control
+   - Chain of thought recording
+   - Compliance audit trails
+
+3. **[Monitors](../observability/monitors.md)**
+   - Performance degradation detection
+   - Safety alignment checks
+   - Response quality monitoring
+   - Cost anomaly detection
+   - Automated incident alerts
+
+These tools ensure your LLM applications remain reliable, safe, and aligned with business objectives while maintaining full visibility into their operation.
 
 ### SDKs & Libraries
 - [Python SDK](../sdks/python-sdk/installation.md)
