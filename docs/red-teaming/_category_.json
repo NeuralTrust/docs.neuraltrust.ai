@@ -3,6 +3,6 @@
   "position": 5,
   "link": {
     "type": "generated-index",
-    "description": "Red teaming is a critical practice for evaluating Large Language Models (LLMs) by systematically challenging their behaviors, safety measures, and potential vulnerabilities. NeuralTrust provides a comprehensive suite of tools to help evaluate, test, and secure your LLM applications through systematic testing and analysis."
+    "description": "Red teaming is a critical security practice that involves systematically testing Large Language Models (LLMs) to identify potential risks and vulnerabilities. NeuralTrust provides tools and methodologies to evaluate model behaviors, test safety measures, and analyze responses to help you build more robust and trustworthy AI systems."
   }
 }

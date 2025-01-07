@@ -1,156 +1,186 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 # Tracing
 
 Comprehensive tracing capabilities for monitoring and debugging your LLM applications.
 
+![Tracing](./assets/traces.png)
+
+## Why Trace LLM Applications?
+
+LLM applications can be complex systems with many moving parts - from prompt construction and context retrieval to tool usage and response generation. When something goes wrong or behaves unexpectedly, it can be challenging to understand exactly what happened. Tracing provides:
+
+- **Debugging Clarity**: See exactly how your LLM processed a request, what context it used, and how it arrived at its response
+- **Performance Insights**: Identify bottlenecks in your application, like slow API calls or expensive retrievals
+- **Quality Monitoring**: Track the quality of LLM outputs and user satisfaction over time
+- **Compliance & Auditing**: Maintain detailed records of all LLM interactions for compliance requirements
+- **Cost Optimization**: Understand which parts of your system are making the most LLM calls and optimize accordingly
+
 ## Overview
 
 The tracing system captures detailed information about your LLM application's behavior and performance. This includes:
 
-- Message flows
-- Tool usage
-- Agent interactions
-- Data retrievals
-- Response generations
-- System events
-- Custom events
-- User feedback
+- **Message flows**: Track the complete conversation flow between users and your LLM, including intermediate steps
+- **Tool usage**: Monitor when and how your LLM uses external tools, APIs, and function calls
+- **Agent interactions**: Record agent reasoning steps, decisions, and actions taken
+- **Data retrievals**: Track RAG operations, document fetches, and context augmentation
+- **Response generations**: Capture prompt construction, LLM calls, and response processing
+- **System events**: Log infrastructure events, errors, and runtime information
+- **Custom events**: Define and track application-specific events important to your use case
+- **User feedback**: Collect explicit ratings, implicit signals, and interaction outcomes
 
 ## Basic Usage
 
 Create a trace and add events:
 
-```typescript
-// Initialize a trace
-const trace = client.trace({
-    conversationId: "conv_123",
-    sessionId: "session_123"
-});
+```python
+# Initialize a trace
+trace = client.trace(
+    conversation_id="conv_123",
+    session_id="session_123"
+)
 
-// Add a message event
-const message = trace.message("User: What's the weather?");
-await message.end("Bot: It's sunny!");
+# Add a message event
+message = trace.message("User: What's the weather?")
+message.end("Bot: It's sunny!")
 ```
 
 ## Event Types
 
-### Core Events
+Each event type serves a specific purpose in tracking your LLM application's behavior:
 
-1. **MESSAGE** - Root-level conversation events
-```typescript
-const message = trace.message("User input");
-await message.end("Bot response");
+### MESSAGE
+Root-level conversation events that capture the main interaction flow. Use these to track the overall conversation structure.
+
+```python
+message = trace.message("User input")
+message.end("Bot response")
 ```
 
-2. **TOOL** - External tool usage
-```typescript
-const tool = message.tool("Calling weather API");
-await tool.end("API response received");
+### TOOL
+Tracks external tool and API usage. Perfect for monitoring function calls, database queries, or any external service interactions.
+
+```python
+tool = message.tool("Calling weather API")
+tool.end("API response received")
 ```
 
-3. **GENERATION** - LLM generations
-```typescript
-const generation = message.generation("Generating response");
-await generation.end("Response generated");
+### GENERATION
+Captures LLM prompt construction and response generation. Use this to monitor token usage, response quality, and generation parameters.
+
+```python
+generation = message.generation("Generating response")
+generation.end("Response generated")
 ```
 
-### Additional Events
+### AGENT
+Records agent reasoning steps and decisions. Useful for understanding how your LLM agent processes tasks and makes choices.
 
-- **AGENT**: Track agent decisions
-- **RETRIEVAL**: Document/data retrievals
-- **ROUTER**: Request routing
-- **SYSTEM**: System events
-- **CUSTOM**: Custom event types
-- **FEEDBACK**: User feedback
-
-## Nested Tracing (Recommended)
-
-Create hierarchical traces to track complex flows:
-
-```typescript
-// Create parent trace
-const message = trace.message("Weather request");
-
-// Add child traces
-const retrieval = message.retrieval("Fetching data");
-await retrieval.end("Data retrieved");
-
-const generation = retrieval.generation("Creating response");
-await generation.end("Response ready");
-
-// End parent trace
-await message.end("Request completed");
+```python
+agent = message.agent("Planning next action")
+agent.end("Decided to search database")
 ```
 
-## Additional Features
+### RETRIEVAL
+Monitors document retrievals and RAG operations. Tracks what context was fetched and how it was used.
 
-### Metadata
-```typescript
-const trace = client.trace({
-    conversationId: "conv_123",
-    metadata: {
-        version: "1.0.0",
-        environment: "production"
-    }
-});
+```python
+retrieval = message.retrieval("Searching knowledge base")
+retrieval.end("Found 3 relevant documents")
 ```
 
-### User Context
-```typescript
-const trace = client.trace({
-    conversationId: "conv_123",
-    user: {
-        id: "user_123",
-        name: "John Doe"
-    }
-});
+### SYSTEM
+Captures infrastructure events and runtime information. Use for monitoring system health and performance.
+
+```python
+system = trace.system("Initializing cache")
+system.end("Cache warmed up")
 ```
 
-## Best Practices
+### FEEDBACK
+Records user feedback and interaction outcomes. Essential for quality monitoring and improvement.
 
-1. **Use Nested Tracing**
-   - Creates clear request hierarchy
-   - Automatically manages relationships
-   - Simplifies debugging
+```python
+trace.feedback(
+    feedback_tag="THUMBS_UP",
+    feedback_text="User marked response as helpful"
+)
+```
 
-2. **Add Context**
-   - Include relevant metadata
-   - Add user information
-   - Track environment details
+## Advanced Tracing Features
 
-3. **Handle Errors**
-   - Use try/catch blocks
-   - End traces properly
-   - Include error information
+### Nested Tracing
+Nested tracing is the recommended way to track complex interactions in your LLM application. It creates a hierarchical structure that makes it easy to understand the relationship between different operations:
 
-## Error Handling Example
+```python
+# Initialize trace with basic context
+trace = client.trace(
+    conversation_id="conv_123",
+    metadata=Metadata(environment="production"),
+    user=User(id="user_123")
+)
 
-```typescript
-try {
-    const trace = client.trace({
-        conversationId: "conv_123",
-        metadata: { version: "1.0.0" }
-    });
-
-    const message = trace.message("Processing request");
+try:
+    # Start main conversation trace
+    message = trace.message("User: Tell me about neural networks")
     
-    try {
-        // Your processing logic here
-        await message.end("Success");
-    } catch (error) {
-        await message.end(`Error: ${error.message}`);
-        throw error;
-    }
-} catch (error) {
-    console.error("Trace error:", error);
-}
+    # Track document retrieval
+    retrieval = message.retrieval("Searching documentation")
+    retrieval.end("Found 2 relevant articles")
+    
+    # Track response generation
+    generation = message.generation("Creating explanation")
+    generation.end("Generated response about neural networks")
+    
+    # Complete the conversation
+    message.end("Bot: Neural networks are...")
+
+except Exception as e:
+    message.end(f"Error: {str(e)}")
 ```
 
-## Next Steps
+### Key Benefits
 
-- [Platform Overview](../getting-started/quickstart.md)
-- [Knowledge Base Guide](../red-teaming/knowledge-bases.md)
-- [Evaluation Sets](../red-teaming/evaluation-sets.md)
+1. **Hierarchical Organization**
+   - Each trace can have child traces (retrieval → generation)
+   - Automatically maintains parent-child relationships
+   - Makes complex flows easy to understand and debug
+
+2. **Rich Context**
+   - Add metadata for environment, versions, and custom properties
+   - Track user information and session data
+   - Include business-specific properties
+
+3. **Error Handling**
+   - Proper trace completion even during errors
+   - Capture full error context
+   - Maintain trace hierarchy in error cases
+
+4. **Monitor Performance**
+   - Track timing of key operations
+   - Add context about resource usage
+   - Monitor rate limits and quotas
+
+### Best Practices
+
+1. **Structure Your Traces**
+   - Start with a high-level message trace
+   - Add child traces for major operations
+   - Keep the hierarchy shallow (2-3 levels max)
+
+2. **Add Meaningful Context**
+   - Use descriptive trace names
+   - Include relevant metadata
+   - Track user and session information
+
+3. **Handle Errors Properly**
+   - Use try/except blocks
+   - End traces in finally blocks
+   - Include error details in trace output
+
+4. **Monitor Performance**
+   - Track timing of key operations
+   - Add context about resource usage
+   - Monitor rate limits and quotas

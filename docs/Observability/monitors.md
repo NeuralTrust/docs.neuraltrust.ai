@@ -1,70 +1,34 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Monitors
 
-Configure and manage monitors through the NeuralTrust platform to track key metrics and receive alerts for your LLM applications.
+Monitoring LLM applications is essential for maintaining performance, controlling costs, and ensuring quality. Through the NeuralTrust platform, you can track key metrics and receive alerts when issues arise.
 
 ## Creating a Monitor
 
 ![Monitor Creation Interface](./assets/monitor-creation.png)
 
-### 1. Type
-Select the type of monitor:
-- **Metric** (Métrica): Compare metric values against a static threshold
-- **Change** (Cambio): Monitor metric changes over time
+### Monitor Configuration
 
-> **Note**: For metric type, NeuralTrust will calculate the average/minimum/maximum/sum during the selected period and verify if it's above/below the threshold. This is the standard alert case where you know the expected values.
+1. **Type**
+Choose between Metric (static threshold) or Change (time-based comparison) monitoring.
 
-### 2. Metric
-Configure the metric settings:
+2. **Metric Selection**
+- Select from: Messages, Conversations, Dialog Time, or Words per prompt
+- Choose evaluation method and time window
+- Set alert and warning thresholds
 
-- **Metric** (Métrica): Select the metric to monitor
-  - Messages (Mensajes)
-  - Conversations (Conversaciones)
-  - Dialog Time (Tiempo de diálogo)
-  - Words per prompt (Palabras por prompt)
-- **Evaluate** (Evaluar): Choose evaluation method
-- **During** (Durante): Select time window
+3. **Notifications**
+- Add email recipients for alerts
+- Set monitor name and priority level
 
-### 3. Alert
-Set up alert conditions:
-
-- **Alert Threshold** (Umbral de alerta): Critical threshold value
-- **Warning Threshold** (Umbral de advertencia): Warning threshold value
-
-### 4. Notification
-Configure alert notifications:
-
-- **Email Recipients** (Miembros que recibirán una notificación por correo electrónico)
-- Click "Add" (Añadir) to include team members
-
-### 5. Identification
-Add monitor details:
-
-- **Name** (Nombre): Enter monitor name
-- **Priority** (Prioridad): Set monitor priority level
-
-## Actions
-
-- **Save** (Guardar): Create the monitor
-- **Cancel** (Cancelar): Discard changes
+> **Note**: For metric type monitors, NeuralTrust calculates the average/minimum/maximum/sum during the selected period and compares it against your threshold.
 
 ## Best Practices
 
-1. **Threshold Setting**
-   - Start with conservative thresholds
-   - Base thresholds on historical data
-   - Monitor and adjust as needed
-
-2. **Notifications**
-   - Add relevant team members
-   - Avoid alert fatigue
-   - Keep recipient list updated
-
-3. **Monitoring**
-   - Review alert effectiveness
-   - Adjust thresholds as needed
-   - Archive unused monitors
-``` 
+- Start with conservative thresholds based on historical data
+- Include only necessary team members in notifications
+- Review and adjust monitor settings periodically
+- Archive monitors that are no longer needed
