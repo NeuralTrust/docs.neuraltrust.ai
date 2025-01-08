@@ -4,19 +4,33 @@ sidebar_position: 1
 
 # Forwarding Rules
 
-Forwarding rules are a core feature of the AI Gateway that define how incoming requests are routed to various AI providers.
+Forwarding rules are a core feature of the AI Gateway that define how incoming requests are routed to various AI providers. Each rule is uniquely identified by a UUID and contains essential routing configuration including path patterns, HTTP methods, headers, and plugin chains.
 
-## Overview
 
-Each forwarding rule specifies:
-- Path matching patterns
-- Target endpoints
-- HTTP methods
-- Header configurations
-- Plugin chains
-- Load balancing settings
 
 ## Rule Structure
+The rule structure defines how requests are matched and routed through the AI Gateway. Let's examine each field in detail:
+
+### Core Fields
+- `id`: A unique UUID identifying the forwarding rule
+- `gateway_id`: References the gateway this rule belongs to
+- `path`: The URL path pattern to match incoming requests (e.g., `/v1/chat/completions`)
+- `targets`: Array of destination endpoints where requests will be forwarded
+  - `url`: The base URL of the target API endpoint
+- `methods`: Array of allowed HTTP methods for this rule
+
+### Behavior Controls  
+- `strip_path`: When true, removes the matched path prefix before forwarding
+- `preserve_host`: When true, keeps the original Host header instead of rewriting it
+- `retry_attempts`: Number of times to retry failed requests
+- `active`: Enables/disables the rule without deletion
+- `public`: Controls whether the rule is accessible without authentication
+
+### Advanced Configuration
+- `headers`: Custom header modifications for forwarded requests
+- `plugin_chain`: Ordered list of plugins to process requests/responses
+
+This structure allows for flexible routing configurations while maintaining security and reliability. Rules can be as simple as basic forwarding or complex with multiple plugins and header transformations.
 
 ```json
 {
@@ -42,6 +56,8 @@ Each forwarding rule specifies:
 For gateways of type "models", the system automatically generates appropriate forwarding rules based on the configured provider:
 
 ### OpenAI Provider
+When using OpenAI as a provider, the AI Gateway automatically generates forwarding rules for their core API endpoints. These rules cover the essential OpenAI endpoints including chat completions, text completions, and embeddings:
+
 ```json
 {
   "path": "/v1/chat/completions",
@@ -61,6 +77,9 @@ For gateways of type "models", the system automatically generates appropriate fo
 ```
 
 ### Anthropic Provider
+For Anthropic provider configurations, the AI Gateway creates default forwarding rules that map to Anthropic's primary API services. The generated rules enable access to Anthropic's core functionalities, including their messages API for Claude interactions and their completions endpoint:
+
+
 ```json
 {
   "path": "/v1/complete",
@@ -76,7 +95,14 @@ For gateways of type "models", the system automatically generates appropriate fo
 
 ## Custom Rules
 
-Create custom rules for specialized routing needs:
+Create custom rules for specialized routing needs by using the rules API endpoint. Custom rules allow you to define granular routing behaviors including:
+
+- Multiple target endpoints with weighted load balancing
+- Custom header modifications and path stripping
+- Retry policies for failed requests
+- Integration with the plugin system for additional functionality
+
+Here's how to create a custom rule:
 
 ```bash
 curl -X POST http://localhost:8080/api/v1/gateways/{gateway_id}/rules \

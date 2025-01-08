@@ -2,11 +2,7 @@
 sidebar_position: 1
 ---
 
-<<<<<<< Updated upstream
 # What's Red Teaming for LLMs?
-=======
-# What is Red Teaming for LLMs?
->>>>>>> Stashed changes
 
 Red teaming is a critical practice for evaluating Large Language Models (LLMs) by systematically challenging their behaviors, safety measures, and potential vulnerabilities. While traditionally associated with security testing, LLM red teaming encompasses both security assessment and functional evaluation of model capabilities.
 
@@ -71,23 +67,13 @@ NeuralTrust provides a comprehensive suite of tools to help evaluate, test, and 
 
 NeuralTrust defines the following components to support the above use cases:
 
-<<<<<<< Updated upstream
-<div align="center">
 ![Red Teaming Components](./assets/evaluation-sets-schema.svg)
-</div>
 
 #### [Evaluation Sets](./evaluation-sets.md)
 Set of a Test Sets, evaluation criteria, runs and results. Each evaluation set defines specific test scenarios, success metrics, and evaluation parameters needed to thoroughly assess model behavior. These sets can be customized for different testing objectives, from security validation to functional performance evaluation. Evaluation sets can be scheduled to run automatically at defined intervals, enabling continuous monitoring and assessment of model performance over time.
 
 #### [Test Sets](./testsets.md)
 Set of prompts and expected model responses pairs used in testing.
-=======
-#### [Evaluation Sets](./evaluation-sets.md)
-Set of Test Sets and evaluation criteria that form the foundation of model assessment. Each evaluation set defines specific test scenarios, success metrics, and evaluation parameters needed to thoroughly assess model behavior. These sets can be customized for different testing objectives, from security validation to functional performance evaluation.
-
-#### [Test Sets](./test-sets.md)
-Define prompt and expected model response pairs used in testing. Test sets include the input context.
->>>>>>> Stashed changes
 
 #### [Knowledge Bases](./knowledge-bases.md)
 Information source that provides the foundation for model testing and validation. These repositories contain verified reference data, domain expertise, testing patterns, and compliance requirements. Knowledge bases help ensure that evaluations are grounded in accurate information and align with industry standards and security policies.

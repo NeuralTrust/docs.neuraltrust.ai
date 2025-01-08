@@ -20,13 +20,11 @@ The scanner employs up to 100 different jailbreaking techniques to thoroughly ev
 
 The Scanner API provides two main endpoints for red teaming LLMs: `scan` and `attack`. These endpoints allow you to test LLM systems for potential vulnerabilities and security concerns.
 
-<<<<<<< Updated upstream
+
 :::info
 All scan and attack results are automatically uploaded to the NeuralTrust platform for analysis and reporting. You can access detailed reports, trends, and insights through the platform dashboard.
 :::
 
-=======
->>>>>>> Stashed changes
 ### Scan Endpoint
 
 The scan endpoint performs a general red teaming assessment across specified categories. It automatically generates and runs tests based on the categories you select, employing up to 100 different jailbreaking techniques to thoroughly evaluate model safety. These techniques include various prompt engineering methods, social engineering attempts, and adversarial attacks to test the model's robustness against potential misuse.
@@ -60,11 +58,8 @@ response = client.scanner.scan(
 )
 ```
 
-<<<<<<< Updated upstream
 For more information, see the [Scanner API Reference](docs/sdks/python-sdk/api-reference/scanner-client.md#scan).
 
-=======
->>>>>>> Stashed changes
 ### Attack Endpoint
 
 The attack endpoint allows for custom red teaming attacks with specific objectives.
@@ -87,9 +82,6 @@ response = client.scanner.attack(
     ]
 )
 ```
-<<<<<<< Updated upstream
 
 For more information, see the [Attack API Reference](docs/sdks/python-sdk/api-reference/scanner-client.md#attack).
 
-=======
->>>>>>> Stashed changes
