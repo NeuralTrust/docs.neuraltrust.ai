@@ -11,12 +11,9 @@ NeuralTrust is a comprehensive AI security and observability platform that helps
 - **Protect** against prompt injection attacks and unauthorized usage
 - **Optimize** AI costs through intelligent traffic management and rate limiting
 
-
-## Getting Started
-
-Here is the link to our **[Quick Start Guide](./quickstart.md)** so you can set up NeuralTrust and begin securing your AI application in less than **5 minutes**. This streamlined process walks you through the essential steps to get your **NeuralTrust** instance up and running quickly, empowering you to protect and monitor your AI interactions right from the start.
-
-
+:::info
+Ready to begin? Check out our **[Quick Start Guide](./quickstart.md)**.
+:::
 
 ## Core Features
 
