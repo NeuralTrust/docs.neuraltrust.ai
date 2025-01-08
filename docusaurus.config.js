@@ -84,7 +84,7 @@ const config = {
       // },
       colorMode: {
         defaultMode: 'light',
-        disableSwitch: false,
+        disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       algolia: {
@@ -125,7 +125,7 @@ const config = {
           alt: 'NeuralTrust Logo',
           src: 'img/logo.svg',
           srcDark: 'img/logo.svg',
-          height: 32,
+          className: 'navbar-logo',
         },
         items: [
           {
@@ -134,24 +134,26 @@ const config = {
           },
           {
             href: 'https://github.com/NeuralTrust',
-            label: 'GitHub',
             position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
           },
           {
             href: 'https://discord.gg/JGV4q3tr',
-            label: 'Discord',
             position: 'right',
+            className: 'header-discord-link',
+            'aria-label': 'Discord community',
           },
           {
             href: 'https://linkedin.com/company/neuraltrust',
-            label: 'LinkedIn',
             position: 'right',
+            className: 'header-linkedin-link',
+            'aria-label': 'LinkedIn page',
           },
         ],
       },
       prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        theme: prismThemes.github
       },
     }),
 };

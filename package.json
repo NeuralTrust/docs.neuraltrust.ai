@@ -29,7 +29,10 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.6.3",
-    "@docusaurus/types": "3.6.3"
+    "@docusaurus/types": "3.6.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
   },
   "browserslist": {
     "production": [
