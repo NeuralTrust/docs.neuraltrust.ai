@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-# Overview
+# Welcome to NeuralTrust
 
 Welcome to NeuralTrust's developer documentation. Learn how to secure, monitor, and protect your AI applications.
 
@@ -11,25 +11,17 @@ NeuralTrust is a comprehensive AI security and observability platform that helps
 - **Protect** against prompt injection attacks and unauthorized usage
 - **Optimize** AI costs through intelligent traffic management and rate limiting
 
-
-## Getting Started
-
-:::info[**[Let's get started](./quickstart.md)**]
-- Here is the link to our **[Quick Start Guide](./quickstart.md)** so you can set up NeuralTrust and begin securing your AI application in less than **5 minutes**. This streamlined process walks you through the essential steps to get your **NeuralTrust** instance up and running quickly, empowering you to protect and monitor your AI interactions right from the start.
-- For more detailed installation instructions, please refer to our **[Installation](./installation.md)** guide.
+:::info
+Ready to begin? Check out our **[Quick Start Guide](./quickstart.md)**.
 :::
-
 
 ## Core Features
 
-
-
-
-### **[AI Gateway](../ai-gateway/introduction.md)**
+### 🛡️ **[AI Gateway](../ai-gateway/introduction.md)**
 
 **What is an AI Gateway?**
 
-An AI Gateway is a dedicated layer that acts as the “front door” for all your AI traffic. It intercepts and manages incoming requests, enforces security policies, and provides intelligent routing and monitoring. By consolidating key functions—like authentication, prompt guarding, rate limiting, and analytics—into one central interface, an AI Gateway ensures that your AI services remain both secure and highly available. 
+An AI Gateway is a dedicated layer that acts as the "front door" for all your AI traffic. It intercepts and manages incoming requests, enforces security policies, and provides intelligent routing and monitoring. By consolidating key functions—like authentication, prompt guarding, rate limiting, and analytics—into one central interface, an AI Gateway ensures that your AI services remain both secure and highly available. 
 
 
 <!-- Paragraph referencing the AI Gateway Quick Start link -->
@@ -84,7 +76,7 @@ In the AI Gateway, **forwarding rules** define how your incoming AI-related requ
 
 ##### **[Plugins System](../ai-gateway/concepts/plugin-system.md)**
 
- The AI Gateway’s **plugins system** is a way to customize and extend how requests and responses flow through your AI Gateway. Imagine it as “add-ons” or “hooks” that run before or after the AI model processes a request. Each plugin can focus on a particular task: security, rate limiting, logging, or any custom logic you need.
+ The AI Gateway's **plugins system** is a way to customize and extend how requests and responses flow through your AI Gateway. Imagine it as "add-ons" or "hooks" that run before or after the AI model processes a request. Each plugin can focus on a particular task: security, rate limiting, logging, or any custom logic you need.
 
 1. **Pre-Request Stage:**  
    Plugins run here before your request is passed on to the AI model. This is useful for:  
@@ -203,14 +195,73 @@ The AI Gateway includes comprehensive benchmarking capabilities to help you unde
 The benchmark tools help ensure optimal gateway performance, identify potential bottlenecks before deployment to production, and make data-driven decisions when comparing different setups.
 
 
+### 🎯 **[Red Teaming](../red-teaming/overview.md)**
 
+NeuralTrust provides comprehensive red teaming capabilities to systematically evaluate both the security and functional aspects of your LLM applications. Our tools help identify vulnerabilities, assess model behavior, validate functional capabilities, and ensure compliance with security standards.
 
-### Observability
-- [Overview](../observability/overview.md)
-- [Tracing](../observability/tracing.md)
+Key Features:
 
-### SDKs & Libraries
-- [Python SDK](../sdks/python.md)
-- [Node.js SDK](../sdks/nodejs.md)
-- [Go SDK](../sdks/go.md)
-- [Java SDK](../sdks/java.md)
+1. 🔍 **Functional Evaluation**
+   - Task performance testing
+   - Edge case identification
+   - Response consistency checks
+   - Domain expertise validation
+   - Instruction following assessment
+
+2. 📋 **[Compliance Scanner](../red-teaming/scanner.md)**
+   - Automated compliance checks
+   - Toxicity detection
+   - Policy adherence validation
+   - Output quality monitoring
+
+3. 📊 **[Evaluation Framework](../red-teaming/evaluation-sets.md)**
+   - Customizable evaluation criteria
+   - Response quality metrics
+   - Comparative analysis
+   - Performance benchmarking
+   - Statistical reporting
+
+4. 🎯 **[Domain-Specific Testing](../red-teaming/scanner.md#attack-endpoint)**
+   - Industry-specific test scenarios
+   - Custom evaluation criteria
+   - Specialized knowledge validation
+   - Context-aware testing
+
+5. ⚡ **Automated Evaluation Pipeline**
+   - Scheduled testing runs
+   - Continuous model monitoring
+   - Automated regression detection
+   - Performance trend analysis
+   - Alert notifications for issues
+
+### 📈 **[Observability](../observability/overview.md)**
+
+NeuralTrust provides comprehensive observability tools designed specifically for LLM applications, helping organizations monitor, track, and analyze AI behavior in production environments. Our observability suite addresses unique challenges that traditional monitoring solutions don't cover, from model unpredictability to compliance requirements.
+
+Key Features:
+
+1. 📊 **[Analytics](../observability/analytics.md)**
+   - User interaction patterns analysis
+   - Performance metrics tracking
+   - Usage statistics and trends
+   - Automatic topic classification
+   - Cost and efficiency metrics
+
+2. 🔍 **[Traces](../observability/tracing.md)**
+   - End-to-end request tracking
+   - Input/output logging
+   - Model version control
+   - Chain of thought recording
+   - Compliance audit trails
+
+3. 🔔 **[Monitors](../observability/monitors.md)**
+   - Performance degradation detection
+   - Safety alignment checks
+   - Response quality monitoring
+   - Cost anomaly detection
+   - Automated incident alerts
+
+These tools ensure your LLM applications remain reliable, safe, and aligned with business objectives while maintaining full visibility into their operation.
+
+### 🛠️ SDKs & Libraries
+- [Python SDK](../sdks/python-sdk/installation.md)

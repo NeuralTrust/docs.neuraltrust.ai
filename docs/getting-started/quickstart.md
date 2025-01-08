@@ -1,176 +1,104 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Quick Start
 
-Get started with the NeuralTrust Platform using our TypeScript SDK.
+This guide will help you get started with Neural Trust quickly using our Python SDK.
 
 ## Installation
 
-Install the NeuralTrust TypeScript SDK using npm or yarn:
+First, install the Neural Trust Python SDK using pip:
 
 ```bash
-npm install neuraltrust
-# or
-yarn add neuraltrust
+pip install neuraltrust
 ```
 
-## Basic Setup
+## Environment Setup
 
-Initialize the client with your API key:
+Create a `.env` file in your project root with your Neural Trust credentials:
 
-```typescript
-import { NeuralTrust } from 'neuraltrust';
-
-// Initialize with API key
-const client = new NeuralTrust({ 
-  apiKey: "your_api_key_here" 
-});
-
-// Optional: Custom configuration
-const client = new NeuralTrust({ 
-  apiKey: "your_api_key_here",
-  baseUrl: "https://custom.api.url"
-});
-```
-
-## Tracing
-
-### Creating Basic Traces
-
-```typescript
-// Create a root trace
-const trace = client.trace({
-    conversationId: "conversation_12345678",
-    sessionId: "session_12345678",
-    channelId: "channel_12345678",
-    user: { 
-      id: "user_12345678", 
-      name: "John Doe" 
-    }
-});
-
-// Add a message
-const message = trace.message("User input: Hello!");
-await message.end("Assistant: Hi there!");
-```
-
-### Nested Traces (Recommended)
-
-```typescript
-const trace = client.trace({
-    conversationId: "conversation_12345678",
-    sessionId: "session_12345678"
-});
-
-// Create a conversation flow
-const message = trace.message("What's the weather?");
-const router = message.router("Routing request...");
-await router.end("Routed to weather service");
-
-const retrieval = router.retrieval("Fetching weather data...");
-await retrieval.end("Found weather data for San Francisco");
-
-const generation = retrieval.generation("Generating response...");
-await generation.end("The weather is sunny and 75°F");
-
-await message.end("The weather is sunny and 75°F");
-```
-
-### Event Types
-
-The SDK supports various event types:
-- `MESSAGE`
-- `TOOL`
-- `AGENT`
-- `RETRIEVAL`
-- `GENERATION`
-- `ROUTER`
-- `SYSTEM`
-- `CUSTOM`
-- `FEEDBACK`
-
-## Evaluation Sets
-
-```typescript
-// Create an evaluation set
-const evalSet = await client.createEvaluationSet({
-    name: "Weather Bot Eval",
-    description: "Evaluation set for weather bot responses"
-});
-
-// Run evaluation
-const results = await client.runEvaluationSet({ 
-    id: evalSet.id 
-});
-
-// Get results
-const evalSet = await client.getEvaluationSet({ 
-    id: "eval_set_id" 
-});
-```
-
-## Knowledge Bases
-
-```typescript
-// Create a knowledge base
-const kb = await client.createKnowledgeBase({
-    type: "upstash",
-    credentials: { 
-      apiKey: "your_doc_api_key" 
-    }
-});
-
-// Retrieve a knowledge base
-const kb = await client.getKnowledgeBase({ 
-    id: "kb_id" 
-});
-```
-
-## Test Sets
-
-```typescript
-// Create a test set
-const testset = await client.createTestset({
-    name: "Weather Bot Tests",
-    type: "adversarial",
-    evaluationSetId: "eval_set_id",
-    knowledgeBaseId: "kb_id",
-    numQuestions: 10
-});
-
-// Get test results
-const results = await client.getTestset({ 
-    id: "testset_id" 
-});
-```
-
-## Error Handling
-
-```typescript
-try {
-    const trace = client.trace({
-        conversationId: "conversation_12345678"
-    });
-    const message = await trace.message("Hello!");
-} catch (error) {
-    console.error("Error creating trace:", error);
-}
-```
-
-## Environment Variables
-
-Configure the SDK using environment variables:
-
-```bash
+```plaintext
 NEURALTRUST_API_KEY=your_api_key_here
-NEURALTRUST_BASE_URL=https://custom.api.url  # Optional
+UPSTASH_URL=your_upstash_url    # Optional: Required only for knowledge bases
+UPSTASH_TOKEN=your_upstash_token # Optional: Required only for knowledge bases
+```
+
+Load these environment variables in your Python code:
+
+```python
+import os
+from dotenv import load_dotenv
+from neuraltrust import NeuralTrust
+
+load_dotenv()
+client = NeuralTrust(api_key=os.getenv("NEURALTRUST_API_KEY"))
+```
+
+## Quick Examples
+
+### Running a Basic Security Scan
+
+```python
+# Run a basic security scan
+scan_result = client.scanner.scan(
+    name="Quick Security Check",
+    categories=["off_tone", "data_leak"],
+    max_objectives_per_category=5
+)
+
+print(f"Scan completed with ID: {scan_result.id}")
+```
+
+### Creating and Running an Evaluation Set
+
+```python
+# Create a knowledge base
+knowledge_base = client.knowledge_base.create(
+    type="upstash",
+    credentials={
+        "UPSTASH_URL": os.getenv("UPSTASH_URL"),
+        "UPSTASH_TOKEN": os.getenv("UPSTASH_TOKEN"),
+    },
+    seed_topics=["Customer Service"]
+)
+
+# Create an evaluation set
+eval_set = client.evaluation_set.create(
+    name="Basic Customer Service Evaluation",
+    description="Testing customer service responses"
+)
+
+# Generate test cases
+test_set = client.testset.create(
+    name="Customer Service Tests",
+    type="adversarial",
+    evaluation_set_id=eval_set.id,
+    num_questions=5,
+    knowledge_base_id=knowledge_base.id
+)
+
+# Run the evaluation
+client.evaluation_set.run(id=eval_set.id)
+```
+
+### Checking Evaluation Results
+
+```python
+# List all evaluation sets
+evaluation_sets = client.evaluation_sets.list()
+
+# Get details of a specific evaluation
+eval_details = client.evaluation_set.get(id=eval_set.id)
+print(f"Evaluation Status: {eval_details.status}")
 ```
 
 ## Next Steps
 
+For more detailed information, check out these guides:
+
 - [Detailed Tracing Guide](../observability/tracing.md)
 - [Evaluation Sets Documentation](../red-teaming/evaluation-sets.md)
 - [Knowledge Base Guide](../red-teaming/knowledge-bases.md)
-- [Test Sets Documentation](../red-teaming/testsets.md) 
+- [Test Sets Documentation](../red-teaming/testsets.md)
+- [Security Scanning Guide](../sdks/python-sdk/usage/scan.md)
