@@ -46,3 +46,28 @@ client.evaluation_set.delete(id="evaluation_set_123")
 # Run an evaluation set
 client.evaluation_set.run(id="evaluation_set_123")
 ```
+
+For more information, see the [Evaluation Sets API Reference](docs/sdks/python-sdk/api-reference/evaluation-set-client.md).
+
+## How to create an Evaluation Set manually?
+
+<div align="center">
+![Evaluation Sets](./assets/evaluation-set.png)
+</div>
+
+You can create and manage Evaluation Sets directly through the NeuralTrust web interface without needing to use the SDK:
+
+1. Navigate to the "Evaluation Sets" section in the NeuralTrust dashboard
+2. Click the "Create New Evaluation Set" button
+3. Fill in the basic information:
+   - Name: Give your evaluation set a descriptive name
+   - Description: Add details about the purpose and scope
+
+Once created, you can:
+- Add test cases directly through the web interface
+- Edit existing test cases
+- Run evaluations with a single click
+- View detailed results and analytics
+- Schedule automated runs
+
+The web interface provides an intuitive way to manage your evaluation sets while offering the same functionality as the SDK methods.
