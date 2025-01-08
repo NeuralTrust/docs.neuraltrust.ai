@@ -36,7 +36,7 @@ export default function Home() {
                   title: 'AI Gateway',
                   description: 'Secure and monitor your AI model interactions through our gateway',
                   icon: <img src={useBaseUrl('/img/ai-gateway.svg')} alt="ai gateway" width="100" height="100" />,
-                  link: '/neuraltrust/category/ai-gateway'
+                  link: '/neuraltrust/category/neuraltrust-ai-gateway'
                 },
                 { 
                   title: 'Observability',

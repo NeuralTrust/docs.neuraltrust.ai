@@ -46,6 +46,7 @@ client.evaluation_set.delete(id="evaluation_set_123")
 # Run an evaluation set
 client.evaluation_set.run(id="evaluation_set_123")
 ```
+<<<<<<< Updated upstream
 
 For more information, see the [Evaluation Sets API Reference](docs/sdks/python-sdk/api-reference/evaluation-set-client.md).
 
@@ -71,3 +72,5 @@ Once created, you can:
 - Schedule automated runs
 
 The web interface provides an intuitive way to manage your evaluation sets while offering the same functionality as the SDK methods.
+=======
+>>>>>>> Stashed changes
