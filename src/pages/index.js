@@ -51,13 +51,7 @@ export default function Home() {
                   description: 'Integrate NeuralTrust into your applications with our software development kits',
                   icon: <img className="w-8 h-8" src={useBaseUrl('/img/sdk.svg')} alt="SDKs" />,
                   link: '/neuraltrust/category/sdks'
-                },
-                { 
-                  title: 'Development',
-                  description: 'Resources and guides for developers implementing NeuralTrust',
-                  icon: <span className="text-2xl">🛠️</span>,
-                  link: '/neuraltrust/category/development'
-                },
+                }
               ].map((item, index) => (
                 <a
                   key={index}
