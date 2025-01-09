@@ -15,19 +15,23 @@ Services, in conjunction with routes, let you expose your AI models and services
 
 ## Service Types
 
-AI Gateway supports different types of services:
+AI Gateway supports different types of services that help you integrate and manage various AI model endpoints. The two main service types are:
 
 1. **Upstream Services**
-   - Direct connection to backend AI models
-   - Load balanced across multiple targets
-   - Health checking capabilities
-   - Failover support
 
-2. **Proxy Services**
-   - Proxy requests to external AI providers
-   - Handle authentication and rate limiting
-   - Transform requests and responses
-   - Cache responses when possible
+These services provide direct connections to your backend AI models and infrastructure. They offer robust features including:
+   - Direct connection to backend AI models, allowing you to integrate your own hosted models and AI services
+   - Load balanced distribution across multiple target endpoints to optimize performance and resource utilization
+   - Built-in health checking capabilities to monitor service availability and performance
+   - Automatic failover support to maintain high availability when issues occur
+
+2. **Proxy Services** 
+
+These services act as intermediaries to external AI providers, adding important management capabilities:
+   - Seamless proxy requests to external AI providers like OpenAI, Anthropic, and others
+   - Comprehensive authentication and rate limiting to control access and usage
+   - Powerful request and response transformation capabilities to modify payloads as needed
+   - Intelligent response caching when possible to improve performance and reduce costs
 
 ## Best Practices
 

@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Traffic Management
 
-The AI Gateway provides advanced traffic management capabilities to control how requests are distributed across multiple targets.
+The AI Gateway provides advanced traffic management capabilities to control how requests are distributed across multiple targets, enabling sophisticated load balancing, testing, and deployment strategies.
 
 ## Distribution Methods
 
@@ -60,25 +60,17 @@ curl -X POST http://localhost:8080/api/v1/tenants/{tenant_id}/rules \
 ## Technical Implementation
 
 ### Architecture
-- Uses Redis for distributed counter management
-- Ensures consistent distribution across gateway instances
-- Includes automatic fallback mechanisms
+The traffic management system is built on a robust distributed architecture. At its core, it **uses Redis for distributed counter management**, ensuring accurate and consistent traffic distribution across multiple gateway instances. This distributed approach enables the system to maintain precise traffic control even in high-scale environments with multiple gateway nodes. The architecture **ensures consistent distribution across gateway instances**, preventing traffic imbalances and maintaining configured weights accurately. The system also **includes automatic fallback mechanisms** that activate when components experience issues, ensuring continuous operation even during partial system failures.
 
 ### Features
-1. **Distributed Counters**
-   - Redis-based counter management
-   - TTL to prevent memory leaks
-   - Automatic cleanup
 
-2. **Fallback Mechanisms**
-   - Defaults to round-robin if weights don't sum to 100%
-   - Random selection during Redis failures
-   - Automatic error recovery
+The system implements several key features to ensure reliable traffic management:
 
-3. **Health Checks**
-   - Active target health monitoring
-   - Automatic failing target removal
-   - Health status restoration
+The **distributed counters** system forms the foundation of accurate traffic distribution. It employs sophisticated **Redis-based counter management** to track and control request distribution across targets. The system implements intelligent **TTL to prevent memory leaks**, automatically cleaning up stale data and ensuring efficient resource utilization. An **automatic cleanup** mechanism runs periodically to maintain system health and prevent resource exhaustion.
+
+Robust **fallback mechanisms** ensure system reliability under various conditions. The system intelligently **defaults to round-robin** distribution if weights don't sum to 100%, ensuring continued operation even with misconfigured weights. During Redis failures, the system employs **random selection** as a fallback strategy, maintaining service availability. Sophisticated **automatic error recovery** procedures help the system return to normal operation once issues are resolved.
+
+Comprehensive **health checks** monitor the status of all system components. The system performs **active target health monitoring** through regular checks of all configured targets. When issues are detected, **automatic failing target removal** ensures that traffic is only routed to healthy instances. The system also manages **health status restoration**, carefully reintroducing recovered targets to the traffic pool to maintain system stability.
 
 ## Use Cases
 
