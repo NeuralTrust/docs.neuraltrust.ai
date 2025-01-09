@@ -5,41 +5,166 @@
 
 /* Custom styles */
 :root {
-  --ifm-color-primary: #000000;
-  --ifm-color-primary-dark: #000000;
-  --ifm-color-primary-darker: #000000;
-  --ifm-color-primary-darkest: #000000;
-  --ifm-color-primary-light: #1a1a1a;
-  --ifm-color-primary-lighter: #2a2a2a;
-  --ifm-color-primary-lightest: #3a3a3a;
+  /* Primary colors */
+  --ifm-color-primary: #6366F1;
+  --ifm-color-primary-dark: #4F46E5;
+  --ifm-color-primary-darker: #4338CA;
+  --ifm-color-primary-darkest: #3730A3;
+  --ifm-color-primary-light: #818CF8;
+  --ifm-color-primary-lighter: #A5B4FC;
+  --ifm-color-primary-lightest: #C7D2FE;
+  
+  /* Background colors */
   --ifm-background-color: #ffffff;
   --ifm-navbar-background-color: #ffffff;
+  --ifm-footer-background-color: #020817;
+  
+  /* Text colors */
+  --ifm-heading-color: #020817;
+  --ifm-text-color: #334155;
+  --ifm-link-color: #6366F1;
+  --ifm-link-hover-color: #4F46E5;
+  --ifm-menu-color: #334155;
+  --ifm-navbar-link-color: #334155;
+  --ifm-navbar-link-hover-color: #020817;
+
+  /* Border colors */
+  --ifm-navbar-shadow: none;
+  --ifm-navbar-border-color: #E2E8F0;
+  --ifm-toc-border-color: #E2E8F0;
+
+  /* Other customizations */
   --ifm-navbar-height: 64px;
   --ifm-navbar-padding-vertical: 0.75rem;
   --ifm-navbar-padding-horizontal: 1.5rem;
-  --ifm-navbar-shadow: none;
-  --ifm-navbar-border-color: #eaeaea;
-  --ifm-link-color: #666666;
-  --ifm-link-hover-color: #000000;
-  --ifm-menu-color: #666666;
-  --ifm-toc-border-color: #eaeaea;
   --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --ifm-navbar-link-color: #666666;
-  --ifm-navbar-link-hover-color: #000000;
 }
 
+/* Dark mode overrides */
+[data-theme='dark'] {
+  --ifm-background-color: #020817;
+  --ifm-navbar-background-color: #020817;
+  --ifm-heading-color: #ffffff;
+  --ifm-text-color: #E2E8F0;
+  --ifm-link-color: #818CF8;
+  --ifm-link-hover-color: #A5B4FC;
+  --ifm-menu-color: #E2E8F0;
+  --ifm-navbar-link-color: #E2E8F0;
+  --ifm-navbar-link-hover-color: #ffffff;
+  --ifm-navbar-border-color: #1E293B;
+  --ifm-toc-border-color: #1E293B;
+}
 
+/* Hero Section */
+.hero {
+  @apply relative bg-[#020817];
+  overflow: hidden;
+}
+
+/* Hero Title */
+.hero h1 {
+  @apply text-6xl font-bold text-white mb-6 tracking-tight;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero p {
+  @apply text-xl text-[#E2E8F0] font-medium;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* DocSearch Overrides */
+.DocSearch-Button {
+  @apply w-full rounded-md border-0 bg-white/5 px-4 py-3 text-left backdrop-blur transition-all hover:bg-white/10 !important;
+  height: 3rem !important;
+}
+
+.DocSearch-Button-Container {
+  @apply flex items-center;
+}
+
+.DocSearch-Search-Icon {
+  @apply text-[#E2E8F0] !important;
+  width: 20px !important;
+  height: 20px !important;
+  opacity: 0.9 !important;
+}
+
+.DocSearch-Button-Placeholder {
+  @apply text-base text-[#E2E8F0] ml-2 font-medium !important;
+  opacity: 0.9 !important;
+}
+
+.DocSearch-Button-Keys {
+  @apply hidden;
+}
+
+.DocSearch-Button:hover .DocSearch-Search-Icon {
+  @apply text-white !important;
+  opacity: 1 !important;
+}
+
+.DocSearch-Button:hover .DocSearch-Button-Placeholder {
+  @apply text-white !important;
+  opacity: 1 !important;
+}
+
+/* Search container with hero */
+.hero .search-container {
+  @apply relative w-full;
+}
+
+.hero .search-container .DocSearch-Button {
+  @apply w-full rounded-md border border-[#6366F1]/20 bg-white/5 px-4 py-3 text-left text-gray-200 backdrop-blur transition-all hover:bg-white/10 hover:border-[#6366F1]/40 !important;
+  height: 3rem !important;
+}
+
+.hero .search-container .DocSearch-Search-Icon {
+  @apply text-gray-200 !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.hero .search-container .DocSearch-Button-Placeholder {
+  @apply text-base text-gray-200/80 ml-2 !important;
+}
+
+.DocSearch-Button-Keys {
+  @apply hidden;
+}
+
+/* Cards */
+.card {
+  @apply bg-white rounded-lg shadow-sm border border-[#E2E8F0] p-6 hover:shadow-md transition-all;
+}
+
+[data-theme='dark'] .card {
+  @apply bg-[#0F172A] border-[#1E293B];
+}
+
+.card__title {
+  @apply text-xl font-semibold text-[#020817] mb-3;
+}
+
+[data-theme='dark'] .card__title {
+  @apply text-white;
+}
+
+.card__description {
+  @apply text-[#334155];
+}
+
+[data-theme='dark'] .card__description {
+  @apply text-[#E2E8F0];
+}
+
+/* Navigation */
 .navbar {
-  border-bottom: 1px solid var(--ifm-navbar-border-color);
-  background-color: var(--ifm-navbar-background-color);
-  height: 64px;
-  padding: 1rem 1rem;
+  @apply border-b border-[#E2E8F0];
 }
 
 .navbar__brand {
   font-weight: bold;
   font-size: 24px;
-  color: var(--ifm-color-primary);
   display: flex;
   align-items: center;
 }
@@ -58,7 +183,6 @@
 .navbar__title {
   font-size: 24px;
   font-weight: bold;
-  color: var(--ifm-color-primary);
   padding: 0;
   margin: 0;
 }

@@ -1,6 +1,6 @@
 ---
-sidebar_position: 2
-title: Step-by-Step Guide
+sidebar_position: 1
+title: Overview
 ---
 
 # Getting Started with AI Gateway

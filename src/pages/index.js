@@ -1,16 +1,79 @@
 import React from 'react';
+import clsx from 'clsx';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import { DocSearch } from '@docsearch/react';
 
-export default function Home() {
+const cards = [
+  {
+    title: ['AI', 'Gateway'],
+    description: 'Secure and monitor your AI model interactions through our enterprise-grade gateway',
+    link: '/category/ai-gateway',
+    links: [
+      { title: 'Gateway Overview', url: '/category/ai-gateway' },
+      { title: 'Configuration', url: '/category/ai-gateway/config' },
+      { title: 'Security Features', url: '/category/ai-gateway/security' },
+    ]
+  },
+  {
+    title: ['Red', 'Teaming'],
+    description: 'Test and evaluate your AI systems for security vulnerabilities',
+    link: '/category/red-teaming',
+    links: [
+      { title: 'Overview', url: '/category/red-teaming' },
+      { title: 'Security Testing', url: '/category/red-teaming/security-testing' },
+      { title: 'Vulnerability Assessment', url: '/category/red-teaming/vulnerability-assessment' },
+    ]
+  },
+  {
+    title: ['Observa', 'bility'],
+    description: 'Monitor, track, and analyze your AI system\'s behavior and performance in real-time',
+    link: '/category/observability',
+    links: [
+      { title: 'Observability Overview', url: '/category/observability' },
+      { title: 'Metrics & Logging', url: '/category/observability/metrics' },
+      { title: 'Dashboards', url: '/category/observability/dashboards' },
+    ]
+  }
+];
+
+function HomepageHeader() {
   return (
-    <Layout>
-      <header className="py-8 px-4">
-        <div className="mx-auto max-w-2xl">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">Documentation</h1>
-          <div className="max-w-lg mx-auto mb-8">
-            <div className="search-container">
+    <header className="relative bg-[#020817]">
+      <div className="relative w-full h-[400px] overflow-hidden">
+        {/* Background with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020817] via-[#0f172a] to-[#020817]"></div>
+        
+        {/* Dark overlay for better contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-transparent"></div>
+        
+        {/* Hero Image */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative w-full max-w-[1400px] mx-auto">
+            <img
+              src="./img/Globe.svg" 
+              alt="Neural Network Globe"
+              className="w-full h-[400px] object-contain opacity-90"
+            />
+          </div>
+        </div>
+
+        {/* Title Overlay with gradient background for better readability */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <div className="text-center space-y-6 relative z-10">
+            <h1 className="text-6xl font-bold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+              Documentation
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      {/* Search Bar */}
+      <div className="absolute bottom-12 left-0 right-0 z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-xl mx-auto">
+            <div className="search-container rounded-lg p-1.5 ring-1 ring-white/10">
               <DocSearch 
                 appId="HW1BIJOXAK"
                 apiKey="3d6824f8974966996459cc83fcabc8c7"
@@ -18,59 +81,68 @@ export default function Home() {
               />
             </div>
           </div>
-          <section>
-            <h2 className="text-xl md:text-2xl font-semibold text-center mb-8">Explore all topics</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                { 
-                  title: 'Getting Started',
-                  description: 'Learn the basics and get up and running with NeuralTrust quickly',
-                  icon: <img className="w-8 h-8" src={useBaseUrl('/img/rocket-icon.svg')} alt="Getting Started" />,
-                  link: '/neuraltrust/category/getting-started',
-                },
-                { 
-                  title: 'AI Gateway',
-                  description: 'Secure and monitor your AI model interactions through our gateway',
-                  icon: <img className="w-8 h-8" src={useBaseUrl('/img/ai-gateway.svg')} alt="AI Gateway" />,
-                  link: '/neuraltrust/category/ai-gateway'
-                },
-                { 
-                  title: 'Observability',
-                  description: 'Monitor, track, and analyze your AI system\'s behavior and performance',
-                  icon: <img className="w-8 h-8" src={useBaseUrl('/img/observability.svg')} alt="Observability" />,
-                  link: '/neuraltrust/category/observability'
-                },
-                { 
-                  title: 'Red Teaming',
-                  description: 'Test and evaluate your AI systems for security vulnerabilities',
-                  icon: <img className="w-8 h-8" src={useBaseUrl('/img/red-teaming.svg')} alt="Red Teaming" />,
-                  link: '/neuraltrust/category/red-teaming'
-                },
-                { 
-                  title: 'SDKs',
-                  description: 'Integrate NeuralTrust into your applications with our software development kits',
-                  icon: <img className="w-8 h-8" src={useBaseUrl('/img/sdk.svg')} alt="SDKs" />,
-                  link: '/neuraltrust/category/sdks'
-                }
-              ].map((item, index) => (
-                <a
-                  key={index}
-                  href={item.link}
-                  className="group relative flex flex-col items-start p-4 bg-white border border-solid border-[#eaeaea] hover:border-transparent rounded-lg transition-all duration-300 cursor-pointer no-underline hover:no-underline overflow-hidden hover:translate-y-[-1px] hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[3px] before:bg-gradient-to-r before:from-black before:to-[#333] before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300"
-                >
-                  <div className="flex flex-col items-start">
-                    <div className="flex justify-center items-center w-10 h-10 mb-3 rounded-lg bg-[#f5f5f5] transition-all duration-300 group-hover:bg-[#eaeaea] group-hover:scale-110 group-hover:rotate-[-5deg]">
-                      {item.icon}
-                    </div>
-                    <h2 className="text-base font-semibold mb-1.5 text-black tracking-[-0.01em]">{item.title}</h2>
-                    <p className="text-xs leading-[1.4] text-[#666666] m-0">{item.description}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </section>
         </div>
-      </header>
+      </div>
+    </header>
+  );
+}
+
+function ProductCard({ title, description, links }) {
+  return (
+    <div className="bg-white dark:bg-[#0A0A0A] rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 p-6 hover:shadow-lg transition-all">
+      <h3 className="text-xl font-semibold mb-3">
+        <span className="text-[#020817] dark:text-white">{title[0]}</span>
+        <span className="bg-gradient-to-r from-[#6366F1] to-[#A855F7] bg-clip-text text-transparent">{title[1]}</span>
+      </h3>
+      <p className="text-[#334155] dark:text-[#E2E8F0] mb-6">{description}</p>
+      <ul className="space-y-3">
+        {links.map((link, idx) => (
+          <li key={idx}>
+            <Link
+              to={link.url}
+              className="text-[#6366F1] hover:text-[#818CF8] dark:text-[#818CF8] dark:hover:text-[#A5B4FC] text-sm flex items-center group transition-colors"
+            >
+              <svg 
+                className="w-4 h-4 mr-2 opacity-70 group-hover:opacity-100 transition-opacity" 
+                viewBox="0 0 16 16" 
+                fill="currentColor"
+              >
+                <path d="M5 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H5z"/>
+                <path d="M7 4h4a.5.5 0 0 1 0 1H7a.5.5 0 0 1 0-1zm0 3h4a.5.5 0 0 1 0 1H7a.5.5 0 0 1 0-1zm0 3h4a.5.5 0 0 1 0 1H7a.5.5 0 0 1 0-1z"/>
+              </svg>
+              {link.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function MainContent() {
+  return (
+    <div className="container mx-auto px-4 py-16">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {cards.map((card, idx) => (
+          <ProductCard key={idx} {...card} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function Home() {
+  const {siteConfig} = useDocusaurusContext();
+  return (
+    <Layout
+      title="Documentation"
+      description="NeuralTrust documentation - Secure and monitor your AI systems">
+      <div className="min-h-screen bg-gray-50">
+        <HomepageHeader />
+        <main>
+          <MainContent />
+        </main>
+      </div>
     </Layout>
   );
 }
