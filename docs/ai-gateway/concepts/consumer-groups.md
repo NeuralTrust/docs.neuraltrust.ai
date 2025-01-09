@@ -1,128 +1,91 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
+title: Consumer Groups
 ---
 
-# Consumer Groups (Enterprise Edition)
+# Consumer Groups
 
-Consumer Groups are an enterprise feature that allows you to organize and manage API consumers with shared configurations and rate limits.
+A consumer group in AI Gateway allows you to organize and manage consumers (API users) collectively. This enables you to apply plugins and policies to multiple consumers at once, making it easier to manage access control and rate limiting for different types of users.
 
-## Overview
+## Group Structure
 
-Each consumer group can have its own:
-- Plugin configurations
-- Rate limits
-- API key management
-- Access controls
+A consumer group consists of:
+- Name: A unique identifier for the group
+- Consumers: List of consumers in the group
+- Plugins: Plugins applied to all consumers in the group
 
-## Key Features
+## Group-level Plugins
 
-- **Group-Level Plugin Configuration**: Apply plugins specifically to group members
-- **API Key Management**: Generate and manage API keys for group members
-- **Advanced Rate Limiting**: Set rate limits per group, per IP, and per user
+Plugins applied to a consumer group affect all consumers in that group:
 
-## Implementation
+1. **Rate Limiting**
+   - Shared quotas across group
+   - Group-specific limits
+   - Override individual limits
 
-### Creating a Consumer Group
+2. **Authentication**
+   - Group-wide authentication
+   - Shared credentials
+   - Access control policies
 
-```bash
-curl -X POST "http://localhost:8080/api/v1/gateways/{gateway_id}/consumer-groups" \
--H "Content-Type: application/json" \
--d '{
-  "name": "Premium Users",
-  "required_plugins": [
-    {
-      "name": "advanced_rate_limiter",
-      "enabled": true,
-      "stage": "pre_request",
-      "priority": 1,
-      "settings": {
-        "limits": {
-          "global": {
-            "limit": 1000,
-            "window": "1m"
-          },
-          "per_ip": {
-            "limit": 100,
-            "window": "1m"
-          },
-          "per_user": {
-            "limit": 50,
-            "window": "1m"
-          }
-        },
-        "actions": {
-          "type": "reject",
-          "retry_after": "60"
-        }
-      }
-    }
-  ]
-}'
-```
+3. **Usage Control**
+   - Aggregate quotas
+   - Group-level policies
+   - Resource allocation
 
-### Managing API Keys
+## Plugin Inheritance
 
-```bash
-# Generate an API Key
-curl -X POST "http://localhost:8080/api/v1/gateways/{gateway_id}/consumer-groups/{group_id}/keys" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "user_id": "user123"
-  }'
+Consumer groups follow a specific plugin inheritance pattern:
 
-# Use the API Key
-curl "http://api.example.com/endpoint" \
-  -H "Authorization: Bearer {api_key}"
-```
+1. **Priority Order**
+   - Consumer-specific plugins
+   - Consumer group plugins
+   - Route plugins
+   - Service plugins
+   - Gateway plugins
 
-## API Endpoints
+2. **Plugin Merging**
+   - More specific settings override general ones
+   - Group settings can be overridden
+   - Multiple groups handling
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST   | `/api/v1/gateways/:gateway_id/consumer-groups` | Create a new consumer group |
-| GET    | `/api/v1/gateways/:gateway_id/consumer-groups` | List all consumer groups |
-| GET    | `/api/v1/gateways/:gateway_id/consumer-groups/:group_id` | Get a specific consumer group |
-| PUT    | `/api/v1/gateways/:gateway_id/consumer-groups/:group_id` | Update a consumer group |
-| DELETE | `/api/v1/gateways/:gateway_id/consumer-groups/:group_id` | Delete a consumer group |
-| POST   | `/api/v1/gateways/:gateway_id/consumer-groups/:group_id/keys` | Create an API key |
-| GET    | `/api/v1/gateways/:gateway_id/consumer-groups/:group_id/keys` | List API keys |
-| DELETE | `/api/v1/gateways/:gateway_id/consumer-groups/:group_id/keys/:key_id` | Delete an API key |
+## Use Cases
 
-## Advanced Configuration
+Common consumer group scenarios:
 
-### Advanced Rate Limiter Plugin
+1. **Tiered Access**
+   - Premium tier with higher limits
+   - Standard tier with basic access
+   - Trial tier with restrictions
 
-```json
-{
-  "name": "advanced_rate_limiter",
-  "enabled": true,
-  "stage": "pre_request",
-  "settings": {
-    "limits": {
-      "global": {
-        "limit": 1000,
-        "window": "1m"
-      },
-      "per_ip": {
-        "limit": 100,
-        "window": "1m"
-      },
-      "per_user": {
-        "limit": 50,
-        "window": "1m"
-      }
-    },
-    "actions": {
-      "type": "reject",
-      "retry_after": "60"
-    }
-  }
-}
-```
+2. **Team Organization**
+   - Development teams
+   - Testing environments
+   - Production access
 
 ## Best Practices
 
-1. **Hierarchical Rate Limiting**: Configure gateway-level rate limits for basic protection and consumer group limits for fine-grained control
-2. **API Key Management**: Regularly rotate API keys and set appropriate expiration times
-3. **Monitoring**: Use the logging features to monitor group usage and adjust limits accordingly
+1. **Group Organization**
+   - Use logical groupings
+   - Keep groups focused
+   - Document group purposes
+   - Maintain clear hierarchy
+
+2. **Plugin Configuration**
+   - Configure appropriate limits
+   - Set sensible defaults
+   - Document overrides
+   - Plan resource allocation
+
+3. **Access Control**
+   - Regular access review
+   - Document permissions
+   - Audit group membership
+   - Maintain security
+
+## Next Steps
+
+- [Learn about Plugins](./plugins.md)
+- [Understand Services](./services.md)
+- [Configure Rules](./rules.md)
 

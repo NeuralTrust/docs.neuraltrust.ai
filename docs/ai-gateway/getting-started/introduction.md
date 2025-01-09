@@ -11,7 +11,7 @@ sidebar_label: "Overview"
 
 An AI Gateway can be viewed as a specialized system similar to an API Gateway, but designed specifically for Agents and LLM workloads. Traditional API Gateways act as middlemen between clients and multiple backend services—handling important tasks like:
 :::tip
-Set up your AI Gateway in minutes with our [quickstart guide](./quickstart.md)
+Set up your AI Gateway in minutes with our [step-by-step guide](./step-by-step.md)
 :::
 
 - Routing (which service should get the request)  
@@ -21,10 +21,10 @@ Set up your AI Gateway in minutes with our [quickstart guide](./quickstart.md)
 - Request and response transformations (converting data formats, injecting or stripping fields, etc.)
 
 
-![AI Gateway](./ai-gateway.png) 
+![AI Gateway](ai-gateway.png) 
 <!-- Centered image showing the architectural overview of the AI Gateway -->
 <div align="center">
-  <img src="./ai-gateway.png" alt="AI Gateway Overview"  />
+  <img src="ai-gateway.png" alt="AI Gateway Overview"  />
 </div>
 <!-- This section introduces the key differentiators of AI Gateways compared to traditional API Gateways -->
 

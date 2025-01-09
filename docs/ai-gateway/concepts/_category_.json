@@ -1,8 +1,8 @@
 {
-  "label": "AI Gateway Concepts",
+  "label": "Key Concepts",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "In this section, core AI Gateway concepts like forwarding rules, plugin system, traffic management, and consumer groups are explained in detail. These concepts form the foundation for effectively managing and securing your AI model interactions."
+    "description": "Learn about the key concepts and components of the AI Gateway."
   }
 }
