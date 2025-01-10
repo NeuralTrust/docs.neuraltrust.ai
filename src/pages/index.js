@@ -27,7 +27,7 @@ const cards = [
     ]
   },
   {
-    title: ['Observa', 'bility'],
+    title: ['LLM', 'Observability'],
     description: 'Monitor, track, and analyze your AI system\'s behavior and performance in real-time',
     link: '/category/observability',
     links: [
