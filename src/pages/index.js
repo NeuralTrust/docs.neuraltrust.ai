@@ -31,7 +31,7 @@ const cards = [
     description: 'Monitor, track, and analyze your AI system\'s behavior and performance in real-time',
     link: '/category/observability',
     links: [
-      { title: 'Observability Overview', url: '/category/observability' },
+      { title: 'Observability Overview', url: '/category/llm-observability' },
       { title: 'What is Observability?', url: '/observability/overview' },
       { title: 'Start sending traces', url: '/observability/tracing' },
     ]
