@@ -5,30 +5,48 @@ title: Get AI Gateway
 
 # Get AI Gateway
 
-There are several ways to install and run NeuralTrust AI Gateway. Choose the method that best suits your needs:
+AI Gateway is available in two editions: Community Edition (CE) and Enterprise Edition. This guide covers the installation methods for both versions.
+
+## Quick Start with Docker Compose
+
+The fastest way to get started with AI Gateway is using Docker Compose:
+
+```bash
+# Clone the repository
+git clone https://github.com/NeuralTrust/ai-gateway-ce.git
+cd ai-gateway-ce
+
+# Start the services
+docker compose -f docker-compose.prod.yaml up -d
+```
 
 ## Docker Installation
 
-The quickest way to get started with NeuralTrust AI Gateway is using Docker:
+For a simple Docker container setup:
 
 ```bash
-docker pull neuraltrust/ai-gateway
-docker run -d --name neuraltrust-gateway \
-  -e "LICENSE_KEY=your-license-key" \
-  -p 8000:8000 \
-  -p 8001:8001 \
-  neuraltrust/ai-gateway
+# Pull the latest image
+docker pull neuraltrust/ai-gateway-ce
+
+# Run the container
+docker run -d --name ai-gateway \
+  -p 8080:8080 \  # Admin API
+  -p 8081:8081 \  # Proxy API
+  neuraltrust/ai-gateway-ce
 ```
 
 ## Kubernetes Installation
 
 For production deployments, we recommend using Kubernetes:
 
+1. Apply the storage configuration:
 ```bash
-helm repo add neuraltrust https://charts.neuraltrust.ai
-helm repo update
-helm install my-gateway neuraltrust/ai-gateway \
-  --set license.key=your-license-key
+kubectl apply -f k8s/storage.yaml
+```
+
+2. Deploy the gateway:
+```bash
+kubectl apply -f k8s/deployment.yaml
 ```
 
 ## Local Development Setup
@@ -37,28 +55,53 @@ For local development and testing:
 
 ```bash
 # Clone the repository
-git clone https://github.com/neuraltrust/ai-gateway
-cd ai-gateway
+git clone https://github.com/NeuralTrust/ai-gateway-ce.git
+cd ai-gateway-ce
 
-# Install dependencies
-npm install
+# Start dependencies
+docker compose up -d redis postgres
 
-# Start the gateway
-npm start
+# Run the servers
+./scripts/run_local.sh
 ```
+
+## Architecture Overview
+
+AI Gateway consists of two main components:
+
+1. **Admin API** (Port 8080)
+   - Tenant management
+   - Configuration management
+   - API key management
+   - Plugin configuration
+
+2. **Proxy API** (Port 8081)
+   - Request routing
+   - Load balancing
+   - Plugin execution
 
 ## Verify Installation
 
 Once installed, verify your installation is working:
 
 ```bash
-curl http://localhost:8001/status
+# Check Admin API status
+curl http://localhost:8080/status
+
+# Check Proxy API status
+curl http://localhost:8081/status
 ```
 
 You should see a JSON response with the gateway's status information.
 
 ## Next Steps
 
-After installing NeuralTrust AI Gateway:
+After installing AI Gateway:
 
 1. [Create your first Gateway](./first-gateway.md)
+
+## Need Help?
+
+- Join our [Discord Community](https://discord.gg/JGV4q3tr)
+- Check our [Documentation](https://docs.neuraltrust.ai)
+- Report issues on [GitHub](https://github.com/neuraltrust/ai-gateway-ce/issues)
