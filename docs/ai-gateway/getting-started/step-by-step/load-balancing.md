@@ -104,5 +104,3 @@ curl -X GET http://localhost:8001/metrics
 After configuring load balancing:
 
 1. [Set up Rate Limiting](./rate-limiting.md) to protect your services
-2. [Configure Authentication](./key-authentication.md) for secure access
-3. [Add Proxy Caching](./proxy-caching.md) to improve performance

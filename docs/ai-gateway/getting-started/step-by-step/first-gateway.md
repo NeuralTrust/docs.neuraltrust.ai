@@ -147,11 +147,8 @@ curl http://localhost:8081/status \
 Now that your gateway is running, you can:
 
 1. [Configure an Upstream](./configure-upstream.md)
-2. [Add a Service](./add-service.md)
-3. [Create Rules](./create-rules.md)
 
 ## Additional Resources
-
 - [Gateway Concepts](../concepts/gateway.md)
 - [Plugin System](../concepts/plugins.md)
 - [Rate Limiting](./rate-limiting.md) 

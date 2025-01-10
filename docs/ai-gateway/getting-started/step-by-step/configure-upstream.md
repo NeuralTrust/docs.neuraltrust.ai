@@ -141,8 +141,7 @@ The response headers will include `X-Selected-Provider` to show which provider h
 ## Next Steps
 
 Now that you have configured your upstream:
-- [Add a Service](./add-service.md) to use this upstream
-- [Create Rules](./create-rules.md) to route traffic
+- [Configure a Service](./add-service.md) to use this upstream
 
 ## Additional Resources
 

@@ -13,7 +13,7 @@ const cards = [
     links: [
       { title: 'Gateway Overview', url: '/category/ai-gateway' },
       { title: 'Key Concepts', url: '/category/ai-gateway/key-concepts' },
-      { title: 'Step-by-Step Guide', url: '/category/ai-gateway/step-by-step-guide' },
+      { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide' },
     ]
   },
   {

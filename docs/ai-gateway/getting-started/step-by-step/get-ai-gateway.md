@@ -61,5 +61,4 @@ You should see a JSON response with the gateway's status information.
 
 After installing NeuralTrust AI Gateway:
 
-1. [Set up Authentication](./key-authentication.md)
-2. [Configure Rate Limiting](./rate-limiting.md)
+1. [Create your first Gateway](./first-gateway.md)

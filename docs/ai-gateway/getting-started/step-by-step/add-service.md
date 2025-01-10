@@ -87,8 +87,6 @@ curl http://localhost:8080/api/v1/gateways/{gateway-id}/services/{service-id}/he
 
 Now that you have configured your service:
 - [Create Rules](./create-rules.md) to route traffic to your service
-- [Enable Plugins](./enable-plugins.md) for additional functionality
-- Learn about [Consumer Groups](../concepts/consumer-groups.md)
 
 ## Troubleshooting
 

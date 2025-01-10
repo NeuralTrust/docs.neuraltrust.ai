@@ -105,10 +105,9 @@ curl -X POST http://your-gateway-domain/v1/chat/completions \
 
 ## Next Steps
 
-Now that you have configured your rules:
-- [Enable Plugins](./enable-plugins.md) for additional functionality
-- Learn about [Traffic Management](../concepts/traffic-management.md)
-- Explore [Consumer Groups](../concepts/consumer-groups.md)
+Now that you have configured your rules, read more about:
+- Learn about [Load Balancing](./load-balancing.md)
+- Explore [Rate Limiting](./rate-limiting.md)
 
 ## Troubleshooting
 

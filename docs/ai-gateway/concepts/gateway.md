@@ -16,36 +16,30 @@ A gateway consists of:
 - **Status**: The current state of the gateway (e.g., active)
 - **Required Plugins**: A chain of plugins that process requests
 
-### 2. Plugin Chain
-Plugins are executed in order based on their configuration:
-```json
-{
-    "name": "rate_limiter",
-    "enabled": true,
-    "stage": "pre_request",
-    "priority": 1,
-    "settings": {
-        "limits": {
-            "global": {
-                "limit": 15,
-                "window": "1m"
-            },
-            "per_ip": {
-                "limit": 5,
-                "window": "1m"
-            }
-        }
-    }
-}
-```
+### 2. Subdomain Configuration
+The subdomain system provides the entry point for your gateway's API traffic. Each gateway is assigned a unique subdomain under the `neuraltrust.ai` domain, which serves as the primary endpoint for all API requests to your gateway. This subdomain-based architecture ensures proper isolation and routing of traffic between different gateways.
+
+To use your own domain with the gateway, you'll need to configure a CNAME record in your domain provider's DNS settings. For example, if you want to use `ai-api.yourcompany.com`, you would create a CNAME record pointing to your gateway's subdomain (`ai-service.neuraltrust.ai`).
+
+The subdomain system includes:
+- **DNS Management**: Automatic DNS configuration with supported providers
+- **SSL/TLS**: Built-in SSL certificate management with automatic renewal
+- **Custom Domains**: Support for mapping custom domains to your gateway
+- **Traffic Routing**: Intelligent routing based on subdomain patterns
+
+Required DNS Configuration:
+1. In your domain provider's DNS settings, create a new CNAME record
+2. Set the hostname (e.g., `ai-api.yourcompany.com`)
+3. Point it to your gateway's subdomain (e.g., `ai-service.neuraltrust.ai`)
+4. Wait for DNS propagation (can take up to 48 hours, typically much faster)
+
+The gateway will automatically provision and manage SSL certificates for both the default subdomain and any custom domains you configure, ensuring secure communication for all API traffic.
 
 ### 3. API Keys
 
 Secure access control per gateway provides a robust authentication mechanism where each gateway maintains its own isolated set of API keys. This allows for granular access control to specific endpoints, with support for different access levels and permissions that can be scoped to specific services or routes within the gateway.
 
 Configurable expiration enables flexible key lifecycle management through custom expiration dates for each API key. The system supports automatic key rotation capabilities to maintain security, implements grace periods for smooth key transitions, and provides configurable warning notifications before keys expire to prevent service disruption.
-
-Usage **tracking** and **management** delivers comprehensive visibility into API key usage through detailed analytics and usage patterns. The system tracks request volumes and accessed endpoints, monitors rate limit consumption, and enables usage report exports for billing and auditing purposes. Additionally, it includes intelligent monitoring to detect anomalous usage patterns that might indicate security concerns.
 
 ### 4. Upstreams
 
