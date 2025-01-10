@@ -9,9 +9,9 @@ In AI Gateway, a service is an entity representing an external upstream API or A
 
 The main attribute of a service is its upstream configuration, which defines where and how the AI Gateway should forward requests.
 
-## Service and Route Interaction
+## Service and Rules Interaction
 
-Services, in conjunction with routes, let you expose your AI models and services to clients with AI Gateway. The gateway abstracts the service from the clients by using routes. Since the client always calls the route, changes to the services (like switching AI model providers or versions) don't impact how clients make the call. Routes also allow the same service to be used by multiple clients and apply different policies based on the route used.
+Services, in conjunction with rules, let you expose your AI models and services to clients with AI Gateway. The gateway abstracts the service from the clients by using rules. Since the client always calls the rule, changes to the services (like switching AI model providers or versions) don't impact how clients make the call. Rules also allow the same service to be used by multiple clients and apply different policies based on the rule used.
 
 ## Service Types
 
@@ -56,5 +56,5 @@ These services act as intermediaries to external AI providers, adding important 
 ## Next Steps
 
 - [Learn about Upstreams](./upstreams.md)
-- [Configure Routes](./routes.md)
+- [Configure Rules](./rules.md)
 - [Understand Traffic Management](./traffic-management.md)

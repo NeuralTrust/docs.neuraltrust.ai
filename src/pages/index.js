@@ -12,8 +12,8 @@ const cards = [
     link: '/category/ai-gateway',
     links: [
       { title: 'Gateway Overview', url: '/category/ai-gateway' },
-      { title: 'Configuration', url: '/category/ai-gateway/config' },
-      { title: 'Security Features', url: '/category/ai-gateway/security' },
+      { title: 'Key Concepts', url: '/category/ai-gateway/key-concepts' },
+      { title: 'Step-by-Step Guide', url: '/category/ai-gateway/step-by-step-guide' },
     ]
   },
   {
@@ -21,9 +21,9 @@ const cards = [
     description: 'Test and evaluate your AI systems for security vulnerabilities',
     link: '/category/red-teaming',
     links: [
-      { title: 'Overview', url: '/category/red-teaming' },
-      { title: 'Security Testing', url: '/category/red-teaming/security-testing' },
-      { title: 'Vulnerability Assessment', url: '/category/red-teaming/vulnerability-assessment' },
+      { title: 'Red Teaming Overview', url: '/category/red-teaming' },
+      { title: 'What is Red Teaming?', url: '/red-teaming/overview' },
+      { title: 'Create a Red Team Evaluation Set', url: '/red-teaming/evaluation-sets' },
     ]
   },
   {
@@ -32,8 +32,8 @@ const cards = [
     link: '/category/observability',
     links: [
       { title: 'Observability Overview', url: '/category/observability' },
-      { title: 'Metrics & Logging', url: '/category/observability/metrics' },
-      { title: 'Dashboards', url: '/category/observability/dashboards' },
+      { title: 'What is Observability?', url: '/observability/overview' },
+      { title: 'Start sending traces', url: '/observability/tracing' },
     ]
   }
 ];
@@ -43,11 +43,9 @@ function HomepageHeader() {
     <header className="relative bg-[#020817]">
       <div className="relative w-full h-[400px] overflow-hidden">
         {/* Background with gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020817] via-[#0f172a] to-[#020817]"></div>
-        
-        {/* Dark overlay for better contrast */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-transparent"></div>
-        
+        <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/20 via-[#A855F7]/15 to-transparent"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent"></div>
+            
         {/* Hero Image */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-full max-w-[1400px] mx-auto">
