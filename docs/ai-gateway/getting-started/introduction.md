@@ -11,7 +11,7 @@ sidebar_label: "Overview"
 
 An AI Gateway can be viewed as a specialized system similar to an API Gateway, but designed specifically for Agents and LLM workloads. Traditional API Gateways act as middlemen between clients and multiple backend services—handling important tasks like:
 :::tip
-Set up your AI Gateway in minutes with our [step-by-step guide](./step-by-step.md)
+Set up your AI Gateway in minutes with our [step-by-step guide](./category/step-by-step-guide)
 :::
 
 - Routing (which service should get the request)  

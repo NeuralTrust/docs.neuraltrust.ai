@@ -15,7 +15,7 @@ const config = {
   favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
-  url: 'https://docs.neuraltrust.ai',
+  url: 'https://neuraltrust.ai',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -139,7 +139,7 @@ const config = {
             'aria-label': 'GitHub repository',
           },
           {
-            href: 'https://discord.gg/JGV4q3tr',
+            href: 'https://discord.gg/f93QsGeR',
             position: 'right',
             className: 'header-discord-link',
             'aria-label': 'Discord community',
