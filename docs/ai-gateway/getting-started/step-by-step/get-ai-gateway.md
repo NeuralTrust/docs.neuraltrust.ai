@@ -65,35 +65,6 @@ docker compose up -d redis postgres
 ./scripts/run_local.sh
 ```
 
-## Architecture Overview
-
-AI Gateway consists of two main components:
-
-1. **Admin API** (Port 8080)
-   - Tenant management
-   - Configuration management
-   - API key management
-   - Plugin configuration
-
-2. **Proxy API** (Port 8081)
-   - Request routing
-   - Load balancing
-   - Plugin execution
-
-## Verify Installation
-
-Once installed, verify your installation is working:
-
-```bash
-# Check Admin API status
-curl http://localhost:8080/status
-
-# Check Proxy API status
-curl http://localhost:8081/status
-```
-
-You should see a JSON response with the gateway's status information.
-
 ## Next Steps
 
 After installing AI Gateway:

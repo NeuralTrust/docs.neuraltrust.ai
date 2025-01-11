@@ -11,7 +11,7 @@ sidebar_label: "Overview"
 
 An AI Gateway can be viewed as a specialized system similar to an API Gateway, but designed specifically for Agents and LLM workloads. Traditional API Gateways act as middlemen between clients and multiple backend services—handling important tasks like:
 :::tip
-Set up your AI Gateway in minutes with our [step-by-step guide](./category/step-by-step-guide)
+Set up your AI Gateway in minutes with our [step-by-step guide](/category/step-by-step-guide)
 :::
 
 - Routing (which service should get the request)  
@@ -20,13 +20,39 @@ Set up your AI Gateway in minutes with our [step-by-step guide](./category/step-
 - Rate limiting (controlling the number of requests per second)  
 - Request and response transformations (converting data formats, injecting or stripping fields, etc.)
 
+## Architecture Overview
 
-![AI Gateway](ai-gateway.png) 
-<!-- Centered image showing the architectural overview of the AI Gateway -->
-<div align="center">
-  <img src="ai-gateway.png" alt="AI Gateway Overview"  />
+The AI Gateway architecture consists of several key components working together to provide secure and efficient AI model access:
+
+<div className="text-center">
+  <img 
+    src="/img/architecture.svg" 
+    alt="AI Gateway Architecture" 
+    width="100%" 
+    style={{
+      maxWidth: '800px',
+      margin: '0 auto',
+      display: 'block'
+    }} 
+  />
 </div>
-<!-- This section introduces the key differentiators of AI Gateways compared to traditional API Gateways -->
+
+### Key Components:
+
+1. **Control Plane**
+   - Admin API: Manages configuration, tenants, and API keys
+   - Config Store: Maintains gateway settings and routing rules
+   - Monitoring: Tracks performance and usage metrics
+
+2. **Data Plane**
+   - Proxy API: Handles real-time request processing
+   - Plugin System: Executes custom logic and transformations
+   - Rate Limiter: Controls request volumes and quotas
+
+3. **Integration Points**
+   - Load Balancer: Distributes incoming traffic
+   - AI Model Providers: Connects to various LLM services
+   - Client Applications: Various systems consuming AI services
 
 ## Why use an AI Gateway?
 
@@ -42,6 +68,6 @@ When working with AI Agents, additional considerations come into play. This is w
 
 5. **Scalability for AI Workloads:** AI workloads can be extremely large and unpredictable in size. The AI Gateway helps orchestrate resources dynamically, scaling up multiple instances of a model or switching to a larger model tier when needed.
 
-In short, if an API Gateway is the “traffic cop” for ordinary web services, an AI Gateway is the “AI traffic dispatcher” that ensures your AI models are accessible, compliant, and performant. This allows you to build AI-powered applications with the same control and confidence you have for any well-managed API environment.
+In short, if an API Gateway is the "traffic cop" for ordinary web services, an AI Gateway is the "AI traffic dispatcher" that ensures your AI models are accessible, compliant, and performant. This allows you to build AI-powered applications with the same control and confidence you have for any well-managed API environment.
 
 
