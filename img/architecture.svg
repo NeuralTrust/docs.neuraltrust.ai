@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="700" viewBox="0 0 800 700" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="700" fill="#ffffff"/>
+    
+    <!-- Clients Section -->
+    <g transform="translate(50, 30)">
+        <rect width="700" height="120" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="40" y="45" font-family="system-ui" font-size="20" font-weight="600" fill="#1E293B">Clients</text>
+        
+        <!-- Client Icons - Evenly spaced -->
+        <g transform="translate(100, 60)">
+            <rect width="140" height="40" rx="8" fill="#EEF2FF" stroke="#818CF8" stroke-width="1"/>
+            <text x="70" y="25" font-family="system-ui" font-size="14" fill="#6366F1" text-anchor="middle">Web Apps</text>
+        </g>
+        
+        <g transform="translate(280, 60)">
+            <rect width="140" height="40" rx="8" fill="#EEF2FF" stroke="#818CF8" stroke-width="1"/>
+            <text x="70" y="25" font-family="system-ui" font-size="14" fill="#6366F1" text-anchor="middle">Mobile Apps</text>
+        </g>
+        
+        <g transform="translate(460, 60)">
+            <rect width="140" height="40" rx="8" fill="#EEF2FF" stroke="#818CF8" stroke-width="1"/>
+            <text x="70" y="25" font-family="system-ui" font-size="14" fill="#6366F1" text-anchor="middle">API Clients</text>
+        </g>
+    </g>
+    
+    <!-- AI Gateway Section -->
+    <g transform="translate(50, 180)">
+        <rect width="700" height="300" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="40" y="45" font-family="system-ui" font-size="20" font-weight="600" fill="#1E293B">AI Gateway</text>
+        
+        <!-- Control Plane -->
+        <g transform="translate(80, 80)">
+            <rect width="250" height="180" rx="8" fill="#F5F3FF" stroke="#A855F7" stroke-width="1"/>
+            <text x="125" y="35" font-family="system-ui" font-size="15" fill="#A855F7" text-anchor="middle" font-weight="500">Control Plane</text>
+            
+            <!-- Admin API Section -->
+            <text x="125" y="65" font-family="system-ui" font-size="14" fill="#A855F7" text-anchor="middle" font-weight="500">Admin API</text>
+            <text x="125" y="95" font-family="system-ui" font-size="13" fill="#A855F7" text-anchor="middle">Gateway Management</text>
+            <text x="125" y="120" font-family="system-ui" font-size="13" fill="#A855F7" text-anchor="middle">Rules Management</text>
+            <text x="125" y="145" font-family="system-ui" font-size="13" fill="#A855F7" text-anchor="middle">Plugins Config</text>
+        </g>
+        
+        <!-- Data Plane -->
+        <g transform="translate(370, 80)">
+            <rect width="250" height="180" rx="8" fill="#EEF2FF" stroke="#818CF8" stroke-width="1"/>
+            <text x="125" y="35" font-family="system-ui" font-size="15" fill="#6366F1" text-anchor="middle" font-weight="500">Data Plane</text>
+            <text x="125" y="65" font-family="system-ui" font-size="14" fill="#6366F1" text-anchor="middle" font-weight="500">Proxy API</text>
+            <text x="125" y="95" font-family="system-ui" font-size="13" fill="#6366F1" text-anchor="middle">Routing</text>
+            <text x="125" y="120" font-family="system-ui" font-size="13" fill="#6366F1" text-anchor="middle">Load Balancing</text>
+            <text x="125" y="145" font-family="system-ui" font-size="13" fill="#6366F1" text-anchor="middle">Rate Limiters</text>
+            <text x="125" y="170" font-family="system-ui" font-size="13" fill="#6366F1" text-anchor="middle">Plugin Executions</text>
+        </g>
+    </g>
+    
+    <!-- Bottom Sections -->
+    <g transform="translate(50, 510)">
+        <!-- AI Models Section -->
+        <g transform="translate(0, 0)">
+            <rect width="340" height="160" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+            <text x="40" y="45" font-family="system-ui" font-size="20" font-weight="600" fill="#1E293B">AI Models</text>
+            
+            <!-- Model Icons - Stacked -->
+            <g transform="translate(100, 70)">
+                <rect width="140" height="35" rx="8" fill="#EEF2FF" stroke="#818CF8" stroke-width="1"/>
+                <text x="70" y="23" font-family="system-ui" font-size="14" fill="#6366F1" text-anchor="middle">OpenAI</text>
+            </g>
+            
+            <g transform="translate(100, 115)">
+                <rect width="140" height="35" rx="8" fill="#EEF2FF" stroke="#818CF8" stroke-width="1"/>
+                <text x="70" y="23" font-family="system-ui" font-size="14" fill="#6366F1" text-anchor="middle">Anthropic</text>
+            </g>
+        </g>
+        
+        <!-- APIs Section -->
+        <g transform="translate(360, 0)">
+            <rect width="340" height="160" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+            <text x="40" y="45" font-family="system-ui" font-size="20" font-weight="600" fill="#1E293B">APIs</text>
+            
+            <!-- API Icons - Stacked -->
+            <g transform="translate(100, 70)">
+                <rect width="140" height="35" rx="8" fill="#EEF2FF" stroke="#818CF8" stroke-width="1"/>
+                <text x="70" y="23" font-family="system-ui" font-size="14" fill="#6366F1" text-anchor="middle">Custom Models</text>
+            </g>
+            
+            <g transform="translate(100, 115)">
+                <rect width="140" height="35" rx="8" fill="#EEF2FF" stroke="#818CF8" stroke-width="1"/>
+                <text x="70" y="23" font-family="system-ui" font-size="14" fill="#6366F1" text-anchor="middle">APIs</text>
+            </g>
+        </g>
+    </g>
+</svg> 
