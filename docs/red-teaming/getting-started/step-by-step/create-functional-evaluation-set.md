@@ -45,7 +45,7 @@ UPSTASH_TOKEN=your_upstash_token
 client = NeuralTrust(api_key=os.getenv("NEURALTRUST_API_KEY"))
 ```
 
-## Define Topics
+## Build the evaluation set
 
 Define the topics for which you want to generate test sets:
 
