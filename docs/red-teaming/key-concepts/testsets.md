@@ -38,32 +38,5 @@ Test Sets are particularly useful for:
 - Regression testing to ensure model behavior remains consistent across updates
 - Validation of contextual understanding in conversations
 
-## Test Set API Methods
-
-```python
-from neuraltrust import NeuralTrustApi
-
-client = NeuralTrustApi(api_key="YOUR_API_KEY")
-
-# List all test sets
-client.testset.list()
-
-# Create a new test set
-# num_questions parameter determines how many query-response pairs 
-# will be generated from the knowledge base
-client.testset.create(
-    name="My Test Set",
-    type="functional",
-    evaluation_set_id="eval-123",
-    knowledge_base_id="kb-456",
-    num_questions=10  # Will generate 10 query-response pairs
-)
-
-# Get a specific test set
-client.testset.get(id="testset_123")
-
-# Delete a test set
-client.testset.delete(id="testset_123")
-```
 
 For more information, see the [Test Sets API Reference](docs/sdks/python-sdk/api-reference/testset-client.md).
