@@ -96,7 +96,12 @@ curl http://localhost:8080/api/v1/gateways/{gateway-id}/rules
 Test your rule configurations:
 
 **Host Header:** You need to set the `Host` header to the subdomain of your gateway in case you are running locally.
+
 **API Key:** You need to set the `x-api-key` header to the API key of your gateway, that you created in the [first gateway](./first-gateway.md) step.
+
+:::note
+You can also test the rule by sending a request to the `/limited/chat/completions` path. If you have enabled the token rate limiting plugin at rule level, you need to add `stream_options` if you want to stream the response.
+:::
 
 ```bash
 # Test a route
