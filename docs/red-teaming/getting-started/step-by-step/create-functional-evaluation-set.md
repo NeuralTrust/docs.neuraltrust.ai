@@ -56,11 +56,7 @@ topics = [
 ]
 ```
 
-## Main Process
-
-For each topic, the script:
-
-1. Creates a knowledge base:
+Then we will create a knowledge base that retrieves the required context from your Upstash database. This context will be used to generate a targeted evaluation set based on your specified topics:
 
 ```python
 knowledge_base = client.knowledge_base.create(
@@ -73,7 +69,7 @@ knowledge_base = client.knowledge_base.create(
 )
 ```
 
-2. Creates an evaluation set:
+Creates an evaluation set:
 
 ```python
 eval_functional = client.evaluation_set.create(
@@ -82,7 +78,7 @@ eval_functional = client.evaluation_set.create(
 )
 ```
 
-3. Generates functional test cases:
+Generates functional test cases:
 ```python
 functional_testset = client.testset.create(
     name=topic,
@@ -93,7 +89,7 @@ functional_testset = client.testset.create(
 )
 ```
 
-4. Runs the evaluation:
+Runs the evaluation:
 
 ```python
 client.evaluation_set.run(id=eval_functional.id)

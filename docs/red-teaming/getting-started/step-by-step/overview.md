@@ -38,9 +38,9 @@ These guides should take approximately 20 minutes to complete.
 
 By the end of these guides, you'll have:
 
-- Creating and running a custom evaluation set from your RAG.
-- Creating and running a custom objective attack against your LLM.
-- Scanning your LLM for complience vulnerabilities.
+- A custom evaluation set from your RAG.
+- A custom objective attack against your LLM.
+- A complience scan against your LLM.
 
 ## Next Steps
 
