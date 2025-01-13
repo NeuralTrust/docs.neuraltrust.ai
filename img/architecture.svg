@@ -28,7 +28,7 @@
     <!-- AI Gateway Section -->
     <g transform="translate(50, 180)">
         <rect width="700" height="300" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="40" y="45" font-family="system-ui" font-size="20" font-weight="600" fill="#1E293B">AI Gateway</text>
+        <text x="40" y="45" font-family="system-ui" font-size="20" font-weight="600" fill="#1E293B">Trust Gate</text>
         
         <!-- Control Plane -->
         <g transform="translate(80, 80)">
