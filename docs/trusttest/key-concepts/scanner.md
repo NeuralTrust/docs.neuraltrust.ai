@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Model Scanner
+# ModelScanner
 
 The Model Scanner is a crucial tool for evaluating and ensuring the safety and compliance of Large Language Models (LLMs). As LLMs become increasingly integrated into production systems, it's essential to proactively identify and mitigate potential risks related to harmful, biased, or malicious content generation.
 

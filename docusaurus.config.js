@@ -5,6 +5,8 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import {ProvidePlugin} from 'webpack';
+import path from 'path';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -45,7 +47,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          routeBasePath: '/', // Set this value to '/'.
+          routeBasePath: '/',
           editUrl: ({ versionDocsDirPath, docPath, locale }) => {
             if (locale != 'en') {
               return 'https://docs.neuraltrust.ai';
@@ -69,6 +71,10 @@ const config = {
         },
       }),
     ],
+  ],
+
+  plugins: [
+    require.resolve('./plugins/webpackPolyfillPlugin'),
   ],
 
   themeConfig:
@@ -127,7 +133,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/NeuralTrust',
+            href: 'https://github.com/NeuralTrust/TrustGate',
             position: 'right',
             className: 'header-github-link',
             'aria-label': 'GitHub repository',

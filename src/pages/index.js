@@ -17,21 +17,21 @@ const cards = [
     ]
   },
   {
-    title: ['Red', 'Teaming'],
+    title: ['Trust', 'Test'],
     description: 'Test and evaluate your AI systems for security vulnerabilities',
-    link: '/category/red-teaming',
+    link: '/category/trusttest',
     links: [
-      { title: 'Red Teaming Overview', url: '/category/red-teaming' },
-      { title: 'Key Concepts', url: '/category/key-concepts-1' },
-      { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide-1' },
+      { title: 'TrustTest Overview', url: '/category/trusttest' },
+      { title: 'Key Concepts', url: '/category/key-concepts' },
+      { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide' },
     ]
   },
   {
-    title: ['LLM', 'Observability'],
+    title: ['Trust', 'Lens'],
     description: 'Monitor, track, and analyze your AI system\'s behavior and performance in real-time',
-    link: '/category/observability',
+    link: '/category/trustlens',
     links: [
-      { title: 'LLM Observability Overview', url: '/category/llm-observability' },
+      { title: 'TrustLens Overview', url: '/category/trustlens' },
       { title: 'Key Concepts', url: '/category/key-concepts-2' },
       { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide-2' },
     ]
@@ -93,12 +93,12 @@ function ProductCard({ title, description, links }) {
         <span className="bg-gradient-to-r from-[#6366F1] to-[#A855F7] bg-clip-text text-transparent">{title[1]}</span>
       </h3>
       <p className="text-[#334155] dark:text-[#E2E8F0] mb-6">{description}</p>
-      <ul className="space-y-3 list-disc pl-5 marker:text-[#6366F1]">
+      <ul className="space-y-3 list-disc marker:text-[#6366F1]">
         {links.map((link, idx) => (
-          <li key={idx} className="leading-[1.5rem]">
+          <li key={idx} className="leading-[1.5rem] flex items-center">
             <Link
               to={link.url}
-              className="text-[#6366F1] hover:text-[#818CF8] dark:text-[#818CF8] dark:hover:text-[#A5B4FC] text-sm flex items-center group transition-colors"
+              className="text-[#6366F1] hover:text-[#818CF8] dark:text-[#818CF8] dark:hover:text-[#A5B4FC] text-sm flex items-center group transition-colors pl-2"
             >
               <svg 
                 className="w-4 h-4 mr-2 opacity-70 group-hover:opacity-100 transition-opacity flex-shrink-0" 

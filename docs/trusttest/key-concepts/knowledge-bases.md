@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-# Knowledge Bases
+# KnowledgeBase
 
-Knowledge Bases are a powerful feature of the NeuralTrust platform that allow you to create and manage specialized knowledge repositories for AI model testing and evaluation. They provide a structured way to organize domain-specific information that can be used to enhance your model testing capabilities.
+KnowledgeBase are a powerful feature of the NeuralTrust platform that allow you to create and manage specialized knowledge repositories for AI model testing and evaluation. They provide a structured way to organize domain-specific information that can be used to enhance your model testing capabilities.
 
 :::tip
 Knowledge bases typically serve as vector databases used for Retrieval-Augmented Generation (RAG).

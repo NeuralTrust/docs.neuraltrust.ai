@@ -157,6 +157,15 @@
   @apply text-[#E2E8F0];
 }
 
+/* Fix Safari bullet point alignment */
+ul {
+  @apply list-disc pl-5;
+}
+
+ul li {
+  @apply marker:text-[#6366F1];
+}
+
 /* Navigation */
 .navbar {
   @apply border-b border-[#E2E8F0];
@@ -473,4 +482,38 @@
   font-size: 14px !important;
   padding: 0 !important;
   color: var(--ifm-navbar-link-color) !important;
+}
+
+/* API Documentation Styles */
+.api-docs {
+  margin: 2rem 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+}
+
+.api-docs > div {
+  height: calc(100vh - 200px);
+  min-height: 800px;
+}
+
+/* Override Stoplight Elements styles to match Docusaurus theme */
+.sl-elements {
+  --theme-color-primary: var(--ifm-color-primary);
+  --theme-color-secondary: var(--ifm-color-secondary);
+  --theme-color-success: var(--ifm-color-success);
+  --theme-color-info: var(--ifm-color-info);
+  --theme-color-warning: var(--ifm-color-warning);
+  --theme-color-danger: var(--ifm-color-danger);
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .api-docs {
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+/* Hide navbar search box on mobile */
+@media screen and (max-width: 996px) {
+  .navbar .DocSearch-Button {
+    display: none !important;
+  }
 }

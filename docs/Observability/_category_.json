@@ -1,8 +1,0 @@
-{
-  "label": "LLM Observability",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "description": "Learn how to monitor, track, and analyze your LLM applications. This section covers essential observability features including prompt tracking, response monitoring, performance metrics, and usage analytics. Discover how to gain insights into your AI system's behavior, ensure quality, and maintain oversight of your LLM deployments."
-  }
-}

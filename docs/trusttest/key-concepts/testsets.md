@@ -2,10 +2,10 @@
 sidebar_position: 3
 ---
 
-# TestSets
+# Testsets
 
 
-TestSets are a fundamental component of the NeuralTrust platform that enable you to create and manage collections of test cases for AI model evaluation. Each TestSet contains multiple query-response pairs, where each pair consists of:
+Testsets are a fundamental component of the NeuralTrust platform that enable you to create and manage collections of test cases for AI model evaluation. Each test set contains multiple query-response pairs, where each pair consists of:
 
 - **Query**: The prompt or input that will be sent to the LLM (e.g., "What is the capital of France?")
 - **Expected Response**: The correct or desired response that the LLM should provide (e.g., "The capital of France is Paris.")
@@ -38,4 +38,5 @@ TestSets are particularly useful for:
 - Regression testing to ensure model behavior remains consistent across updates
 - Validation of contextual understanding in conversations
 
-For more information, see the [TestSet API Reference](docs/sdks/python-sdk/api-reference/testset-client.md).
+
+For more information, see the [Testsets API Reference](docs/sdks/python-sdk/api-reference/testset-client.md).

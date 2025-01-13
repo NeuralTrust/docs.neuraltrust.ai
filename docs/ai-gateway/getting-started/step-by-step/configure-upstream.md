@@ -129,8 +129,8 @@ Now that you have configured your upstream:
 
 ## Additional Resources
 
-- [Gateway Concepts](../concepts/gateway.md)
-- [Plugin System](../concepts/plugins.md)
+- [Gateway Concepts](../../concepts/gateway.md)
+- [Plugin System](../../concepts/plugins.md)
 - [Rate Limiting](./rate-limiting.md) 
 
 ## Troubleshooting

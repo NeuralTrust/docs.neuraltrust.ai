@@ -166,6 +166,6 @@ Now that your gateway is running, you can:
 1. [Configure an Upstream](./configure-upstream.md)
 
 ## Additional Resources
-- [Gateway Concepts](../concepts/gateway.md)
-- [Plugin System](../concepts/plugins.md)
+- [Gateway Concepts](../../concepts/gateway.md)
+- [Plugin System](../../concepts/plugins.md)
 - [Rate Limiting](./rate-limiting.md) 

@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Create Functional EvaluationSet
+# Create an EvaluationSet
 
 This guide explains how to use the NeuralTrust SDK to create and evaluate a functional EvaluationSet from a RAG.
 

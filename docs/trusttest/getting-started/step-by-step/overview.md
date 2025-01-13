@@ -10,7 +10,7 @@ This guide will walk you through setting up and configuring your first Red Teami
 1. [Configure NeuralTrust to invoke your LLM](./configure-llm-endpoint.md)
    - How to configure NeuralTrust to invoke your LLM.
    - Configuration options.
-2. [Create and run a custom evaluation from your RAG](./create-functional-evaluation-set.md)
+2. [Create and run a custom evaluation from your RAG](./create-evaluation-set.md)
    - Create and evaluaiton set.
    - Run the EvaluationSet.
    - Look at the results in the UI.

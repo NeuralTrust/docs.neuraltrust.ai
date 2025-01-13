@@ -123,7 +123,7 @@ curl -X POST http://localhost:8080/limited/chat/completions \
 ## Next Steps
 
 Now that you have configured your rules, read more about:
-- Learn about [Load Balancing](../load-balancing.md)
+- Learn about [Load Balancing](./load-balancing.md)
 - Explore [Rate Limiting](./rate-limiting.md)
 
 ## Troubleshooting
