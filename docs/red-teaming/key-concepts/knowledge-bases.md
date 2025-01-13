@@ -6,7 +6,7 @@ sidebar_position: 4
 
 Knowledge Bases are a powerful feature of the NeuralTrust platform that allow you to create and manage specialized knowledge repositories for AI model testing and evaluation. They provide a structured way to organize domain-specific information that can be used to enhance your model testing capabilities.
 
-:::info
+:::tip
 Knowledge bases typically serve as vector databases used for Retrieval-Augmented Generation (RAG).
 :::
 
@@ -35,26 +35,5 @@ NeuralTrust currently supports the following knowledge base types:
   - Automatically indexes and processes PDF content
   - Maintains document hierarchy and relationships
   - Extracts key information and metadata
-
-## Knowledge Base API Methods
-
-```python
-from neuraltrust import NeuralTrustApi
-
-client = NeuralTrustApi(api_key="YOUR_API_KEY")
-
-# Create a new knowledge base
-client.knowledge_base.create(
-    type="your_kb_type",  # "upstash", "azure_search", or "document"
-    credentials={"key": "value"},
-    seed_topics=["topic1", "topic2"]
-)
-
-# Get a specific knowledge base
-client.knowledge_base.get(id="kb_123")
-
-# Delete a knowledge base
-client.knowledge_base.delete(id="kb_123")
-```
 
 For more information on how to use Knowledge Bases, please refer to the [Knowledge Bases](docs/sdks/python-sdk/api-reference/knowledge-base-client.md) documentation.

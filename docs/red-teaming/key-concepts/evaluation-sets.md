@@ -21,32 +21,6 @@ Evaluation Sets are particularly useful for:
 - Compliance verification and documentation
 - Regression testing after model updates
 
-## Evaluation Set API Methods
-
-```python
-from neuraltrust import NeuralTrustApi
-
-client = NeuralTrustApi(api_key="YOUR_API_KEY")
-
-# List all evaluation sets
-client.evaluation_set.list()
-
-# Create a new evaluation set
-client.evaluation_set.create(name="My Set", description="...")
-
-# Get a specific evaluation set
-client.evaluation_set.get(id="evaluation_set_123")
-
-# Update an existing evaluation set
-client.evaluation_set.update(id="evaluation_set_123", ...)
-
-# Delete an evaluation set
-client.evaluation_set.delete(id="evaluation_set_123")
-
-# Run an evaluation set
-client.evaluation_set.run(id="evaluation_set_123")
-```
-
 For more information, see the [Evaluation Sets API Reference](docs/sdks/python-sdk/api-reference/evaluation-set-client.md).
 
 ## How to create an Evaluation Set manually?
