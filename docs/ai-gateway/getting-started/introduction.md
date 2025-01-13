@@ -3,13 +3,13 @@ sidebar_position: 1
 sidebar_label: "Overview"
 ---
 
-# NeuralTrust AI Gateway
+# Trust Gate 
 
-**NeuralTrust AI Gateway** is a robust security and management layer for Large Language Model (LLM) interactions. It provides comprehensive protection, monitoring, and governance for AI applications while enabling organizations to safely deploy and scale their LLM-powered solutions with confidence.
+**Trust Gate** is a robust security and management layer for Large Language Model (LLM) interactions. It provides comprehensive protection, monitoring, and governance for AI applications while enabling organizations to safely deploy and scale their LLM-powered solutions with confidence.
 
-## What is an AI Gateway?
+## What is Trust Gate?
 
-An AI Gateway can be viewed as a specialized system similar to an API Gateway, but designed specifically for Agents and LLM workloads. Traditional API Gateways act as middlemen between clients and multiple backend services—handling important tasks like:
+**Trust Gate** is an AI Gateway that can be viewed as a specialized system similar to an API Gateway, but designed specifically for Agents and LLM workloads. Traditional API Gateways act as middlemen between clients and multiple backend services—handling important tasks like:
 :::tip
 Set up your AI Gateway in minutes with our [step-by-step guide](/category/step-by-step-guide)
 :::

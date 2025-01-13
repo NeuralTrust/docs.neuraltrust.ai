@@ -7,12 +7,12 @@ import { DocSearch } from '@docsearch/react';
 
 const cards = [
   {
-    title: ['AI', 'Gateway'],
+    title: ['Trust', 'Gate'],
     description: 'Secure and monitor your AI model interactions through our enterprise-grade gateway',
     link: '/category/ai-gateway',
     links: [
-      { title: 'Gateway Overview', url: '/category/ai-gateway' },
-      { title: 'Key Concepts', url: '/category/ai-gateway/key-concepts' },
+      { title: 'Gateway Overview', url: '/category/trust-gate' },
+      { title: 'Key Concepts', url: '/category/key-concepts' },
       { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide' },
     ]
   },
