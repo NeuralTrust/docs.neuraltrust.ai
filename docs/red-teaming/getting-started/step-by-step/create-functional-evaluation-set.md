@@ -99,7 +99,10 @@ functional_testset = client.testset.create(
 client.evaluation_set.run(id=eval_functional.id)
 ```
 
-Now, you can see the results in the UI.
+:::info
+This will run the evaluation set against the LLM you configured in the NeuralTrust API. 
+For more information on how to configure your LLM, please refer to the [Configure your LLM endpoint](./configure-llm-endpoint.md) guide.
+:::
 
 ## Complete Script
 

@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Custom Attack
+# Run a Custom Objective Attack
 
 This guide demonstrates how to create a custom security test using the NeuralTrust API to evaluate AI model responses against specific security objectives.
 

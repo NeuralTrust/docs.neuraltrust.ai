@@ -32,11 +32,11 @@ Before you begin, make sure you have:
 
 ## Time to Complete
 
-This guide should take approximately 10 minutes to complete.
+These guides should take approximately 20 minutes to complete.
 
 ## What You'll Build
 
-By the end of this guide, you'll have:
+By the end of these guides, you'll have:
 
 - Creating and running a custom evaluation set from your RAG.
 - Creating and running a custom objective attack against your LLM.

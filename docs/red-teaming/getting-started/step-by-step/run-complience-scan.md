@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Compliance scan
+# Run a Compliance Scan
 
 This guide demonstrates how to use the NeuralTrust API to run compliance scans that analyze your AI system for potential vulnerabilities.
 
