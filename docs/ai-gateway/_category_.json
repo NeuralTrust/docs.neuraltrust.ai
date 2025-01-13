@@ -1,8 +1,8 @@
 {
-  "label": "Trust Gate",
+  "label": "TrustGate",
   "position": 1,
   "link": {
     "type": "generated-index",
-    "description": "Trust Gate is a robust middleware solution that provides secure, controlled access to various AI models and services. It acts as a centralized access point for managing API calls, handling authentication, implementing rate limiting, and monitoring usage across different AI providers."
+    "description": "TrustGate is a robust AI Gateway solution that provides secure, controlled access to various AI models and services. It acts as a centralized access point for managing API calls, handling authentication, implementing rate limiting, and monitoring usage across different AI providers."
   }
 }

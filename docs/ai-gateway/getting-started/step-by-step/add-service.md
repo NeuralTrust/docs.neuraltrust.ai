@@ -37,37 +37,7 @@ curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/services \
   }'
 ```
 
-## Step 3: Configure Service Options
-
-Set additional service options:
-
-```bash
-curl -X PATCH http://localhost:8080/api/v1/gateways/{gateway-id}/services/{service-id} \
-  -H "Content-Type: application/json" \
-  -d '{
-    "connect_timeout": 60000,
-    "write_timeout": 60000,
-    "read_timeout": 60000,
-    "retries": 5
-  }'
-```
-
-## Step 4: Add Authentication
-
-Configure service authentication (if required):
-
-```bash
-curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/services/{service-id}/plugins \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "key-auth",
-    "config": {
-      "key_names": ["x-api-key"]
-    }
-  }'
-```
-
-## Step 5: Verify Configuration
+## Step 3: Verify Configuration
 
 Check that your service is properly configured:
 
@@ -75,13 +45,6 @@ Check that your service is properly configured:
 curl http://localhost:8080/api/v1/gateways/{gateway-id}/services/{service-id}
 ```
 
-## Step 6: Test the Service
-
-Verify that the service is working:
-
-```bash
-curl http://localhost:8080/api/v1/gateways/{gateway-id}/services/{service-id}/health
-```
 
 ## Next Steps
 
@@ -96,13 +59,3 @@ Common issues and solutions:
    - Verify upstream is healthy
    - Check timeout settings
    - Review network connectivity
-
-2. **Authentication Problems**
-   - Verify API keys
-   - Check plugin configuration
-   - Review access policies
-
-3. **Performance Issues**
-   - Check timeout values
-   - Verify retry settings
-   - Monitor service health 

@@ -121,22 +121,6 @@ Check that your upstream is properly configured:
 curl http://localhost:8080/api/v1/gateways/{gateway-id}/upstreams/{upstream-id}
 ```
 
-## Step 4: Test Load Balancing
-
-Test the load balancing across providers:
-
-```bash
-# Test with OpenAI-compatible endpoint
-curl -X POST http://your-gateway-domain/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -H "X-Api-Key: your-api-key" \
-  -d '{
-    "model": "gpt-4o-mini",
-    "messages": [{"role": "user", "content": "Hello"}]
-  }'
-```
-
-The response headers will include `X-Selected-Provider` to show which provider handled the request.
 
 ## Next Steps
 
@@ -157,13 +141,3 @@ Common issues and solutions:
    - Verify API keys are valid
    - Check provider endpoints
    - Confirm model availability
-
-2. **Load Balancing**
-   - Check provider weights
-   - Monitor distribution
-   - Verify failover behavior
-
-3. **Authentication**
-   - Verify credential format
-   - Check required headers
-   - Test provider access 

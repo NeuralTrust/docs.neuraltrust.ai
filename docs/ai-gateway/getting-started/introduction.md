@@ -5,7 +5,7 @@ sidebar_label: "Overview"
 
 # Trust Gate 
 
-**Trust Gate** is a robust security and management layer for Large Language Model (LLM) interactions. It provides comprehensive protection, monitoring, and governance for AI applications while enabling organizations to safely deploy and scale their LLM-powered solutions with confidence.
+**TrustGate** is a robust security and management layer for Large Language Model (LLM) interactions. It provides comprehensive protection, monitoring, and governance for AI applications while enabling organizations to safely deploy and scale their LLM-powered solutions with confidence.
 
 ## What is Trust Gate?
 

@@ -11,7 +11,7 @@ const cards = [
     description: 'Secure and monitor your AI model interactions through our enterprise-grade gateway',
     link: '/category/ai-gateway',
     links: [
-      { title: 'Gateway Overview', url: '/category/trust-gate' },
+      { title: 'TrustGate Overview', url: '/category/trustgate' },
       { title: 'Key Concepts', url: '/category/key-concepts' },
       { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide' },
     ]

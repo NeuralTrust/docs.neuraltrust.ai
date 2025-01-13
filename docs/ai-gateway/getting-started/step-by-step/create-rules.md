@@ -27,6 +27,7 @@ Decide on your rule configuration:
 Create your first rule using the Admin API:
 
 ```bash
+# Exact matching
 curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/rules \
   -H "Content-Type: application/json" \
   -d '{
@@ -48,35 +49,37 @@ curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/rules \
   -H "Content-Type: application/json" \
   -d '{
     "service_id": "{service-id}",
-    "path": "/api/v1/*",
-    "methods": ["GET", "POST"],
-    "strip_path": true
-  }'
-
-# Exact matching
-curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/rules \
-  -H "Content-Type: application/json" \
-  -d '{
-    "service_id": "{service-id}",
-    "path": "=/v1/models",
-    "methods": ["GET"]
+    "path": "/v1/chat/*",
+    "methods": ["POST"],
+    "strip_path": true,
+    "preserve_host": true
   }'
 ```
 
-## Step 4: Configure Headers
-
-Add header matching if needed:
+## Step 4: Create a Rule with token rate limiting enable at rule level:
 
 ```bash
+# Token rate limiting
 curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/rules \
   -H "Content-Type: application/json" \
   -d '{
     "service_id": "{service-id}",
-    "path": "/v1/embeddings",
+    "path": "/limited/chat/completions",
     "methods": ["POST"],
-    "headers": {
-      "content-type": ["application/json"]
-    }
+    "strip_path": false,
+    "preserve_host": false,
+    "plugins_chain": [
+      {
+        "name": "token_rate_limiter",
+        "enabled": true,
+        "settings": {
+          "tokens_per_request": 20,
+          "tokens_per_minute": 100,
+          "bucket_size": 1000,
+          "requests_per_minute": 60
+        }
+      }
+    ]
   }'
 ```
 
@@ -92,21 +95,30 @@ curl http://localhost:8080/api/v1/gateways/{gateway-id}/rules
 
 Test your rule configurations:
 
+**Host Header:** You need to set the `Host` header to the subdomain of your gateway in case you are running locally.
+**API Key:** You need to set the `x-api-key` header to the API key of your gateway, that you created in the [first gateway](./first-gateway.md) step.
+
 ```bash
 # Test a route
-curl -X POST http://your-gateway-domain/v1/chat/completions \
+curl -X POST http://localhost:8080/limited/chat/completions \
   -H "Content-Type: application/json" \
+  -H "Host: my-first-gateway.example.com" \
   -H "x-api-key: your-key" \
   -d '{
     "model": "gpt-3.5-turbo",
-    "messages": [{"role": "user", "content": "Hello"}]
+    "messages": [{"role": "user", "content": "Hello"}],
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    },
+    "max_tokens": 1024
   }'
 ```
 
 ## Next Steps
 
 Now that you have configured your rules, read more about:
-- Learn about [Load Balancing](./load-balancing.md)
+- Learn about [Load Balancing](../load-balancing.md)
 - Explore [Rate Limiting](./rate-limiting.md)
 
 ## Troubleshooting
