@@ -42,7 +42,7 @@ NeuralTrust(
 ### `evaluation_set`
 
 - Type: `EvaluationSetClient`
-- Description: Access to evaluation set related operations.
+- Description: Access to EvaluationSet related operations.
 
 ### `scanner`
 

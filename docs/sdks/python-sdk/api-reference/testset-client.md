@@ -49,7 +49,7 @@ Creates a new testset.
 
 - `name` (str): Name of the testset.
 - `type` (TestsetType): Type of the testset.
-- `evaluation_set_id` (str): ID of the evaluation set.
+- `evaluation_set_id` (str): ID of the EvaluationSet.
 - `knowledge_base_id` (str): ID of the knowledge base.
 - `num_questions` (int): Number of questions in the testset.
 - `request_options` (Optional[RequestOptions]): Request-specific configuration.
@@ -113,7 +113,7 @@ testsets = client.testset.list()
 
 # Create a new testset
 new_testset = client.testset.create(
-    name="My Test Set",
+    name="My TestSet",
     type="functional",
     evaluation_set_id="eval_123",
     knowledge_base_id="kb_456",

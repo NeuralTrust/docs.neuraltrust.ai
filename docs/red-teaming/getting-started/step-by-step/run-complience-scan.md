@@ -13,9 +13,9 @@ By default, the scan will run a comprehensive set of security checks across mult
 First, import and initialize the NeuralTrust API client:
 
 ```python
-from neuraltrust import NeuralTrustApi
+from neuraltrust import NeuralTrust
 
-client = NeuralTrustApi()
+client = NeuralTrust()
 ```
 
 ## Running a Compliance Scan
@@ -45,9 +45,9 @@ The default scan will run checks across all available security categories with 5
 ## Complete Script
 
 ```python
-from neuraltrust import NeuralTrustApi
+from neuraltrust import NeuralTrust
 
-client = NeuralTrustApi()
+client = NeuralTrust()
 
 # Run a comprehensive security scan
 response = client.scanner.scan(

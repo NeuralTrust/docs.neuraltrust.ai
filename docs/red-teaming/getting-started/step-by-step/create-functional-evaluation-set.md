@@ -2,16 +2,16 @@
 sidebar_position: 3
 ---
 
-# Create and run a Functional Evaluation Set from RAG
+# Create Functional EvaluationSet
 
-This guide explains how to use the NeuralTrust SDK to create and evaluate a functional evaluation set from a RAG.
+This guide explains how to use the NeuralTrust SDK to create and evaluate a functional EvaluationSet from a RAG.
 
 ## Overview
 
 This script demonstrates how to:
 
 1. Set up a knowledge base
-2. Create an evaluation set
+2. Create an EvaluationSet
 3. Generate functional test cases
 4. Run evaluations
 
@@ -45,9 +45,9 @@ UPSTASH_TOKEN=your_upstash_token
 client = NeuralTrust(api_key=os.getenv("NEURALTRUST_API_KEY"))
 ```
 
-## Build the evaluation set
+## Build the EvaluationSet
 
-Define the topics for which you want to generate test sets:
+Define the topics for which you want to generate TestSets:
 
 ```python
 topics = [
@@ -56,7 +56,7 @@ topics = [
 ]
 ```
 
-Then we will create a knowledge base that retrieves the required context from your Upstash database. This context will be used to generate a targeted evaluation set based on your specified topics:
+Then we will create a knowledge base that retrieves the required context from your Upstash database. This context will be used to generate a targeted EvaluationSet based on your specified topics:
 
 ```python
 knowledge_base = client.knowledge_base.create(
@@ -69,7 +69,7 @@ knowledge_base = client.knowledge_base.create(
 )
 ```
 
-Creates an evaluation set:
+Creates an EvaluationSet:
 
 ```python
 eval_functional = client.evaluation_set.create(
@@ -96,7 +96,7 @@ client.evaluation_set.run(id=eval_functional.id)
 ```
 
 :::info
-This will run the evaluation set against the LLM you configured in the NeuralTrust API. 
+This will run the EvaluationSet against the LLM you configured in the NeuralTrust API. 
 For more information on how to configure your LLM, please refer to the [Configure your LLM endpoint](./configure-llm-endpoint.md) guide.
 :::
 

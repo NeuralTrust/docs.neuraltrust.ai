@@ -43,9 +43,9 @@ The `scan` endpoint supports the following predefined categories:
 - **Toxicity** (`toxicity`): Tests for harmful content including drugs, bullying, racism, and other forms of harmful content
 
 ```python
-from neuraltrust import NeuralTrustApi
+from neuraltrust import NeuralTrust
 
-client = NeuralTrustApi(api_key="YOUR_API_KEY")
+client = NeuralTrust(api_key="YOUR_API_KEY")
 
 # default scan
 response = client.scanner.scan()
@@ -65,9 +65,9 @@ For more information, see the [Scanner API Reference](docs/sdks/python-sdk/api-r
 The attack endpoint allows for custom red teaming attacks with specific objectives.
 
 ```python
-from neuraltrust import NeuralTrustApi
+from neuraltrust import NeuralTrust
 
-client = NeuralTrustApi(api_key="YOUR_API_KEY")
+client = NeuralTrust(api_key="YOUR_API_KEY")
 
 # Custom attack with specific objectives
 response = client.scanner.attack(

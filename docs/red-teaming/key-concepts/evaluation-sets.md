@@ -2,37 +2,37 @@
 sidebar_position: 2
 ---
 
-# Evaluation Sets
+# EvaluationSets
 
-Evaluation Sets are a core feature of the NeuralTrust platform that allow you to systematically test and evaluate AI models. They provide a structured way to organize and automate collections of tests to assess model performance, safety, and compliance.
+EvaluationSets are a core feature of the NeuralTrust platform that allow you to systematically test and evaluate AI models. They provide a structured way to organize and automate collections of tests to assess model performance, safety, and compliance.
 
-With Evaluation Sets, you can:
+With EvaluationSets, you can:
 
 - Create reusable test collections for consistent model evaluation
 - Schedule automated evaluations to run on a regular basis (daily, weekly, etc.)
 - Track model performance and safety metrics over time
-- Add custom metadata to organize and categorize your evaluation sets
+- Add custom metadata to organize and categorize your EvaluationSets
 - Run evaluations on-demand or automatically through the API
 
-Evaluation Sets are particularly useful for:
+EvaluationSets are particularly useful for:
 
 - Quality assurance testing of AI models
 - Continuous monitoring of model behavior
 - Compliance verification and documentation
 - Regression testing after model updates
 
-For more information, see the [Evaluation Sets API Reference](docs/sdks/python-sdk/api-reference/evaluation-set-client.md).
+For more information, see the [EvaluationSets API Reference](docs/sdks/python-sdk/api-reference/evaluation-set-client.md).
 
-## How to create an Evaluation Set manually?
+## How to create an EvaluationSet manually?
 
-![Evaluation Sets](./assets/evaluation-set.png)
+![EvaluationSets](./assets/evaluation-set.png)
 
-You can create and manage Evaluation Sets directly through the NeuralTrust web interface without needing to use the SDK:
+You can create and manage EvaluationSets directly through the NeuralTrust web interface without needing to use the SDK:
 
-1. Navigate to the "Evaluation Sets" section in the NeuralTrust dashboard
-2. Click the "Create New Evaluation Set" button
+1. Navigate to the "EvaluationSets" section in the NeuralTrust dashboard
+2. Click the "Create New EvaluationSet" button
 3. Fill in the basic information:
-   - Name: Give your evaluation set a descriptive name
+   - Name: Give your EvaluationSet a descriptive name
    - Description: Add details about the purpose and scope
 
 Once created, you can:
@@ -42,4 +42,4 @@ Once created, you can:
 - View detailed results and analytics
 - Schedule automated runs
 
-The web interface provides an intuitive way to manage your evaluation sets while offering the same functionality as the SDK methods.
+The web interface provides an intuitive way to manage your EvaluationSets while offering the same functionality as the SDK methods.

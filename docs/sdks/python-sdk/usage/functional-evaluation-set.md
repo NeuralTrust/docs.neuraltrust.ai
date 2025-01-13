@@ -2,16 +2,16 @@
 sidebar_position: 1
 ---
 
-# Functional Evaluation Set Generation
+# Functional EvaluationSet Generation
 
-This guide explains how to use the NeuralTrust SDK to create and evaluate test sets for conversational AI applications.
+This guide explains how to use the NeuralTrust SDK to create and evaluate TestSet for conversational AI applications.
 
 ## Overview
 
 This script demonstrates how to:
 
 1. Set up a knowledge base
-2. Create an evaluation set
+2. Create an EvaluationSet
 3. Generate adversarial test cases
 4. Run evaluations
 
@@ -49,7 +49,7 @@ client = NeuralTrust(api_key=os.getenv("NEURALTRUST_API_KEY"))
 
 ## Define Topics
 
-Define the topics for which you want to generate test sets:
+Define the topics for which you want to generate TestSet:
 
 ```python
 topics = [
@@ -74,7 +74,7 @@ knowledge_base = client.knowledge_base.create(
 )
 ```
 
-2. Creates an evaluation set:
+2. Creates an EvaluationSet:
 
 ```python
 eval_functional = client.evaluation_set.create(
@@ -150,4 +150,4 @@ for topic in topics:
 print("All topics have been processed.")
 ```
 
-This script can be used to automatically generate and evaluate test sets for your conversational AI applications, helping ensure robust performance across different scenarios.
+This script can be used to automatically generate and evaluate TestSet for your conversational AI applications, helping ensure robust performance across different scenarios.
