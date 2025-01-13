@@ -11,7 +11,11 @@ const cards = [
     description: 'Secure and monitor your AI model interactions through our enterprise-grade gateway',
     link: '/category/ai-gateway',
     links: [
+<<<<<<< HEAD
       { title: 'Gateway Overview', url: '/category/trust-gate' },
+=======
+      { title: 'Gateway Overview', url: '/category/ai-gateway' },
+>>>>>>> 97c5220807d45c79db8b3d94a514a0cc6bba77e2
       { title: 'Key Concepts', url: '/category/key-concepts' },
       { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide' },
     ]
@@ -93,22 +97,22 @@ function ProductCard({ title, description, links }) {
         <span className="bg-gradient-to-r from-[#6366F1] to-[#A855F7] bg-clip-text text-transparent">{title[1]}</span>
       </h3>
       <p className="text-[#334155] dark:text-[#E2E8F0] mb-6">{description}</p>
-      <ul className="space-y-3">
+      <ul className="space-y-3 list-disc pl-5 marker:text-[#6366F1]">
         {links.map((link, idx) => (
-          <li key={idx}>
+          <li key={idx} className="leading-[1.5rem]">
             <Link
               to={link.url}
               className="text-[#6366F1] hover:text-[#818CF8] dark:text-[#818CF8] dark:hover:text-[#A5B4FC] text-sm flex items-center group transition-colors"
             >
               <svg 
-                className="w-4 h-4 mr-2 opacity-70 group-hover:opacity-100 transition-opacity" 
+                className="w-4 h-4 mr-2 opacity-70 group-hover:opacity-100 transition-opacity flex-shrink-0" 
                 viewBox="0 0 16 16" 
                 fill="currentColor"
               >
                 <path d="M5 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H5z"/>
                 <path d="M7 4h4a.5.5 0 0 1 0 1H7a.5.5 0 0 1 0-1zm0 3h4a.5.5 0 0 1 0 1H7a.5.5 0 0 1 0-1zm0 3h4a.5.5 0 0 1 0 1H7a.5.5 0 0 1 0-1z"/>
               </svg>
-              {link.title}
+              <span className="flex-1">{link.title}</span>
             </Link>
           </li>
         ))}
