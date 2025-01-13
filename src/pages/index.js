@@ -11,11 +11,7 @@ const cards = [
     description: 'Secure and monitor your AI model interactions through our enterprise-grade gateway',
     link: '/category/ai-gateway',
     links: [
-<<<<<<< HEAD
       { title: 'Gateway Overview', url: '/category/trust-gate' },
-=======
-      { title: 'Gateway Overview', url: '/category/ai-gateway' },
->>>>>>> 97c5220807d45c79db8b3d94a514a0cc6bba77e2
       { title: 'Key Concepts', url: '/category/key-concepts' },
       { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide' },
     ]
@@ -26,8 +22,8 @@ const cards = [
     link: '/category/red-teaming',
     links: [
       { title: 'Red Teaming Overview', url: '/category/red-teaming' },
-      { title: 'What is Red Teaming?', url: '/red-teaming/overview' },
-      { title: 'Create a Red Team Evaluation Set', url: '/red-teaming/evaluation-sets' },
+      { title: 'Key Concepts', url: '/category/key-concepts-1' },
+      { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide-1' },
     ]
   },
   {
@@ -36,8 +32,8 @@ const cards = [
     link: '/category/observability',
     links: [
       { title: 'Observability Overview', url: '/category/llm-observability' },
-      { title: 'What is Observability?', url: '/observability/overview' },
-      { title: 'Start sending traces', url: '/observability/tracing' },
+      { title: 'Key Concepts', url: '/category/key-concepts-2' },
+      { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide-2' },
     ]
   }
 ];

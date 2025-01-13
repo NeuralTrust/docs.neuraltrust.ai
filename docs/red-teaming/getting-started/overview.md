@@ -50,14 +50,14 @@ NeuralTrust provides a comprehensive suite of tools to help evaluate, test, and 
 - Batch processing of large-scale evaluations
 - Statistical analysis and reporting
 
-#### [Compliance Scanner](./scanner.md#scan-endpoint)
+#### Compliance Scanner
 
 - Automated compliance checks against major standards
 - Detect model toxicity, off-topic, off-policy, data leakage, system configuration leakage and more
 - Policy adherence validation
 - Regulatory requirement testing
 
-#### [Domain-Specific Attack Generator](./scanner.md#attack-endpoint)
+#### Domain-Specific Attack Generator
 
 - Custom attack pattern generation for specific industries
 - Domain-aware security testing
