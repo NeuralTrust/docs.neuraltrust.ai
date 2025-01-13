@@ -31,9 +31,9 @@ These guides should take approximately 15 minutes to complete.
 
 By the end of these guides, you'll have:
 
-- Tracking your LLM messages and responses.
-- Creating a custom topic classifier for your LLM messages or responses.
-- Creating a custom monitor for your LLM.
+- Your LLM messages and responses are being tracked.
+- A custom topic classifier for your LLM messages or responses.
+- A custom monitor for your LLM.
 
 ## Next Steps
 

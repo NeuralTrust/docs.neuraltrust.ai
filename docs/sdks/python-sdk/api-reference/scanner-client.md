@@ -57,10 +57,10 @@ Performs a red teaming scan on an LLM system.
 #### Usage Example
 
 ```python
-from NeuralTrust import NeuralTrustApi
+from NeuralTrust import NeuralTrust
 
 # Initialize the client
-client = NeuralTrustApi(
+client = NeuralTrust(
     api_key="YOUR_API_KEY"
 )
 
@@ -120,10 +120,10 @@ Performs a custom red teaming attack with specific objectives.
 #### Usage Example
 
 ```python
-from NeuralTrust import NeuralTrustApi
+from NeuralTrust import NeuralTrust
 
 # Initialize the client
-client = NeuralTrustApi(
+client = NeuralTrust(
     api_key="YOUR_API_KEY"
 )
 

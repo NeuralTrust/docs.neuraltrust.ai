@@ -33,19 +33,19 @@ This should print the version of the SDK installed.
 You can check if the SDK is connected to the NeuralTrust API by running the following script:
 
 ```python
-from neuraltrust import NeuralTrustApi
+from neuraltrust import NeuralTrust
 
-client = NeuralTrustApi(api_key="YOUR_API_KEY")
+client = NeuralTrust(api_key="YOUR_API_KEY")
 
 evaluation_sets = client.evaluation_sets.list()
 
 print(evaluation_sets)
 ```
 
-This should print a list of evaluation sets. If you don't have any evaluation sets, you can create one by running the following script:
+This should print a list of EvaluationSets. If you don't have any EvaluationSets, you can create one by running the following script:
 
 ```python
-evaluation_set = client.evaluation_set.create(name="My Evaluation Set")
+evaluation_set = client.evaluation_set.create(name="My EvaluationSet")
 
 print(evaluation_set)
 ```

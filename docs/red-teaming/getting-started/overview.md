@@ -34,7 +34,7 @@ NeuralTrust provides a comprehensive suite of tools to help evaluate, test, and 
 #### Automated Test Generation
 
 - AI-powered test case generation for specific domains
-- Dynamic evaluation set creation
+- Dynamic EvaluationSet creation
 - Scenario-based test synthesis
 - Coverage optimization
 

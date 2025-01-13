@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # EvaluationSetClient
 
-Client for managing evaluation sets through the NeuralTrust API. This class provides methods for creating, retrieving, updating, deleting, and running evaluation sets.
+Client for managing EvaluationSets through the NeuralTrust API. This class provides methods for creating, retrieving, updating, deleting, and running EvaluationSets.
 
 ## Methods
 
@@ -18,7 +18,7 @@ def list(
 ) -> EvaluationSetResponseList
 ```
 
-Lists all evaluation sets.
+Lists all EvaluationSets.
 
 #### Parameters:
 
@@ -26,7 +26,7 @@ Lists all evaluation sets.
 
 #### Returns:
 
-- `EvaluationSetResponseList`: List of evaluation sets.
+- `EvaluationSetResponseList`: List of EvaluationSets.
 
 ### `create()`
 
@@ -42,19 +42,19 @@ def create(
 ) -> EvaluationSetResponse
 ```
 
-Creates a new evaluation set.
+Creates a new EvaluationSet.
 
 #### Parameters:
 
-- `name` (str): Name of the evaluation set.
-- `description` (str): Description of the evaluation set.
-- `scheduler` (Optional[str]): Scheduler of the evaluation set.
-- `metadata` (Optional[Metadata]): Additional metadata for the evaluation set.
+- `name` (str): Name of the EvaluationSet.
+- `description` (str): Description of the EvaluationSet.
+- `scheduler` (Optional[str]): Scheduler of the EvaluationSet.
+- `metadata` (Optional[Metadata]): Additional metadata for the EvaluationSet.
 - `request_options` (Optional[RequestOptions]): Request-specific configuration.
 
 #### Returns:
 
-- `EvaluationSetResponse`: The created evaluation set.
+- `EvaluationSetResponse`: The created EvaluationSet.
 
 ### `get()`
 
@@ -67,16 +67,16 @@ def get(
 ) -> EvaluationSetResponse
 ```
 
-Retrieves a specific evaluation set.
+Retrieves a specific EvaluationSet.
 
 #### Parameters:
 
-- `id` (str): ID of the evaluation set to retrieve.
+- `id` (str): ID of the EvaluationSet to retrieve.
 - `request_options` (Optional[RequestOptions]): Request-specific configuration.
 
 #### Returns:
 
-- `EvaluationSetResponse`: The requested evaluation set.
+- `EvaluationSetResponse`: The requested EvaluationSet.
 
 ### `update()`
 
@@ -93,20 +93,20 @@ def update(
 ) -> EvaluationSetResponse
 ```
 
-Updates an existing evaluation set.
+Updates an existing EvaluationSet.
 
 #### Parameters:
 
-- `id` (str): ID of the evaluation set to update.
-- `name` (str): New name for the evaluation set.
-- `description` (str): New description for the evaluation set.
-- `scheduler` (Optional[str]): New scheduler for the evaluation set.
-- `metadata` (Optional[Metadata]): New metadata for the evaluation set.
+- `id` (str): ID of the EvaluationSet to update.
+- `name` (str): New name for the EvaluationSet.
+- `description` (str): New description for the EvaluationSet.
+- `scheduler` (Optional[str]): New scheduler for the EvaluationSet.
+- `metadata` (Optional[Metadata]): New metadata for the EvaluationSet.
 - `request_options` (Optional[RequestOptions]): Request-specific configuration.
 
 #### Returns:
 
-- `EvaluationSetResponse`: The updated evaluation set.
+- `EvaluationSetResponse`: The updated EvaluationSet.
 
 ### `delete()`
 
@@ -119,11 +119,11 @@ def delete(
 ) -> None
 ```
 
-Deletes an evaluation set.
+Deletes an EvaluationSet.
 
 #### Parameters:
 
-- `id` (str): ID of the evaluation set to delete.
+- `id` (str): ID of the EvaluationSet to delete.
 - `request_options` (Optional[RequestOptions]): Request-specific configuration.
 
 ### `run()`
@@ -138,12 +138,12 @@ def run(
 ) -> None
 ```
 
-Runs an evaluation set.
+Runs an EvaluationSet.
 
 #### Parameters:
 
-- `id` (str): ID of the evaluation set to run.
-- `evaluation_set_run_id` (Optional[str]): ID for the evaluation set run.
+- `id` (str): ID of the EvaluationSet to run.
+- `evaluation_set_run_id` (Optional[str]): ID for the EvaluationSet run.
 - `request_options` (Optional[RequestOptions]): Request-specific configuration.
 
 ## Usage Example
@@ -152,29 +152,29 @@ Runs an evaluation set.
 # Initialize the NeuralTrust client
 client = NeuralTrust(api_key="your_api_key_here")
 
-# Create a new evaluation set
+# Create a new EvaluationSet
 evaluation_set = client.evaluation_set.create(
-    name="Test Evaluation Set",
-    description="A test evaluation set",
+    name="Test EvaluationSet",
+    description="A test EvaluationSet",
     metadata={"environment": "staging"}
 )
 
-# Get an evaluation set by ID
+# Get an EvaluationSet by ID
 retrieved_set = client.evaluation_set.get(id=evaluation_set.id)
 
-# Update an evaluation set
+# Update an EvaluationSet
 updated_set = client.evaluation_set.update(
     id=evaluation_set.id,
-    name="Updated Test Set",
-    description="An updated test evaluation set"
+    name="Updated TestSet",
+    description="An updated test EvaluationSet"
 )
 
-# Run an evaluation set
+# Run an EvaluationSet
 client.evaluation_set.run(id=evaluation_set.id)
 
-# List all evaluation sets
+# List all EvaluationSets
 all_sets = client.evaluation_set.list()
 
-# Delete an evaluation set
+# Delete an EvaluationSet
 client.evaluation_set.delete(id=evaluation_set.id)
 ``` 

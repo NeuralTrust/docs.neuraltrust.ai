@@ -2,14 +2,14 @@
 sidebar_position: 2
 ---
 
-# _Trace
+# Trace
 
-Internal class for creating and managing traces in the NeuralTrust system. This class captures details about interactions or events, including metadata, timing information, and content.
+Class for creating and managing traces in the NeuralTrust system. This class captures details about interactions or events, including metadata, timing information, and content.
 
 ## Constructor
 
 ```python
-_Trace(
+Trace(
     client: TraceClient,
     trace_id: Optional[str] = None,
     interaction_id: Optional[str] = None,
@@ -39,7 +39,7 @@ _Trace(
 ### `message()`
 
 ```python
-def message(input: str) -> "_Trace"
+def message(input: str) -> "Trace"
 ```
 
 Start a message trace.
@@ -50,12 +50,12 @@ Start a message trace.
 
 #### Returns:
 
-- `_Trace`: A new Trace object initialized with the message event
+- `Trace`: A new Trace object initialized with the message event
 
 ### `tool()`
 
 ```python
-def tool(input: str, parent_id: Optional[str] = None) -> "_Trace"
+def tool(input: str, parent_id: Optional[str] = None) -> "Trace"
 ```
 
 Start a tool trace.
@@ -67,12 +67,12 @@ Start a tool trace.
 
 #### Returns:
 
-- `_Trace`: A new Trace object initialized with the tool event
+- `Trace`: A new Trace object initialized with the tool event
 
 ### `agent()`
 
 ```python
-def agent(input: str, parent_id: Optional[str] = None) -> "_Trace"
+def agent(input: str, parent_id: Optional[str] = None) -> "Trace"
 ```
 
 Start an agent trace.
@@ -84,12 +84,12 @@ Start an agent trace.
 
 #### Returns:
 
-- `_Trace`: A new Trace object initialized with the agent event
+- `Trace`: A new Trace object initialized with the agent event
 
 ### `retrieval()`
 
 ```python
-def retrieval(input: str, parent_id: Optional[str] = None) -> "_Trace"
+def retrieval(input: str, parent_id: Optional[str] = None) -> "Trace"
 ```
 
 Start a retrieval trace.
@@ -101,12 +101,12 @@ Start a retrieval trace.
 
 #### Returns:
 
-- `_Trace`: A new Trace object initialized with the retrieval event
+- `Trace`: A new Trace object initialized with the retrieval event
 
 ### `generation()`
 
 ```python
-def generation(input: str, parent_id: Optional[str] = None) -> "_Trace"
+def generation(input: str, parent_id: Optional[str] = None) -> "Trace"
 ```
 
 Start a generation trace.
@@ -118,12 +118,12 @@ Start a generation trace.
 
 #### Returns:
 
-- `_Trace`: A new Trace object initialized with the generation event
+- `Trace`: A new Trace object initialized with the generation event
 
 ### `router()`
 
 ```python
-def router(input: str, parent_id: Optional[str] = None) -> "_Trace"
+def router(input: str, parent_id: Optional[str] = None) -> "Trace"
 ```
 
 Start and automatically end a router trace.
@@ -135,12 +135,12 @@ Start and automatically end a router trace.
 
 #### Returns:
 
-- `_Trace`: A new Trace object initialized and completed with the router event
+- `Trace`: A new Trace object initialized and completed with the router event
 
 ### `event()`
 
 ```python
-def event(input: str, parent_id: Optional[str] = None) -> "_Trace"
+def event(input: str, parent_id: Optional[str] = None) -> "Trace"
 ```
 
 Record a custom event trace.
@@ -152,12 +152,12 @@ Record a custom event trace.
 
 #### Returns:
 
-- `_Trace`: A new Trace object initialized and completed with the custom event
+- `Trace`: A new Trace object initialized and completed with the custom event
 
 ### `system()`
 
 ```python
-def system(prompt: Union[str, object], parent_id: Optional[str] = None) -> "_Trace"
+def system(prompt: Union[str, object], parent_id: Optional[str] = None) -> "Trace"
 ```
 
 Record a system trace.
@@ -169,7 +169,7 @@ Record a system trace.
 
 #### Returns:
 
-- `_Trace`: A new Trace object initialized and completed with the system event
+- `Trace`: A new Trace object initialized and completed with the system event
 
 ### `feedback()`
 
@@ -178,7 +178,7 @@ def feedback(
     feedback_tag: FeedbackTag,
     feedback_text: str,
     parent_id: Optional[str] = None
-) -> "_Trace"
+) -> "Trace"
 ```
 
 Record a feedback trace.
@@ -191,12 +191,12 @@ Record a feedback trace.
 
 #### Returns:
 
-- `_Trace`: A new Trace object initialized and completed with the feedback event
+- `Trace`: A new Trace object initialized and completed with the feedback event
 
 ### `end()`
 
 ```python
-def end(output: Union[str, object]) -> "_Trace"
+def end(output: Union[str, object]) -> "Trace"
 ```
 
 End the current trace and record its output.
@@ -207,7 +207,7 @@ End the current trace and record its output.
 
 #### Returns:
 
-- `_Trace`: The current Trace object with completed trace data
+- `Trace`: The current Trace object with completed trace data
 
 ### `send()`
 
@@ -220,7 +220,7 @@ def send(
     start_timestamp: Optional[int] = None,
     end_timestamp: Optional[int] = None,
     parent_id: Optional[str] = None
-) -> "_Trace"
+) -> "Trace"
 ```
 
 Send an atomic event to NeuralTrust.
@@ -237,7 +237,7 @@ Send an atomic event to NeuralTrust.
 
 #### Returns:
 
-- `_Trace`: The current Trace object with the recorded event data
+- `Trace`: The current Trace object with the recorded event data
 
 ## Usage Example
 
@@ -246,13 +246,13 @@ Send an atomic event to NeuralTrust.
 trace = client.trace(conversation_id="conv123")
 
 # Record a message event
-message_trace = trace.message("User input")
-response = message_trace.end("Bot response")
+messageTrace = trace.message("User input")
+response = messageTrace.end("Bot response")
 
 # Record a tool event
-tool_trace = trace.tool("Processing data", parent_id=message_trace.trace_id)
-result = tool_trace.end("Data processed")
+toolTrace = trace.tool("Processing data", parent_id=messageTrace.trace_id)
+result = toolTrace.end("Data processed")
 
 # Send feedback
-trace.feedback(FeedbackTag.POSITIVE, "Great response!", parent_id=message_trace.trace_id)
+trace.feedback(FeedbackTag.POSITIVE, "Great response!", parent_id=messageTrace.trace_id)
 ```

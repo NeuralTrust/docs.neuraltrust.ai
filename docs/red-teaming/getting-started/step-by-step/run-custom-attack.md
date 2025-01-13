@@ -13,9 +13,9 @@ By default, the attack will run a series of jailbreaking techniques and algorith
 First, import and initialize the NeuralTrust API client:
 
 ```python
-from neuraltrust import NeuralTrustApi
+from neuraltrust import NeuralTrust
 
-client = NeuralTrustApi()
+client = NeuralTrust()
 ```
 
 ## Creating a Custom Attack
@@ -50,9 +50,9 @@ Remeber, the descriptions should be as detailed as possible to ensure the attack
 ## Complete Script
 
 ```python
-from neuraltrust import NeuralTrustApi
+from neuraltrust import NeuralTrust
 
-client = NeuralTrustApi(api_key="your-api-key")
+client = NeuralTrust(api_key="your-api-key")
 
 # Custom attack with specific objectives
 response = client.scanner.attack(

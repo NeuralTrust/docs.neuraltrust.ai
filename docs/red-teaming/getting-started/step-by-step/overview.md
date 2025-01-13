@@ -12,7 +12,7 @@ This guide will walk you through setting up and configuring your first Red Teami
    - Configuration options.
 2. [Create and run a custom evaluation from your RAG](./create-functional-evaluation-set.md)
    - Create and evaluaiton set.
-   - Run the evaluation set.
+   - Run the EvaluationSet.
    - Look at the results in the UI.
 3. [Create and run a custom attack](./run-custom-attack.md)
    - Create an custom objective attack.
@@ -38,9 +38,9 @@ These guides should take approximately 20 minutes to complete.
 
 By the end of these guides, you'll have:
 
-- Creating and running a custom evaluation set from your RAG.
-- Creating and running a custom objective attack against your LLM.
-- Scanning your LLM for complience vulnerabilities.
+- A custom EvaluationSet from your RAG.
+- A custom objective attack against your LLM.
+- A complience scan against your LLM.
 
 ## Next Steps
 

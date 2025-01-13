@@ -13,7 +13,7 @@ First, import and initialize the NeuralTrust API client:
 ```python
 from neuraltrust import NeuralTrustApi
 
-client = NeuralTrustApi()
+client = NeuralTrust()
 ```
 
 ## Creating a Custom Attack
@@ -55,7 +55,7 @@ response = client.scanner.attack(
 from neuraltrust import NeuralTrustApi
 
 # Initialize the API client
-client = NeuralTrustApi()
+client = NeuralTrust()
 
 # Custom attack with specific objectives
 response = client.scanner.attack(

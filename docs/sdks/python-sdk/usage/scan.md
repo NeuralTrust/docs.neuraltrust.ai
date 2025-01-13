@@ -11,9 +11,9 @@ This guide demonstrates how to use the Neural Trust scanning capabilities to ana
 First, import and initialize the Neural Trust API client:
 
 ```python
-from neuraltrust import NeuralTrustApi
+from neuraltrust import NeuralTrust
 
-client = NeuralTrustApi()
+client = NeuralTrust()
 ```
 
 ## Running Scans
@@ -57,7 +57,7 @@ Here's the complete script for reference:
 from neuraltrust import NeuralTrustApi
 
 # Initialize the client
-client = NeuralTrustApi()
+client = NeuralTrust()
 
 # Default scan, using all categories, 5 objectives per category
 response = client.scanner.scan()
