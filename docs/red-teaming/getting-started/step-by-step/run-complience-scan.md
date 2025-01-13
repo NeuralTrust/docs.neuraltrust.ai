@@ -4,11 +4,13 @@ sidebar_position: 5
 
 # Compliance scan
 
-This guide demonstrates how to use the Neural Trust scanning capabilities to analyze your AI system for potential vulnerabilities.
+This guide demonstrates how to use the NeuralTrust API to run compliance scans that analyze your AI system for potential vulnerabilities.
 
-## Basic Setup
+By default, the scan will run a comprehensive set of security checks across multiple categories to evaluate your model's safety and compliance.
 
-First, import and initialize the Neural Trust API client:
+## Setup
+
+First, import and initialize the NeuralTrust API client:
 
 ```python
 from neuraltrust import NeuralTrustApi
@@ -16,22 +18,16 @@ from neuraltrust import NeuralTrustApi
 client = NeuralTrustApi()
 ```
 
-## Running Scans
+## Running a Compliance Scan
 
-### Default Scan
-The simplest way to run a scan is using the default configuration:
+The scanning feature allows you to evaluate your AI model against various security categories. Each scan can be configured with:
 
-```python
-response = client.scanner.scan()
-```
+- `name`: A descriptive name for your scan
+- `categories`: List of specific security categories to test. For the complete list of categories, please refer to the [Compliance Scan Categories](docs/red-teaming/key-concepts/scanner.md#available-categories)
+- `max_objectives_per_category`: Number of test objectives per category
+- `dynamic_attack_config`: Additional configuration for attack simulations
 
-This will:
-- Run checks across all available security categories
-- Use 5 objectives per category
-- Use default attack configurations
-
-### Customized Scan
-For more control, you can customize your scan parameters:
+For example, we want to run a comprehensive security scan across multiple categories:
 
 ```python
 response = client.scanner.scan(
@@ -42,27 +38,18 @@ response = client.scanner.scan(
 )
 ```
 
-#### Parameters Explained:
-- `name`: A descriptive name for your scan
-- `categories`: List of specific categories to scan for (e.g., "off_tone", "data_leak")
-- `max_objectives_per_category`: Maximum number of test objectives per category
-- `dynamic_attack_config`: Additional configuration for attack simulations
-  - `max_turns`: Maximum conversation turns for attack attempts
+:::info
+The default scan will run checks across all available security categories with 5 objectives per category if no parameters are specified.
+:::
 
 ## Complete Script
 
-Here's the complete script for reference:
-
 ```python
 from neuraltrust import NeuralTrustApi
 
-# Initialize the client
 client = NeuralTrustApi()
 
-# Default scan, using all categories, 5 objectives per category
-response = client.scanner.scan()
-
-# Example using a subset of scan categories, max 10 turns for conversation attack
+# Run a comprehensive security scan
 response = client.scanner.scan(
     name="Comprehensive Security Scan",
     categories=["off_tone", "data_leak"],
@@ -70,3 +57,5 @@ response = client.scanner.scan(
     dynamic_attack_config={"max_turns": 10},
 )
 ```
+
+Now, you can see the results in the UI.

@@ -111,6 +111,7 @@ For example, we have a LLM endpoint that returns the following response:
   }
 }
 ```
+
 We want to obtain only the `Hello, how are you?` from the response.
 
 We want to parse the response from the firewall and get the content of the response. The firewall will return the following response, with **Status code 400**.
@@ -180,7 +181,7 @@ token:
     data:
       dateTime: "{{ date }}"
       client_id: "neuraltrust"
-      service: "ava-chat"
+      service: "my-chat"
     signature: ""
 url: "<my llm endpoint>"
 stream: false
