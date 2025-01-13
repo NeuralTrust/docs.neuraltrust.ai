@@ -73,6 +73,5 @@ After installing AI Gateway:
 
 ## Need Help?
 
-- Join our [Discord Community](https://discord.gg/JGV4q3tr)
-- Check our [Documentation](https://docs.neuraltrust.ai)
+- Join our [Slack Community](https://neuraltrustcommunity.slack.com/join/shared_invite/zt-2xl47cag6-_HFNpltIULnA3wh4R6AqBg)
 - Report issues on [GitHub](https://github.com/neuraltrust/ai-gateway-ce/issues)

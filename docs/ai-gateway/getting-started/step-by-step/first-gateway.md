@@ -84,23 +84,52 @@ Key configuration options:
    ```
 
 2. **Required Plugins**
+   The `required_plugins` array defines plugins that are automatically executed for all requests passing through the gateway. These plugins are essential for implementing gateway-wide policies and controls.
+
+   **Key Aspects of Required Plugins:**
+   - **Global Execution**: Required plugins run for every request, regardless of the route or service
+   - **Execution Order**: Plugins are executed in order of their priority (lower numbers execute first)
+   
+   **Example Configuration:**
    ```json
    {
      "required_plugins": [
        {
-         "name": "rate_limiter",
-         "enabled": true
-       }
+          "name": "rate_limiter",
+          "enabled": true,
+          "stage": "pre_request",  // Executes before request processing
+          "priority": 1,           // Lower number = higher priority
+          "settings": {
+              "limits": {
+                  "global": {
+                      "limit": 15,    // Maximum requests
+                      "window": "1m"  // Time window (1 minute)
+                  },
+                  "per_ip": {         // IP-based limiting
+                      "limit": 5,
+                      "window": "1m"
+                  },
+                  "per_user": {       // User-based limiting
+                      "limit": 5,
+                      "window": "1m"
+                  }
+              },
+              "actions": {
+                  "type": "reject",        // Action when limit exceeded
+                  "retry_after": "60"      // Retry delay in seconds
+              }
+          }
+        }
      ]
    }
    ```
 
-3. **Status**
-   ```json
-   {
-     "status": "active"
-   }
-   ```
+   **Common Use Cases:**
+   - Rate Limiting: Control request volumes
+   - Authentication: Verify request credentials
+   - Logging: Track all gateway traffic
+   - Monitoring: Collect metrics for all requests
+   - Security: Apply security policies uniformly
 
 ## Test Your Gateway
 
@@ -112,17 +141,8 @@ curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/keys \
   -H "Content-Type: application/json" \
   -d '{
     "name": "test-key",
-    "expires_at": "2024-12-31T23:59:59Z"
+    "expires_at": "2027-12-31T23:59:59Z"
   }'
-```
-
-### Test the Connection
-
-```bash
-# Test with your API key
-curl http://localhost:8081/status \
-  -H "Host: api.example.com" \
-  -H "x-api-key: your-api-key"
 ```
 
 ## Best Practices
@@ -130,17 +150,14 @@ curl http://localhost:8081/status \
 1. **Naming Conventions**
    - Use descriptive gateway names
    - Keep subdomains simple
-   - Document purpose
 
 2. **Plugin Configuration**
    - Start with essential plugins
    - Configure reasonable limits
-   - Test plugin chains
 
 3. **Security**
    - Enable authentication
    - Set up rate limiting
-   - Use secure settings
 
 ## Next Steps
 

@@ -133,10 +133,10 @@ const config = {
             'aria-label': 'GitHub repository',
           },
           {
-            href: 'https://discord.gg/f93QsGeR',
+            href: 'https://neuraltrustcommunity.slack.com/join/shared_invite/zt-2xl47cag6-_HFNpltIULnA3wh4R6AqBg',
             position: 'right',
-            className: 'header-discord-link',
-            'aria-label': 'Discord community',
+            className: 'header-slack-link',
+            'aria-label': 'Slack community',
           },
           {
             href: 'https://linkedin.com/company/neuraltrust',
