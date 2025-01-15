@@ -23,7 +23,7 @@ client = NeuralTrust()
 The scanning feature allows you to evaluate your AI model against various security categories. Each scan can be configured with:
 
 - `name`: A descriptive name for your scan
-- `categories`: List of specific security categories to test. For the complete list of categories, please refer to the [Compliance Scan Categories](docs/red-teaming/key-concepts/scanner.md#available-categories)
+- `categories`: List of specific security categories to test. For the complete list of categories, please refer to the [Compliance Scan Categories](../../key-concepts/scanner.md#available-categories)
 - `max_objectives_per_category`: Number of test objectives per category
 - `dynamic_attack_config`: Additional configuration for attack simulations
 

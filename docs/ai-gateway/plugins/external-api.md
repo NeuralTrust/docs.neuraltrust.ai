@@ -201,7 +201,3 @@ When validation fails, the plugin returns:
    - Keep field mappings minimal
    - Use efficient condition evaluations
    - Monitor external service response times
-
-## Next Steps
-
-1. [Configure Rate Limiting](./rate-limiting.md) to protect external services

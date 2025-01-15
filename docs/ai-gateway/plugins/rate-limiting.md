@@ -198,8 +198,3 @@ pipe.Expire(ctx, key, window)
    - Track rate limit headers for usage patterns
    - Monitor 429 responses for limit adjustments
    - Implement client-side backoff strategies
-
-## Next Steps
-
-1. [Configure Load Balancing](./load-balancing.md) for high availability
-2. [Set up Monitoring](../monitoring/overview.md) to track usage
