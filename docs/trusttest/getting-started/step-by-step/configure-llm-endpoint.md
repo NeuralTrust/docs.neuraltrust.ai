@@ -40,10 +40,8 @@ The Yaml file has the following structure:
 
 ```yaml
 url: <string> # your API endpoint URL
-headers: # your API headers
-  <key>: <value>
-payload: # your API payload
-  <key>: <value>
+headers: <dictionary> # your API headers
+payload: <dictionary> # your API payload
 authentication: <boolean> # if your API requires on the fly authentication via a token
 token: # Optional, if authentication is true, this is the token request configuration
   url: <string> # the token request URL
@@ -53,7 +51,7 @@ chunked_response: <boolean> # if the LLM response is chunked
 concatenate_field: <string> # field that will be concatenated to get the final response
 content_regex: <string> # Optional, a regex to extract the content from the response
 params: <dictionary> # Optional, dictionary of parameters to be sent to the POST request
-error_handling: # Optional, if you want to parse the error messages.
+error_handling: <dictionary or string> # Optional, if you want to parse the error messages.
    - status_code: <string> # the firewall status code, like 403, 404, etc.
      concatenate_field: <string> # Optional,field that will be concatenated to get the final response
 ```
