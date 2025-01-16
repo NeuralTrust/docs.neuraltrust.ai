@@ -52,6 +52,7 @@ stream: <boolean> # if the LLM is streaming the response
 chunked_response: <boolean> # if the LLM response is chunked
 concatenate_field: <string> # field that will be concatenated to get the final response
 content_regex: <string> # Optional, a regex to extract the content from the response
+params: <dictionary> # Optional, dictionary of parameters to be sent to the POST request
 error_handling: # Optional, if you want to parse the error messages.
    - status_code: <string> # the firewall status code, like 403, 404, etc.
      concatenate_field: <string> # Optional,field that will be concatenated to get the final response
