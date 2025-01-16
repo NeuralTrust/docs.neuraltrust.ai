@@ -79,7 +79,7 @@ error_handling: "all"
 ```
 
 :::warning
-By default all errors are ignored. So if an Evaluation request fails, it won't appear in the UI.
+By default all errors are ignored, if no key `error_handling` is defined. So if an Evaluation test fails, it won't appear in the UI.
 :::
 
 ## Examples
