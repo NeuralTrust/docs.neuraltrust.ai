@@ -23,7 +23,7 @@ const cards = [
     links: [
       { title: 'TrustTest Overview', url: '/category/trusttest' },
       { title: 'Key Concepts', url: '/category/key-concepts' },
-      { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide' },
+      { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide-1' },
     ]
   },
   {
