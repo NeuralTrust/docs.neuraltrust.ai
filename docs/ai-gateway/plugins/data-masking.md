@@ -65,64 +65,220 @@ The plugin comes with comprehensive support for various types of sensitive data:
 | api_key | API keys | [MASKED_API_KEY] | api_key=abc123xyz |
 | access_token | Access tokens | [MASKED_TOKEN] | bearer=xyz789abc |
 
-## Plugin Design
-```go
-type DataMaskingPlugin struct {
-    logger     *logrus.Logger
-    keywords   map[string]string         // map of keyword to mask value
-    regexRules map[string]*regexp.Regexp // map of regex pattern to mask value
+## How It Works
+
+### 1. JSON Data Processing
+The plugin intelligently handles JSON data in both requests and responses. It recursively traverses JSON objects and arrays to find and mask sensitive data at any nesting level:
+
+```json
+// Input
+{
+    "user": {
+        "email": "john.doe@example.com",
+        "credit_card": "4111-2222-3333-4444",
+        "secret_key": "my-secret-api-key",
+        "addresses": [
+            {
+                "billing": {
+                    "card": "5555-6666-7777-8888",
+                    "ssn": "123-45-6789"
+                }
+            }
+        ]
+    }
 }
 
-type Config struct {
-    Rules               []Rule          `mapstructure:"rules"`
-    SimilarityThreshold float64         `mapstructure:"similarity_threshold"`
-    PredefinedEntities  []EntityConfig  `mapstructure:"predefined_entities"`
-}
-
-type EntityConfig struct {
-    Entity      string `mapstructure:"entity"`      // Pre-defined entity type
-    Enabled     bool   `mapstructure:"enabled"`     // Whether to enable this entity
-    MaskWith    string `mapstructure:"mask_with"`   // Optional custom mask
-    PreserveLen bool   `mapstructure:"preserve_len"` // Whether to preserve length
+// Output
+{
+    "user": {
+        "email": "[MASKED_EMAIL]",
+        "credit_card": "[MASKED_CC]",
+        "secret_key": "[MASKED_KEY]",
+        "addresses": [
+            {
+                "billing": {
+                    "card": "[MASKED_CC]",
+                    "ssn": "[MASKED_SSN]"
+                }
+            }
+        ]
+    }
 }
 ```
 
-## Configuration Example
+To enable this type of masking, configure the predefined entities in your settings:
+
 ```json
 {
     "settings": {
-        "similarity_threshold": 0.8,
         "predefined_entities": [
             {
                 "entity": "credit_card",
                 "enabled": true,
-                "mask_with": "[MASKED_CC]",
-                "preserve_len": false
+                "mask_with": "[MASKED_CC]"
             },
             {
-                "entity": "iban",
+                "entity": "ssn",
                 "enabled": true,
-                "mask_with": "[MASKED_IBAN]",
-                "preserve_len": false
+                "mask_with": "[MASKED_SSN]"
             },
             {
-                "entity": "swift_bic",
+                "entity": "email",
                 "enabled": true,
-                "mask_with": "[MASKED_BIC]",
-                "preserve_len": false
-            },
-            {
-                "entity": "crypto_wallet",
-                "enabled": true,
-                "mask_with": "[MASKED_WALLET]",
-                "preserve_len": false
+                "mask_with": "[MASKED_EMAIL]"
             }
-        ],
+        ]
+    }
+}
+```
+
+### 2. Fuzzy Matching
+The plugin uses Levenshtein distance to detect similar keywords and variations. This is particularly useful for catching attempts to bypass the masking by slightly modifying sensitive field names:
+
+```json
+// Input - Various attempts to bypass detection
+{
+    "sekret_key": "sensitive-data",
+    "secret-key": "another-secret",
+    "secretKey": "third-secret",
+    "s3cretKey": "fourth-secret",
+    "SecretKey123": "fifth-secret"
+}
+
+// Output - All variations detected with similarity threshold of 0.8
+{
+    "sekret_key": "[MASKED_KEY]",
+    "secret-key": "[MASKED_KEY]",
+    "secretKey": "[MASKED_KEY]",
+    "s3cretKey": "[MASKED_KEY]",
+    "SecretKey123": "[MASKED_KEY]"
+}
+```
+
+Configure fuzzy matching with custom rules and similarity threshold:
+
+```json
+{
+    "settings": {
+        "similarity_threshold": 0.8,
         "rules": [
             {
                 "pattern": "secret_key",
                 "type": "keyword",
-                "mask_with": "****",
+                "mask_with": "[MASKED_KEY]",
+                "fuzzy_match": true
+            }
+        ]
+    }
+}
+```
+
+### 3. Pattern Matching
+The plugin supports sophisticated pattern matching through regular expressions, which is essential for detecting structured data formats:
+
+```json
+// Input with various formats
+{
+    "payment_info": {
+        "card_numbers": [
+            "4111-2222-3333-4444",
+            "4111 2222 3333 4444",
+            "4111222233334444"
+        ],
+        "iban_numbers": [
+            "DE89 3704 0044 0532 0130 00",
+            "DE89370400440532013000",
+            "GB29NWBK60161331926819"
+        ],
+        "phone_contacts": [
+            "+1 (555) 123-4567",
+            "555.123.4567",
+            "+44 20 7123 4567"
+        ]
+    }
+}
+
+// Output - All formats detected and masked appropriately
+{
+    "payment_info": {
+        "card_numbers": [
+            "[MASKED_CC]",
+            "[MASKED_CC]",
+            "[MASKED_CC]"
+        ],
+        "iban_numbers": [
+            "[MASKED_IBAN]",
+            "[MASKED_IBAN]",
+            "[MASKED_IBAN]"
+        ],
+        "phone_contacts": [
+            "[MASKED_PHONE]",
+            "[MASKED_PHONE]",
+            "[MASKED_PHONE]"
+        ]
+    }
+}
+```
+
+Configure pattern matching with custom regex patterns:
+
+```json
+{
+    "settings": {
+        "rules": [
+            {
+                "pattern": "\\b\\d{4}[- ]?\\d{4}[- ]?\\d{4}[- ]?\\d{4}\\b",
+                "type": "regex",
+                "mask_with": "[MASKED_CC]"
+            },
+            {
+                "pattern": "\\b[A-Z]{2}\\d{2}[A-Z0-9]{4}\\d{7}([A-Z0-9]?){0,16}\\b",
+                "type": "regex",
+                "mask_with": "[MASKED_IBAN]"
+            },
+            {
+                "pattern": "\\+?\\d{1,4}[-.\\s]?\\(?\\d{1,4}\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}",
+                "type": "regex",
+                "mask_with": "[MASKED_PHONE]"
+            }
+        ]
+    }
+}
+```
+
+### 4. Length Preservation
+When working with systems that validate field lengths, you can configure the plugin to preserve the original length of masked data:
+
+```json
+// Input
+{
+    "credit_card": "4111222233334444",
+    "ssn": "123-45-6789"
+}
+
+// Output with length preservation enabled
+{
+    "credit_card": "****************",  // 16 characters
+    "ssn": "***********"              // 11 characters
+}
+```
+
+Configure length preservation in your settings:
+
+```json
+{
+    "settings": {
+        "predefined_entities": [
+            {
+                "entity": "credit_card",
+                "enabled": true,
+                "mask_with": "*",
+                "preserve_len": true
+            },
+            {
+                "entity": "ssn",
+                "enabled": true,
+                "mask_with": "*",
                 "preserve_len": true
             }
         ]
@@ -130,12 +286,237 @@ type EntityConfig struct {
 }
 ```
 
+## Configuration Examples
+
+### Basic Configuration
+The basic configuration provides a straightforward way to enable essential data masking features. It focuses on commonly needed protections without complex customization:
+
+```json
+{
+    "settings": {
+        // Global similarity threshold for fuzzy matching
+        "similarity_threshold": 0.8,
+        
+        // List of pre-defined entities to enable
+        "predefined_entities": [
+            {
+                // Enable credit card number masking
+                "entity": "credit_card",
+                "enabled": true,
+                "mask_with": "[MASKED_CC]",
+                "preserve_len": false
+            },
+            {
+                // Enable email address masking
+                "entity": "email",
+                "enabled": true,
+                "mask_with": "[MASKED_EMAIL]",
+                "preserve_len": false
+            }
+        ]
+    }
+}
+```
+
+Key components of the basic configuration:
+
+
+<h4 align="center"><strong><u>Similarity Threshold</u></strong></h4>
+
+| Value Range | Description | Impact |
+|------------|-------------|---------|
+| 0 to 1 (0.8 recommended) | Determines how closely strings must match to be considered similar | Controls matching sensitivity |
+| Higher values (&gt;0.8) | Requires closer matches between strings | Reduces false positives but may miss variations |
+| Lower values (&lt;0.8) | Allows more variation between strings | Catches more variations but may increase false positives |
+
+<h4 align="center"><strong><u>Predefined Entities</u></strong></h4>
+
+<table align="center">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>entity</code></td>
+      <td>The type of data to mask (from predefined list)</td>
+    </tr>
+    <tr>
+      <td><code>enabled</code></td>
+      <td>Whether this entity type is active</td>
+    </tr>
+    <tr>
+      <td><code>mask_with</code></td>
+      <td>The replacement text for matched data</td>
+    </tr>
+    <tr>
+      <td><code>preserve_len</code></td>
+      <td>Whether to keep original string length</td>
+    </tr>
+  </tbody>
+</table>
+
+Example of what this configuration will catch:
+```json
+// Input
+{
+    "customer": {
+        "email": "alice@company.com",
+        "payment": {
+            "cc_number": "4111-2222-3333-4444"
+        }
+    }
+}
+
+// Output
+{
+    "customer": {
+        "email": "[MASKED_EMAIL]",
+        "payment": {
+            "cc_number": "[MASKED_CC]"
+        }
+    }
+}
+```
+
+
+The predefined entities configuration accepts several properties: The **entity** property (type: string) specifies which type of sensitive data to mask from the predefined list, with values like **"credit_card"**, **"email"**, or **"ssn"**. The **enabled** property (type: boolean) controls whether masking is active for this entity type using **true** or **false**. The **mask_with** property (type: string) defines the text that will replace the sensitive data when masked, such as **"[MASKED_CC]"** or **"[MASKED_EMAIL]"**. Finally, the **preserve_len** property (type: boolean) determines whether to maintain the original string length using the mask character, set to either **true** or **false**.
+
+### Advanced Configuration with Custom Rules
+The advanced configuration extends the basic setup with custom rules and more sophisticated pattern matching:
+
+```json
+{
+    "settings": {
+        // Global fuzzy matching threshold
+        "similarity_threshold": 0.8,
+        
+        // Pre-defined entities (same as basic config)
+        "predefined_entities": [
+            {
+                "entity": "credit_card",
+                "enabled": true,
+                "mask_with": "[MASKED_CC]",
+                "preserve_len": false
+            }
+        ],
+        
+        // Custom masking rules
+        "rules": [
+            {
+                // Keyword-based rule for secret keys
+                "pattern": "secret_key",
+                "type": "keyword",
+                "mask_with": "[MASKED_KEY]",
+                "preserve_len": false,
+                "fuzzy_match": true,
+                "case_sensitive": false
+            },
+            {
+                // Regex-based rule for passwords
+                "pattern": "(?i)password=\\S+",
+                "type": "regex",
+                "mask_with": "[MASKED_PASSWORD]",
+                "preserve_len": false
+            },
+            {
+                // Custom pattern for internal IDs
+                "pattern": "INT-\\d{6}",
+                "type": "regex",
+                "mask_with": "[MASKED_ID]",
+                "preserve_len": true
+            }
+        ],
+        
+        // Additional advanced settings
+        "settings": {
+            "mask_unknown_types": true,
+            "recursive_search": true,
+            "max_depth": 10
+        }
+    }
+}
+```
+
+Key components of the advanced configuration:
+
+<h4 align="center"><strong><u>Custom Rules Properties</u></strong></h4>
+
+| Property | Description | Default Value | Example |
+|----------|-------------|---------------|---------|
+| `pattern` | The text or regex pattern to match | "secret_key" | "password=\\S+", "INT-\\d{6}" |
+| `type` | The type of pattern matching to use | "keyword" | "keyword", "regex" |
+| `mask_with` | Replacement text for matched data | "[MASKED]" | "[MASKED_KEY]", "[MASKED_PASSWORD]" |
+| `preserve_len` | Whether to maintain string length | false | true, false |
+| `fuzzy_match` | Enable Levenshtein distance matching | false | true, false |
+| `case_sensitive` | Whether matching is case-sensitive | false | true, false |
+
+2. **Rule Types**
+   - **Keyword Rules** 
+     ```json
+     {
+         "pattern": "secret_key",
+         "type": "keyword",
+         "fuzzy_match": true
+     }
+     ```
+     - Matches exact or similar words
+     - Supports fuzzy matching
+     - Good for field names and known terms
+
+   - **Regex Rules**
+     ```json
+     {
+         "pattern": "(?i)password=\\S+",
+         "type": "regex"
+     }
+     ```
+     - Matches complex patterns
+     - More powerful but computationally intensive
+     - Good for structured data formats
+
+Example of what this advanced configuration will catch:
+```json
+// Input
+{
+    "api_config": {
+        "sekret_key": "abcd1234",
+        "password": "password=mysecret123",
+        "internal_id": "INT-123456"
+    },
+    "payment": {
+        "cc_number": "4111-2222-3333-4444"
+    }
+}
+
+// Output
+{
+    "api_config": {
+        "sekret_key": "[MASKED_KEY]",
+        "password": "[MASKED_PASSWORD]",
+        "internal_id": "[MASKED_ID]"
+    },
+    "payment": {
+        "cc_number": "[MASKED_CC]"
+    }
+}
+```
+
+The advanced configuration provides several benefits:
+
+   • Combines predefined entities with custom rules
+
+   • Supports both simple keyword and complex regex patterns 
+
+   • Provides flexibility for special cases and exceptions
+
 ## Best Practices
 
 ### Entity Selection
 1. **Financial Data Protection**:
    - Enable IBAN and SWIFT/BIC masking for international transactions
-   - Use crypto wallet masking for blockchain-related applications
    - Enable credit card masking for payment processing
 
 2. **Personal Data Compliance**:
@@ -146,7 +527,6 @@ type EntityConfig struct {
 3. **Security Considerations**:
    - Always mask API keys and access tokens
    - Use password masking for any credential fields
-   - Consider preserving length for structured data validation
 
 ### Performance Optimization
 1. **Rule Organization**:
@@ -159,22 +539,6 @@ type EntityConfig struct {
    - Consider length preservation impact
    - Balance between security and performance
 
-## Performance Considerations
-The plugin is engineered for **high performance** while maintaining robust security:
+### Performance Considerations
 
-1. **Efficient Processing**:
-   - Pre-compiled regex patterns
-   - Optimized fuzzy matching algorithm
-   - Smart content analysis
-
-2. **Resource Management**:
-   - Minimal memory footprint
-   - Efficient string operations
-   - Cached pattern matching
-
-3. **Scalability**:
-   - Parallel processing support
-   - Optimized for high throughput
-   - Low latency impact
-
-The implementation ensures optimal performance while providing comprehensive data protection, making it suitable for production environments where both security and response time are critical. 
+The Data Masking plugin prioritizes **performance** and **security** through sophisticated optimizations. The processing engine uses pre-compiled regex patterns and optimized algorithms with intelligent caching for rapid pattern matching. Memory efficiency is achieved through zero-copy operations and strategic buffer management, while CPU resources are utilized effectively through parallel processing and smart algorithms. The plugin delivers **sub-millisecond processing** with linear scaling, supported by efficient thread pooling and I/O optimization. Through careful optimization at every level, from memory operations to concurrent processing, it provides robust security with minimal performance impact. The architecture handles streaming data and high-concurrency scenarios efficiently, making it ideal for organizations processing sensitive data at scale while meeting strict security and performance requirements.
