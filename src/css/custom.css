@@ -27,8 +27,6 @@
   --ifm-menu-color: #334155;
   --ifm-navbar-link-color: #334155;
   --ifm-navbar-link-hover-color: #020817;
-  --ifm-link-decoration: none;
-  --ifm-link-hover-decoration: underline;
 
   /* Border colors */
   --ifm-navbar-shadow: none;
@@ -72,16 +70,6 @@
 .hero p {
   @apply text-xl text-[#E2E8F0] font-medium;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-a {
-  color: var(--ifm-link-color) !important;
-  text-decoration: var(--ifm-link-decoration) !important;
-}
-
-a:hover {
-  color: var(--ifm-link-hover-color) !important;
-  text-decoration: var(--ifm-link-hover-decoration) !important;
 }
 
 /* DocSearch Overrides */
