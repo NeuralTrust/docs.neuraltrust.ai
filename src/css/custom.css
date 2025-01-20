@@ -27,6 +27,8 @@
   --ifm-menu-color: #334155;
   --ifm-navbar-link-color: #334155;
   --ifm-navbar-link-hover-color: #020817;
+  --ifm-link-decoration: none;
+  --ifm-link-hover-decoration: underline;
 
   /* Border colors */
   --ifm-navbar-shadow: none;
@@ -73,13 +75,13 @@
 }
 
 a {
-  color: var(--ifm-link-color);
-  text-decoration: var(--ifm-link-decoration);
+  color: var(--ifm-link-color) !important;
+  text-decoration: var(--ifm-link-decoration) !important;
 }
 
 a:hover {
-  color: var(--ifm-link-hover-color);
-  text-decoration: var(--ifm-link-hover-decoration);
+  color: var(--ifm-link-hover-color) !important;
+  text-decoration: var(--ifm-link-hover-decoration) !important;
 }
 
 /* DocSearch Overrides */
