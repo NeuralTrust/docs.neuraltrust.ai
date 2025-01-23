@@ -7,56 +7,28 @@ sidebar_position: 6
 ## Overview
 The **Toxicity Detection** plugin is a sophisticated content moderation layer designed to analyze and filter potentially harmful or inappropriate content in API requests. It leverages OpenAI's moderation API to detect various categories of toxic content and can be configured to take specific actions when such content is detected.
 
+The plugin features a **multi-category detection system** that can identify different types of inappropriate content, including:
 
+| Category Group | List of Categories |
+|----------|-------------|
+| Sexual Content | • sexual  <br/>• sexual/minors <br/>• harassment <br/>• harassment/threatening |
+| Violence |  • violence <br/>• violence/graphic |
+| Hate Speech | • hate <br/>• hate/threatening |
+| Self-Harm | • self-harm <br/>• self-harm/intent <br/>• self-harm/instructions |
+| Illicit | • illicit <br/>• illicit/violent |
 
-**Categories available in the [OpenAI Moderation API](https://platform.openai.com/docs/guides/moderation) for content analysis:**
-
-| Sexual Content/Harassment | Violence              | Hate Speech         |
-|----------------|-----------------------|--------------------   |
-| sexual         | violence              | hate   |
-| sexual/minors  | self-harm             | hate/threatening |
-| harassment     | self-harm/intent      |  illicit|
-| harassment/threatening      | violence/graphic      | -  |
-|   -     | self-harm/instructions|  -|
-| -     | illicit/violent      | -  |
 
 Each category can be individually configured with specific thresholds, allowing for fine-grained control over content moderation policies.
 
 For detailed information about each category and how the OpenAI Moderation API works, please refer to the [OpenAI Moderation Guide](https://platform.openai.com/docs/guides/moderation).
 
 ## Features
-1. **Multi-Category Detection**:
-
-   • Sexual content detection
-
-   • Violence detection
-
-   • Hate speech detection
-
-   • Customizable thresholds per category
-
-2. **Flexible Actions**:
-
-   • Configurable response actions
-
-   • Custom error messages
-
-   • Block or allow decisions
-
-3. **OpenAI Integration**:
-
-   • Powered by OpenAI's moderation API
-
-   • Real-time content analysis
-
-   • High accuracy detection
-
-4. **Request Stage Processing**:
-   • Pre-request content analysis
-
-   • Configurable priority in plugin chain
-
-   • Non-blocking architecture
+| Feature | Capabilities |
+|---------|-------------|
+| Multi-Category Detection | • Comprehensive content analysis across multiple categories (sexual, violence, hate, etc.)  <br/>• Real-time detection with configurable sensitivity levels  <br/>• Customizable thresholds per category |
+| Flexible Actions | • Configurable response actions  <br/>• Custom error messages  <br/>• Block or allow decisions |
+| OpenAI Integration | • Powered by OpenAI's moderation API  <br/>• Real-time content analysis  <br/>• High accuracy detection |
+| Request Stage Processing | • Pre-request content analysis  <br/>• Configurable priority in plugin chain  <br/>• Non-blocking architecture |
 
 ## How It Works
 
@@ -176,8 +148,7 @@ Extended configuration with custom thresholds and actions:
         "openai_key": "${OPENAI_API_KEY}",
         "actions": {
             "type": "block",
-            "message": "Your message was blocked due to inappropriate content. Please revise and try again.",
-            "log_level": "warning"
+            "message": "Your message was blocked due to inappropriate content. Please revise and try again."
         },
         "categories": [
             "sexual",
@@ -214,8 +185,7 @@ When you need to specifically focus on preventing violent content while allowing
         "openai_key": "${OPENAI_API_KEY}",
         "actions": {
             "type": "block",
-            "message": "Your message was blocked because it contains violent content. Please revise your message to avoid violent language.",
-            "log_level": "warning"
+            "message": "Your message was blocked because it contains violent content. Please revise your message to avoid violent language."
         },
         "categories": [
             "violence"
