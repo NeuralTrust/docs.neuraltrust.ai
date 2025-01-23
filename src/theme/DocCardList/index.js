@@ -15,13 +15,14 @@ function DocCardListForCurrentSidebarCategory({ className }) {
 
 function HeroSection({ type }) {
   const images = {
-    'ai-gateway': '/img/ai-gateway-product.svg',
-    'red-teaming': '/img/red-teaming-product.svg',
-    'observability': '/img/observability-product.svg'
+    'trustgate': './img/trustgate-product.svg',
+    'trusttest': './img/trusttest-product.svg',
+    'trustlens': './img/trustlens-product.svg'
   };
+  console.log(type);
+  console.log(images);
 
   if (!images[type]) return null;
-
   return (
     <div className="relative w-full mb-12">
       <div className="relative p-4 rounded-xl bg-[#141420] overflow-hidden">
@@ -47,12 +48,12 @@ function PageTypeDetector({ children }) {
         const path = window.location.pathname;
         let type = null;
         
-        if (path.includes('/category/ai-gateway')) {
-          type = 'ai-gateway';
-        } else if (path.includes('/category/red-teaming')) {
-          type = 'red-teaming';
-        } else if (path.includes('/category/observability')) {
-          type = 'observability';
+        if (path.includes('/category/trustgate')) {
+          type = 'trustgate';
+        } else if (path.includes('/category/trusttest')) {
+          type = 'trusttest';
+        } else if (path.includes('/category/trustlens')) {
+          type = 'trustlens';
         }
 
         return children(type);
@@ -67,7 +68,6 @@ export default function DocCardList(props) {
     return <DocCardListForCurrentSidebarCategory {...props} />;
   }
   const filteredItems = filterDocCardListItems(items);
-
   return (
     <section className={clsx('container mx-auto px-4', className)}>
       <PageTypeDetector>
