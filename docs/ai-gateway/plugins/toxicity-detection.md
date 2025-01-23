@@ -312,8 +312,8 @@ curl -X POST "http://localhost:8081/post" \
 
 ## Performance Considerations
 
-The Toxicity Detection plugin employs **asynchronous** processing to ensure optimal performance during content analysis. By running moderation checks in parallel with other operations, the plugin minimizes the impact on request processing times. This design allows for efficient handling of multiple requests while maintaining **responsiveness** in high-traffic scenarios.
+The Toxicity Detection plugin uses a straightforward **HTTP client** implementation to interact with OpenAI's moderation API. The plugin processes requests sequentially, making direct API calls to OpenAI's moderation endpoint for each incoming request. The implementation includes comprehensive **logging** at various levels (debug, info, error) to help track and diagnose the plugin's behavior.
 
-To optimize resource utilization, the plugin implements intelligent **caching** mechanisms and **rate limiting**. The caching system stores recent moderation results to prevent redundant API calls for similar content, while rate limiting ensures balanced usage of the OpenAI API. These optimizations help maintain consistent performance while managing costs and resource consumption.
+The plugin performs efficient **JSON processing** by unmarshaling only the required fields from the request and response bodies. It concatenates multiple messages with newlines when needed and processes them in a single API call to OpenAI, which helps reduce the number of API requests when handling multi-message content.
 
-The plugin's architecture is designed with **scalability** in mind, typically adding only 100-300ms to request processing time. This minimal latency is achieved through efficient memory management and optimized threshold configurations. The system's **throughput** remains stable even under heavy loads, making it suitable for production environments where performance is critical. 
+The plugin's architecture is designed to be **lightweight**, with minimal memory overhead as it doesn't maintain any state between requests. However, be aware that each request will incur the latency of an HTTP call to OpenAI's API. Consider this when planning your rate limits and timeout configurations, as the total processing time will largely depend on OpenAI's API response time. 
