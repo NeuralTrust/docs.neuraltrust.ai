@@ -2,12 +2,12 @@
 sidebar_position: 6
 ---
 
-# Toxicity Detection
+# OpenAI Toxicity Detection
 
 ## Overview
-The **Toxicity Detection** plugin is a sophisticated content moderation layer designed to analyze and filter potentially harmful or inappropriate content in API requests. It leverages OpenAI's moderation API to detect various categories of toxic content and can be configured to take specific actions when such content is detected.
+The **Toxicity Detection** plugin is a sophisticated content moderation layer designed to analyze and filter potentially harmful or inappropriate content in API requests. It leverages OpenAI's moderation API to detect various categories of toxic content in both text and images. The plugin can process text content directly and analyze images through URLs, providing comprehensive content moderation across different media types. It can be configured to take specific actions when such content is detected.
 
-The plugin features a **multi-category detection system** that can identify different types of inappropriate content, including:
+The plugin features a **multi-category detection system** that can identify different types of inappropriate content across both text and images, including:
 
 | Category Group | List of Categories |
 |----------|-------------|
@@ -33,15 +33,37 @@ For detailed information about each category and how the OpenAI Moderation API w
 ## How It Works
 
 ### Content Analysis
-The plugin analyzes incoming requests by examining the content for various types of toxic or inappropriate material. It processes the content through OpenAI's moderation API and evaluates the results against configured thresholds:
+The plugin analyzes incoming requests by examining both text and image content for various types of toxic or inappropriate material. For text content, it processes the content directly through OpenAI's moderation API. For images, it can analyze image URLs provided in the request. The results are evaluated against configured thresholds:
 
 ```json
-// Example Request Content
+// Example Request Content - Text
 {
     "messages": [
         {
             "role": "user",
-            "content": "Let's discuss this topic respectfully"
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Let's discuss this topic respectfully"
+                }
+            ]
+        }
+    ]
+}
+
+// Example Request Content - Image
+{
+    "messages": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://example.com/image.jpg"
+                    }
+                }
+            ]
         }
     ]
 }
