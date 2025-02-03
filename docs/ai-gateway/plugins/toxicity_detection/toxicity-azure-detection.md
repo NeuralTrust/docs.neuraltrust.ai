@@ -17,33 +17,51 @@ The plugin features a sophisticated multi-category detection system that can ide
 | Sexual | Sexually explicit or inappropriate content |
 
 Each category can be individually configured with specific severity thresholds, allowing for fine-grained control over content moderation policies. The plugin supports two output types for severity levels:
-- **FourSeverityLevels**: 
 
-  • 0: Safe content with no concerns
 
-  • 2: Low risk content with minor concerns
 
-  • 4: Medium risk content requiring attention
+<table>
+  <tr>
+    <th>Severity Level Description</th>
+    <th>FourSeverityLevels</th>
+    <th>EightSeverityLevels</th>
+  </tr>
+  <tr>
+    <td rowspan="2">Safety/Very Low Risk Content</td>
+    <td rowspan="2">0</td>
+    <td rowspan="1"> 0 </td>
+  </tr>
+  <tr>
+    <td>1</td>
+  </tr>
+    <tr>
+    <td rowspan="2">Low Risk Content</td>
+    <td rowspan="2">2</td>
+    <td rowspan="1"> 2 </td>
+  </tr>
+  <tr>
+    <td>3</td>
+  </tr>
 
-  • 6: High risk content requiring immediate action
+  <tr>
+    <td rowspan="2">Medium Risk Content</td>
+    <td rowspan="2">4</td>
+    <td rowspan="1"> 4 </td>
+  </tr>
+  <tr>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td rowspan="2">High Risk Content</td>
+    <td rowspan="2">6</td>
+    <td rowspan="1"> 6 </td>
+  </tr>
+  <tr>
+    <td>7</td>
+  </tr>
+  
+</table>
 
-- **EightSeverityLevels**:
-
-  • 0: Safe content with no concerns
-
-  • 1: Very low risk content
-
-  • 2: Low risk content
-
-  • 3: Low-medium risk content
-
-  • 4: Medium risk content
-
-  • 5: Medium-high risk content
-
-  • 6: High risk content
-
-  • 7: Very high risk content requiring immediate action
 
 ## Features
 

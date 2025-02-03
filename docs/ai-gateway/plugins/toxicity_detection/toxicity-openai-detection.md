@@ -220,10 +220,14 @@ When you need to specifically focus on preventing violent content while allowing
 ```
 
 This configuration:
-• Focuses solely on violence detection
-• Sets a moderate threshold of 0.5 for violent content
-• Provides a specific error message for violent content
-• Enables warning-level logging for monitoring
+
+• Focuses solely on **violence detection**
+
+• Sets a moderate threshold of **0.5** for violent content
+
+• Provides a **specific error message** for violent content
+
+• Enables warning-level **logging** for **monitoring**
 
 ## Best Practices
 
