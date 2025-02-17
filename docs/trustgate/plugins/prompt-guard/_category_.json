@@ -1,0 +1,9 @@
+{
+  "label": "Prompt Guard",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Protect your LLM workloads from harmful prompts with Prompt Guard.",
+    "slug": "/trustgate/plugins/prompt-guard"
+  }
+}

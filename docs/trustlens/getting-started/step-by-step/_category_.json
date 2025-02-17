@@ -3,6 +3,7 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Follow this step-by-step guides to get started with LLMs Observability."
+    "description": "Follow this step-by-step guides to get started with LLMs Observability.",
+    "slug": "/trustlens/getting-started/step-by-step"
   }
 }

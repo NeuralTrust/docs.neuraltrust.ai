@@ -3,6 +3,7 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Follow this step-by-step guide to get started with LLMs Red Teaming."
+    "description": "Follow this step-by-step guide to get started with LLMs Red Teaming.",
+    "slug": "/trusttest/getting-started/step-by-step"
   }
 }

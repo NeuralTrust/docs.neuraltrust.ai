@@ -9,7 +9,7 @@ sidebar_label: "Overview"
 
 ## What is Trust Gate?
 
-**TrustGate** functions as a specialized system akin to an API Gateway, but it’s purpose-built for managing Agents and LLM workloads. While traditional API Gateways serve as intermediaries between clients and backend services, handling key operational tasks, AI Gateways take on these responsibilities with a focus on AI-specific needs:
+**TrustGate** functions as a specialized system akin to an API Gateway, but it's purpose-built for managing Agents and LLM workloads. While traditional API Gateways serve as intermediaries between clients and backend services, handling key operational tasks, AI Gateways take on these responsibilities with a focus on AI-specific needs:
 
 ### Key Features of an AI Gateway:
 
@@ -21,7 +21,7 @@ sidebar_label: "Overview"
 - **Request and Response Transformation:** Modifies data formats, adds or removes fields, and optimizes communication between systems.
 
 :::tip
-Set up your AI Gateway in minutes with our [step-by-step guide](/category/step-by-step-guide)
+Set up your AI Gateway in minutes with our [step-by-step guide](/trustgate/getting-started/step-by-step)
 :::
 
 ## Architecture Overview

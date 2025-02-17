@@ -1,0 +1,9 @@
+{
+  "label": "Plugins",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Explore available plugins and extensions for enhancing your AI Gateway functionality",
+    "slug": "/trustgate/plugins"
+  }
+}

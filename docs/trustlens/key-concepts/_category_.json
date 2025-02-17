@@ -3,6 +3,7 @@
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "Learn about the key concepts and components for LLMs Observability."
+    "description": "Learn about the key concepts and components for LLMs Observability.",
+    "slug": "/trustlens/key-concepts"
   }
 }

@@ -3,6 +3,7 @@
   "position": 7,
   "link": {
     "type": "generated-index",
-    "description": "Explore our Software Development Kit (SDK) designed to help you integrate NeuralTrust's AI security features into your applications."
+    "description": "Explore our Software Development Kit (SDK) designed to help you integrate NeuralTrust's AI security features into your applications.",
+    "slug": "/sdks"
   }
 }

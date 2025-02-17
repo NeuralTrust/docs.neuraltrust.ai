@@ -3,6 +3,7 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "This section contains the complete API reference documentation for the NeuralTrust Python SDK. Here you'll find detailed information about all available classes, methods, and parameters that you can use to integrate NeuralTrust's capabilities into your Python applications."
+    "description": "This section contains the complete API reference documentation for the NeuralTrust Python SDK. Here you'll find detailed information about all available classes, methods, and parameters that you can use to integrate NeuralTrust's capabilities into your Python applications.",
+    "slug": "/sdks/python-sdk/api-reference"
   }
 }

@@ -1,0 +1,9 @@
+{
+  "label": "API",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "API Reference for TrustGate Admin API",
+    "slug": "/trustgate/api"
+  }
+}

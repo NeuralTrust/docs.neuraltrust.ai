@@ -3,6 +3,7 @@
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "Learn about the key concepts and components for LLMs Red Teaming."
+    "description": "Learn about the key concepts and components for LLMs Red Teaming.",
+    "slug": "/trusttest/key-concepts"
   }
 }

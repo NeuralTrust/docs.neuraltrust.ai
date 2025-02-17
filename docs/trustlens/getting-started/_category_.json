@@ -3,6 +3,7 @@
   "position": 1,
   "link": {
     "type": "generated-index",
-    "description": "Follow this step-by-step guides to get started with LLMs Observability. Learn how to track, monitor, and analyze your LLM applications."
+    "description": "Follow this step-by-step guides to get started with LLMs Observability. Learn how to track, monitor, and analyze your LLM applications.",
+    "slug": "/trustlens/getting-started"
   }
 }

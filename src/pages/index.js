@@ -9,31 +9,41 @@ const cards = [
   {
     title: ['Trust', 'Gate'],
     description: 'Secure and monitor your AI model interactions through our enterprise-grade gateway',
-    link: '/category/ai-gateway',
+    link: '/trustgate',
     links: [
-      { title: 'TrustGate Overview', url: '/category/trustgate' },
-      { title: 'Key Concepts', url: '/category/key-concepts' },
-      { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide' },
+      { title: 'TrustGate Overview', url: '/trustgate' },
+      { title: 'Key Concepts', url: '/trustgate/concepts' },
+      { title: 'Step-by-Step Guide', url: '/trustgate/getting-started/step-by-step' },
     ]
   },
   {
     title: ['Trust', 'Test'],
     description: 'Test and evaluate your AI systems for security vulnerabilities',
-    link: '/category/trusttest',
+    link: '/trusttest',
     links: [
-      { title: 'TrustTest Overview', url: '/category/trusttest' },
-      { title: 'Key Concepts', url: '/category/key-concepts' },
-      { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide-1' },
+      { title: 'TrustTest Overview', url: '/trusttest' },
+      { title: 'Key Concepts', url: '/trusttest/key-concepts' },
+      { title: 'Step-by-Step Guide', url: '/trusttest/getting-started/step-by-step' },
     ]
   },
   {
     title: ['Trust', 'Lens'],
     description: 'Monitor, track, and analyze your AI system\'s behavior and performance in real-time',
-    link: '/category/trustlens',
+    link: '/trustlens',
     links: [
-      { title: 'TrustLens Overview', url: '/category/trustlens' },
-      { title: 'Key Concepts', url: '/category/key-concepts-2' },
-      { title: 'Step-by-Step Guide', url: '/category/step-by-step-guide-2' },
+      { title: 'TrustLens Overview', url: '/trustlens' },
+      { title: 'Key Concepts', url: '/trustlens/key-concepts' },
+      { title: 'Step-by-Step Guide', url: '/trustlens/getting-started/step-by-step' },
+    ]
+  },
+  {
+    title: ['Neural', 'SDKs'],
+    description: 'Integrate NeuralTrust\'s AI security features into your applications',
+    link: '/sdks',
+    links: [
+      { title: 'SDKs Overview', url: '/sdks' },
+      { title: 'Python SDK', url: '/sdks/python-sdk' },
+      { title: 'API Reference', url: '/sdks/python-sdk/api-reference' },
     ]
   }
 ];
