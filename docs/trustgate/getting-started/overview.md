@@ -15,10 +15,10 @@ sidebar_label: "Overview"
 
 - **Routing:** Directs requests to the appropriate service or model.
 - **Load Balancing:** Ensures even traffic distribution across models or services.
+- **Fallback Mechanisms:** Provides a way to fall back to a different model or service if the primary one is unavailable.
 - **Authentication and Authorization:** Validates access to ensure secure operations.
-- **Rate Limiting:** Controls request volumes to prevent overloading.
-- **Token Rate Limiting:** Controls the rate at which tokens are consumed.
-- **Request and Response Transformation:** Modifies data formats, adds or removes fields, and optimizes communication between systems.
+- **Rate Limiting:** Controls request volumes to prevent overloading, at both the request and token level.
+- **Security:** Protects against injection attacks, data leaks, and other security threats.
 
 :::tip
 Set up your AI Gateway in minutes with our [step-by-step guide](/trustgate/getting-started/step-by-step)
@@ -49,27 +49,51 @@ The AI Gateway architecture consists of several key components working together 
 2. **Data Plane**
    - Proxy API: Handles real-time request processing
    - Plugin System: Executes custom logic and transformations
-   - Rate Limiter: Controls request volumes and quotas
-   - Token Rate Limiter: Controls the rate at which tokens are consumed
-3. **Integration Points**
-   - Load Balancer: Distributes incoming traffic with configurable strategies
-   - AI Model Providers: Connects to various LLM services
-   - Client Applications: Various systems consuming AI services
 
-## Why use an AI Gateway?
+## Why use TrustGate?
 
-When working with AI Agents, additional considerations come into play. This is where an AI Gateway excels:
+TrustGate provides specialized security and management features designed specifically for AI workloads:
 
-1. **AI Model Routing:** Instead of sending requests to microservices, the AI Gateway helps direct requests to the most suitable AI model (e.g., choosing between a fast model or a more accurate model, or automatically picking a specialized LLM for a certain use case).
+1. **Advanced Security Protection**
+   - Injection Protection: Detects and blocks various injection attacks including SQL, NoSQL, command injection
+   - Code Sanitation: Prevents malicious code execution across multiple programming languages
+   - Request Size Limiting: Protects against oversized requests and DoS attacks
+   - Content Filtering: Blocks harmful or inappropriate content
 
-2. **Contextual Pre- and Post-Processing:** The AI Gateway can handle tasks such as prompt formatting before a request hits the model (pre-processing), and sanitization or compliance checks after the model generates a response (post-processing). 
+2. **Sophisticated Rate Limiting**
+   - Request-based Rate Limiting: Controls request volumes at IP, user, and global levels
+   - Token Bucket Algorithm: Manages token consumption for AI model interactions
+   - Burst Handling: Allows temporary traffic spikes while maintaining overall limits
+   - Distributed Rate Limiting: Uses Redis for reliable rate limiting across multiple instances
 
-3. **Performance Observability:** Much like an API Gateway, the AI Gateway provides real-time metrics—but focuses on AI-specific patterns. It captures performance data such as token usage and response latencies.
+3. **Intelligent Load Balancing**
+   - Multiple Load Balancing Strategies
+   - Automatic Failover
+   - Health Checking
+   - Dynamic Backend Selection
 
-4. **Security, Compliance, and Governance:** Especially for large language models, ensuring compliance with data protection and usage policies is key. An AI Gateway can integrate with policy engines tools to proactively guard against misuse or data leaks.
+4. **AI-specific Features**
+   - Prompt Injection Protection
+   - Token Usage Control
+   - Model-specific Routing
+   - Response Validation
+   - Content Moderation
 
-5. **Scalability for AI Workloads:** AI workloads can be extremely large and unpredictable in size. The AI Gateway helps orchestrate resources dynamically, scaling up multiple instances of a model or switching to a larger model tier when needed.
+5. **Enterprise Integration**
+   - Kubernetes Support
+   - Docker Deployment
+   - High Availability Setup
+   - Horizontal Scaling
+   - Configuration Management
 
-In short, if an API Gateway is the "traffic cop" for ordinary web services, an AI Gateway is the "AI traffic dispatcher" that ensures your AI models are accessible, compliant, and performant. This allows you to build AI-powered applications with the same control and confidence you have for any well-managed API environment.
+TrustGate acts as a comprehensive security and management layer for your AI infrastructure, allowing you to:
+- Protect against security threats
+- Control resource usage
+- Monitor performance
+- Manage access
+- Scale effectively
+- Ensure compliance
+
+This enables organizations to deploy AI applications with confidence, knowing they have the necessary controls and protections in place.
 
 

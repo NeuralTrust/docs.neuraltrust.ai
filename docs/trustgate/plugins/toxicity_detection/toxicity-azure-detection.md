@@ -275,17 +275,6 @@ To optimize the plugin's performance:
 
 • **Error Handling**: Implement appropriate error handling in your application. Set up retry mechanisms for transient failures and graceful degradation. Provide meaningful error messages to end users while logging detailed information for debugging.
 
-### Monitoring and Maintenance
-For effective operation:
-
-• **Log Monitoring**: Regular review of plugin logs for performance and issues. Set up automated alerts for critical errors and performance degradation. Maintain log retention policies aligned with your compliance requirements.
-
-• **Threshold Adjustment**: Periodic review and adjustment of severity thresholds. Analyze false positive/negative rates and adjust thresholds accordingly. Keep detailed records of threshold changes and their impact.
-
-• **API Limits**: Monitor Azure API usage and limits. Set up usage alerts before reaching API quotas. Implement rate limiting and queueing mechanisms for high-traffic scenarios.
-
-• **Response Times**: Track and optimize response times for different content types. Set up performance benchmarks and monitor trends over time. Implement caching strategies where appropriate for frequently analyzed content.
-
 ## Error Handling
 The plugin provides detailed error information in case of issues:
 

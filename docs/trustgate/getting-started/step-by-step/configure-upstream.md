@@ -5,12 +5,12 @@ title: Configure an Upstream
 
 # Configure an Upstream
 
-This guide will walk you through configuring your first upstream in AI Gateway. An upstream defines how requests are distributed across multiple AI providers and models.
+This guide will walk you through configuring your first upstream in TrustGate. An upstream defines how requests are distributed across multiple AI providers and models, or even other backends.
 
 ## Prerequisites
 
 Before you begin, make sure you have:
-- AI Gateway installed and running
+- TrustGate installed and running
 - Access to the Admin API
 - API keys for your AI providers (e.g., OpenAI, Anthropic)
 
@@ -78,6 +78,8 @@ curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/upstreams \
    - `priority`: Failover priority (lower numbers = higher priority)
    - `default_model`: Default model to use when none specified
    - `models`: List of supported models for this provider
+   - `headers`: Additional required headers
+   - `credentials`: Provider API keys
 
 2. **Load Balancing Strategy**
    - `algorithm`: Determines how requests are distributed

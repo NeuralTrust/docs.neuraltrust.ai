@@ -126,10 +126,9 @@ Key configuration options:
 
    **Common Use Cases:**
    - Rate Limiting: Control request volumes
-   - Authentication: Verify request credentials
-   - Logging: Track all gateway traffic
-   - Monitoring: Collect metrics for all requests
-   - Security: Apply security policies uniformly
+   - Request Size Limiting: Control request sizes
+   - Injection Protection: Protect against injections
+   - Code Sanitation: Cleanse code
 
 ## Test Your Gateway
 

@@ -16,22 +16,35 @@ Load balancing helps distribute AI model requests across multiple instances for 
 curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/upstreams \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "round-robin-upstream",
+    "name": "ai-providers-upstream",
     "algorithm": "round-robin",
     "targets": [
       {
-        "host": "api.openai.com",
-        "port": 443,
-        "protocol": "https",
+        "path": "/v1/chat/completions",
+        "provider": "openai",
         "weight": 50,
-        "priority": 1
+        "priority": 1,
+        "default_model": "gpt-4o-mini",
+        "models": ["gpt-3.5-turbo", "gpt-4", "gpt-4o-mini"],
+        "credentials": {
+          "header_name": "Authorization",
+          "header_value": "Bearer your-openai-key"
+        }
       },
       {
-        "host": "api.anthropic.com",
-        "port": 443,
-        "protocol": "https",
+        "path": "/v1/messages",
+        "provider": "anthropic",
         "weight": 50,
-        "priority": 1
+        "priority": 1,
+        "default_model": "claude-3-5-sonnet-20241022",
+        "models": ["claude-3-5-sonnet-20241022"],
+        "headers": {
+          "anthropic-version": "2023-06-01"
+        },
+        "credentials": {
+          "header_name": "x-api-key",
+          "header_value": "your-anthropic-key"
+        }
       }
     ],
     "health_checks": {
@@ -57,14 +70,26 @@ curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/upstreams \
         "port": 443,
         "protocol": "https",
         "weight": 60,    # 60% of traffic
-        "priority": 1
+        "priority": 1,
+        "default_model": "gpt-4o-mini",
+        "models": ["gpt-3.5-turbo", "gpt-4", "gpt-4o-mini"],
+        "credentials": {
+          "header_name": "Authorization",
+          "header_value": "Bearer your-openai-key"
+        }
       },
       {
         "host": "api.anthropic.com",
         "port": 443,
         "protocol": "https",
         "weight": 40,    # 40% of traffic
-        "priority": 1
+        "priority": 1,
+        "default_model": "claude-3-5-sonnet-20241022",
+        "models": ["claude-3-5-sonnet-20241022"],
+        "credentials": {
+          "header_name": "Authorization",
+          "header_value": "Bearer your-anthropic-key"
+        }
       }
     ],
     "health_checks": {
@@ -110,6 +135,8 @@ curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/rules \
 
 - **Round Robin**: Distributes requests evenly across all targets
 - **Weighted Round Robin**: Distributes traffic based on target weights
+- **Least Connections**: Selects the target with the fewest active connections
+- **Random**: Selects a target randomly
 
 ### Health Checks
 
@@ -131,10 +158,11 @@ Each target can be configured with:
 - **Priority**: Determines target selection order (lower numbers = higher priority)
 - **Protocol**: Supports HTTP/HTTPS
 - **Host/Port**: Target service endpoint
+- **Path**: Target service path
 
 ### Payload Transformation
 
-When using multiple providers in an upstream, you need to include fields that cover all providers in your request. The gateway will automatically transform the request for the selected provider.
+When using multiple AI providers in an upstream, you need to include fields that cover all providers in your request. The gateway will automatically transform the request for the selected provider.
 
 For example, when load balancing between OpenAI and Anthropic:
 

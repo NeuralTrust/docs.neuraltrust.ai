@@ -29,7 +29,7 @@ For a simple Docker container setup:
 docker pull neuraltrust/trustgate
 
 # Run the container
-docker run -d --name ai-gateway \
+docker run -d --name trustgate \
   -p 8080:8080 \  # Admin API
   -p 8081:8081 \  # Proxy API
   neuraltrust/trustgate
@@ -37,17 +37,26 @@ docker run -d --name ai-gateway \
 
 ## Kubernetes Installation
 
-For production deployments, we recommend using Kubernetes:
+For production deployments, we recommend using Kubernetes with our official Helm charts:
 
-1. Apply the storage configuration:
 ```bash
-kubectl apply -f k8s/storage.yaml
+# Add the TrustGate Helm repository
+git clone https://github.com/NeuralTrust/trustgate-helm-charts.git
+cd trustgate-helm-charts
+
+# Run the deployment script for a guided installation
+./deploy-shared.sh
 ```
 
-2. Deploy the gateway:
-```bash
-kubectl apply -f k8s/deployment.yaml
-```
+The Helm charts repository provides:
+- Production-grade deployment configurations
+- High availability setup
+- Built-in monitoring and scaling
+- Automated TLS certificate management
+- Comprehensive documentation
+
+For detailed installation instructions and configuration options, please visit:
+[TrustGate Helm Charts Repository](https://github.com/NeuralTrust/trustgate-helm-charts)
 
 ## Local Development Setup
 

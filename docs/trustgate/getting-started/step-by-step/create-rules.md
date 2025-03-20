@@ -5,12 +5,12 @@ title: Create Rules
 
 # Create Rules
 
-This guide will walk you through creating rules in AI Gateway. Rules determine how incoming requests are matched and routed to your services.
+This guide will walk you through creating rules in TrustGate. Rules determine how incoming requests are matched and routed to your services.
 
 ## Prerequisites
 
 Before you begin, make sure you have:
-- AI Gateway installed and running
+- TrustGate installed and running
 - A service configured (see [Add a Service](./add-service.md))
 - Access to the Admin API
 
@@ -56,7 +56,7 @@ curl -X POST http://localhost:8080/api/v1/gateways/{gateway-id}/rules \
   }'
 ```
 
-## Step 4: Create a Rule with token rate limiting enable at rule level:
+## Step 4: Create a Rule with token rate limiting enabled at rule level:
 
 ```bash
 # Token rate limiting

@@ -4,23 +4,187 @@ sidebar_position: 6
 
 # OpenAI Toxicity Detection
 
-## Overview
-The **Toxicity Detection** plugin is a sophisticated content moderation layer designed to analyze and filter potentially harmful or inappropriate content in API requests. It leverages OpenAI's moderation API to detect various categories of toxic content in both text and images. The plugin can process text content directly and analyze images through URLs, providing comprehensive content moderation across different media types. It can be configured to take specific actions when such content is detected.
+## Technical Overview
+The OpenAI Toxicity Detection plugin implements real-time content moderation using OpenAI's moderation API. It processes both text and image content through a multi-stage analysis pipeline.
 
-The plugin features a **multi-category detection system** that can identify different types of inappropriate content across both text and images, including:
+### Core Components
 
-| Category Group | List of Categories |
-|----------|-------------|
-| Sexual Content | • sexual  <br/>• sexual/minors <br/>• harassment <br/>• harassment/threatening |
-| Violence |  • violence <br/>• violence/graphic |
-| Hate Speech | • hate <br/>• hate/threatening |
-| Self-Harm | • self-harm <br/>• self-harm/intent <br/>• self-harm/instructions |
-| Illicit | • illicit <br/>• illicit/violent |
+1. **Content Extractor**
+   - Processes multiple message types
+   - Handles text and image URL content
+   - Supports structured message formats
+   - Maintains content context
 
+2. **Moderation Engine**
+   - Real-time API integration
+   - Batch processing capability
+   - Configurable thresholds
+   - Category-specific scoring
 
-Each category can be individually configured with specific thresholds, allowing for fine-grained control over content moderation policies.
+3. **Response Analyzer**
+   - Score evaluation
+   - Threshold comparison
+   - Category aggregation
+   - Detailed violation reporting
 
-For detailed information about each category and how the OpenAI Moderation API works, please refer to the [OpenAI Moderation Guide](https://platform.openai.com/docs/guides/moderation).
+## Implementation Details
+
+### Message Processing
+The plugin processes messages in the following format:
+```json
+{
+    "messages": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "message content"
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://example.com/image.jpg"
+                    }
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Content Types
+1. **Text Content**
+   - Direct text analysis
+   - Multi-message support
+   - UTF-8 encoding
+   - Length validation
+
+2. **Image Content**
+   - URL-based processing
+   - Image format validation
+   - Size restrictions
+   - Accessibility checks
+
+### Moderation Categories
+
+The plugin supports comprehensive content analysis across multiple categories:
+
+| Category | Description | Implementation Details |
+|----------|-------------|------------------------|
+| Sexual | Sexual content detection | - Base category scoring<br>- Sub-category detection<br>- Context analysis |
+| Violence | Violence and threats | - Direct violence detection<br>- Graphic content analysis<br>- Threat assessment |
+| Hate | Hate speech and bias | - Bias detection<br>- Discriminatory content<br>- Hate speech patterns |
+| Self-harm | Self-harm content | - Intent detection<br>- Instruction filtering<br>- Risk assessment |
+| Harassment | Harassment detection | - Personal attacks<br>- Threatening behavior<br>- Bullying patterns |
+| Illicit | Illegal activity | - Criminal content<br>- Prohibited activities<br>- Legal compliance |
+
+### API Integration
+
+The plugin integrates with OpenAI's moderation API:
+
+1. **Request Formation**
+```json
+{
+    "input": [
+        {
+            "type": "text",
+            "text": "content to moderate"
+        }
+    ],
+    "model": "omni-moderation-latest"
+}
+```
+
+2. **Response Processing**
+```json
+{
+    "id": "modr-123",
+    "model": "omni-moderation-latest",
+    "results": [
+        {
+            "flagged": true,
+            "categories": {
+                "sexual": false,
+                "violence": true
+            },
+            "category_scores": {
+                "sexual": 0.01,
+                "violence": 0.92
+            }
+        }
+    ]
+}
+```
+
+### Error Handling
+
+The plugin implements comprehensive error handling:
+
+1. **Configuration Validation**
+   - API key verification
+   - Action type validation
+   - Threshold validation
+   - Category validation
+
+2. **Runtime Error Handling**
+   - API connection errors
+   - Response parsing errors
+   - Timeout handling
+   - Rate limit management
+
+3. **Content Processing Errors**
+   - Invalid content format
+   - Missing required fields
+   - Size limit violations
+   - Encoding issues
+
+### Performance Optimizations
+
+1. **Request Processing**
+   - Batch message processing
+   - Efficient JSON parsing
+   - Minimal memory allocation
+   - Request pooling
+
+2. **Response Handling**
+   - Streaming response processing
+   - Efficient score calculation
+   - Early termination
+   - Result caching
+
+## Configuration Reference
+
+### Required Settings
+```json
+{
+    "openai_key": "YOUR_API_KEY",
+    "actions": {
+        "type": "block",
+        "message": "Content violation detected"
+    },
+    "categories": ["sexual", "violence", "hate"],
+    "thresholds": {
+        "sexual": 0.3,
+        "violence": 0.5,
+        "hate": 0.4
+    }
+}
+```
+
+### Advanced Options
+- Custom error messages
+- Category-specific actions
+- Threshold adjustments
+- Logging configuration
+
+## Monitoring and Metrics
+
+The plugin provides detailed monitoring capabilities:
+- Request/response logging
+- Category score tracking
+- Error rate monitoring
+- Performance metrics
 
 ## Features
 | Feature | Capabilities |
@@ -45,23 +209,6 @@ The plugin analyzes incoming requests by examining both text and image content f
                 {
                     "type": "text",
                     "text": "Let's discuss this topic respectfully"
-                }
-            ]
-        }
-    ]
-}
-
-// Example Request Content - Image
-{
-    "messages": [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "https://example.com/image.jpg"
-                    }
                 }
             ]
         }
@@ -157,67 +304,6 @@ Key components of the basic configuration:
 | `violence` | Violence detection | 0.5 | Higher values = more permissive |
 | `hate` | Hate speech detection | 0.4 | Balance based on needs |
 
-### Advanced Configuration
-Extended configuration with custom thresholds and actions:
-
-```json
-{
-    "name": "toxicity_detection",
-    "enabled": true,
-    "stage": "pre_request",
-    "priority": 1,
-    "settings": {
-        "openai_key": "${OPENAI_API_KEY}",
-        "actions": {
-            "type": "block",
-            "message": "Your message was blocked due to inappropriate content. Please revise and try again."
-        },
-        "categories": [
-            "sexual",
-            "violence",
-            "hate"
-        ],
-        "thresholds": {
-            "sexual": 0.2,
-            "violence": 0.3,
-            "hate": 0.25
-        }
-    }
-}
-```
-
-The advanced configuration adds:
-
-• Custom error messages provide detailed **feedback** to users when their content is blocked. These messages can be tailored to explain the specific **reason** for rejection while maintaining a professional tone. The customization allows organizations to align error messaging with their **communication** style and content policies.
-
-• The configuration demonstrates **enhanced content moderation** by implementing **more restrictive thresholds** across all categories. These example thresholds (**0.2** for sexual content, **0.3** for violence, and **0.25** for hate speech) illustrate potential settings, but should be **carefully customized** based on your specific **use case** and **requirements**.
-
-• The implementation includes **warning-level** logging capabilities that enhance monitoring by tracking blocked content attempts. This system provides comprehensive **visibility** into filter performance and effectiveness over time. Additionally, the logging system assists administrators in **fine-tuning** thresholds based on real-world usage patterns and results.
-
-### Violence Detection Example
-When you need to specifically focus on preventing violent content while allowing other types of content to pass through, you can configure the plugin to only check for violence. This is particularly useful for platforms that prioritize non-violent communication or need to maintain a safe environment for sensitive audiences.
-
-```json
-{
-    "name": "toxicity_detection",
-    "enabled": true,
-    "stage": "pre_request",
-    "priority": 1,
-    "settings": {
-        "openai_key": "${OPENAI_API_KEY}",
-        "actions": {
-            "type": "block",
-            "message": "Your message was blocked because it contains violent content. Please revise your message to avoid violent language."
-        },
-        "categories": [
-            "violence"
-        ],
-        "thresholds": {
-            "violence": 0.5
-        }
-    }
-}
-```
 
 This configuration:
 
@@ -273,68 +359,6 @@ This configuration:
 
    • Regular threshold adjustments
 
-### Example Usage
-
-The following example demonstrates how to set up and test a toxicity detection gateway that moderates **sexual**, **violent**, and **hate speech** content using curl commands. We'll first create a gateway with the toxicity detection plugin configured, then test it with two different scenarios: one with safe content and another with content that should be blocked. This example uses default thresholds for all three categories (**sexual: 0.3**, **violence: 0.5**, **hate: 0.4**) and demonstrates both successful and blocked requests, helping you understand how the plugin behaves in real-world situations.
-
-```bash
-# Create a gateway with toxicity detection
-curl -X POST "http://localhost:8080/api/v1/gateways" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Toxicity Detection Gateway",
-    "subdomain": "toxicity-test",
-    "required_plugins": [
-        {
-            "name": "toxicity_detection",
-            "enabled": true,
-            "stage": "pre_request",
-            "priority": 1,
-            "settings": {
-                "openai_key": "${OPENAI_API_KEY}",
-                "actions": {
-                    "type": "block",
-                    "message": "Content contains inappropriate content."
-                },
-                "categories": ["sexual", "violence", "hate"],
-                "thresholds": {
-                    "sexual": 0.3,
-                    "violence": 0.5,
-                    "hate": 0.4
-                }
-            }
-        }
-    ]
-}'
-
-# Test with safe content
-curl -X POST "http://localhost:8081/post" \
-  -H "Host: toxicity-test.example.com" \
-  -H "X-API-Key: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "messages": [
-        {
-            "role": "user",
-            "content": "Let us discuss dating and relationships in a respectful way"
-        }
-    ]
-}'
-
-# Test with inappropriate content (will be blocked)
-curl -X POST "http://localhost:8081/post" \
-  -H "Host: toxicity-test.example.com" \
-  -H "X-API-Key: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "messages": [
-        {
-            "role": "user",
-            "content": "I will brutally murder you"
-        }
-    ]
-}'
-```
 
 ## Performance Considerations
 

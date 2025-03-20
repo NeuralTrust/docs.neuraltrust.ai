@@ -149,7 +149,7 @@ curl -X POST "http://localhost:8080/api/v1/gateways" \
                 "guardrail_id": "<your-guardrail-id>",
                 "version": "1",
                 "actions": {
-                    "message": "Topic policy violation: %s"
+                    "message": "Topic policy violation"
                 }
             }
         }
@@ -176,7 +176,7 @@ curl -X POST "http://localhost:8080/api/v1/gateways" \
                 "guardrail_id": "<your-guardrail-id>",
                 "version": "1",
                 "actions": {
-                    "message": "Sensitive information detected: %s"
+                    "message": "Sensitive information detected"
                 }
             }
         }
@@ -194,25 +194,15 @@ curl -X POST "http://localhost:8080/api/v1/gateways" \
 
 • Keep guardrail versions consistent across environments
 
-• Document guardrail configurations for maintenance
-
 ### 2. Error Handling
 
 • Implement descriptive error messages
 
 • Log policy violations appropriately
 
-• Monitor blocked content patterns
-
 • Review and update policies regularly
 
 ### 3. Performance Optimization
-
-• Configure appropriate timeouts
-
-• Monitor API response times
-
-• Cache guardrail results when possible
 
 • Use appropriate AWS region for reduced latency
 
