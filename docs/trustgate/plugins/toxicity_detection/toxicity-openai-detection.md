@@ -72,12 +72,12 @@ The plugin supports comprehensive content analysis across multiple categories:
 
 | Category | Description | Implementation Details |
 |----------|-------------|------------------------|
-| Sexual | Sexual content detection | - Base category scoring<br>- Sub-category detection<br>- Context analysis |
-| Violence | Violence and threats | - Direct violence detection<br>- Graphic content analysis<br>- Threat assessment |
-| Hate | Hate speech and bias | - Bias detection<br>- Discriminatory content<br>- Hate speech patterns |
-| Self-harm | Self-harm content | - Intent detection<br>- Instruction filtering<br>- Risk assessment |
-| Harassment | Harassment detection | - Personal attacks<br>- Threatening behavior<br>- Bullying patterns |
-| Illicit | Illegal activity | - Criminal content<br>- Prohibited activities<br>- Legal compliance |
+| Sexual | Sexual content detection | - Base category scoring  \n- Sub-category detection  \n- Context analysis |
+| Violence | Violence and threats | - Direct violence detection  \n- Graphic content analysis  \n- Threat assessment |
+| Hate | Hate speech and bias | - Bias detection  \n- Discriminatory content  \n- Hate speech patterns |
+| Self-harm | Self-harm content | - Intent detection  \n- Instruction filtering  \n- Risk assessment |
+| Harassment | Harassment detection | - Personal attacks  \n- Threatening behavior  \n- Bullying patterns |
+| Illicit | Illegal activity | - Criminal content  \n- Prohibited activities  \n- Legal compliance |
 
 ### API Integration
 

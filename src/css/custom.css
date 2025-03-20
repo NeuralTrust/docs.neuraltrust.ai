@@ -37,7 +37,27 @@
   --ifm-navbar-height: 64px;
   --ifm-navbar-padding-vertical: 0.75rem;
   --ifm-navbar-padding-horizontal: 1.5rem;
-  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --ifm-font-family-monospace: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  
+  /* Typography */
+  --ifm-font-size-base: 18px;
+  --ifm-line-height-base: 1.65;
+  
+  /* Heading sizes */
+  --ifm-h1-font-size: 2.5rem;
+  --ifm-h2-font-size: 1.875rem;
+  --ifm-h3-font-size: 1.5rem;
+  --ifm-h4-font-size: 1.25rem;
+  
+  /* Font weights */
+  --ifm-font-weight-normal: 400;
+  --ifm-font-weight-semibold: 500;
+  --ifm-font-weight-bold: 600;
+  --ifm-heading-font-weight: 600;
+  
+  /* Letter spacing */
+  --ifm-heading-letter-spacing: -0.02em;
 }
 
 /* Dark mode overrides */
@@ -160,6 +180,7 @@
 /* Navigation */
 .navbar {
   @apply border-b border-[#E2E8F0];
+  font-weight: 500;
 }
 
 .navbar__brand {
@@ -181,14 +202,14 @@
 }
 
 .navbar__title {
-  font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
   padding: 0;
   margin: 0;
 }
 
 .navbar__link {
-  font-weight: 500;
   font-size: 0.875rem;
   color: var(--ifm-navbar-link-color) !important;
 }
@@ -286,11 +307,13 @@
 .menu {
   padding: 1.5rem !important;
   font-size: 0.875rem !important;
+  font-weight: 400;
 }
 
 .menu__link {
   border-radius: 0.375rem;
   color: var(--ifm-menu-color);
+  line-height: 1.4;
 }
 
 .menu__link:hover {
@@ -299,7 +322,7 @@
 }
 
 .menu__link--active {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .table-of-contents {
@@ -318,34 +341,43 @@
 
 .theme-doc-markdown {
   padding: 2rem 0;
+  max-width: 960px;
 }
 
 .theme-doc-markdown h1 {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--ifm-heading-color);
 }
 
 .theme-doc-markdown h2 {
   font-size: 1.875rem;
   font-weight: 600;
-  margin-top: 3rem;
   letter-spacing: -0.02em;
   line-height: 1.3;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  color: var(--ifm-heading-color);
 }
 
 .theme-doc-markdown h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-top: 2.5rem;
+  letter-spacing: -0.01em;
   line-height: 1.4;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
 }
 
 .theme-doc-markdown p {
   font-size: 1rem;
   line-height: 1.75;
-  color: var(--ifm-menu-color);
+  margin: 1rem 0;
+  color: var(--ifm-text-color);
 }
 
 .theme-doc-markdown code {
@@ -507,4 +539,118 @@
   .navbar .DocSearch-Button {
     display: none !important;
   }
+}
+
+/* Enhance typography for markdown content */
+.markdown {
+  font-size: var(--ifm-font-size-base);
+  letter-spacing: -0.011em;
+}
+
+.markdown h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.markdown h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+}
+
+.markdown h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  margin-top: 2rem;
+}
+
+.markdown p {
+  margin: 1.25rem 0;
+  line-height: 1.65;
+}
+
+/* Code blocks */
+.markdown pre,
+.markdown code {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.9em;
+}
+
+/* Tables */
+.markdown table {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Lists */
+.markdown ul,
+.markdown ol {
+  line-height: var(--ifm-line-height-base);
+  margin: 1em 0;
+}
+
+/* Update list styles */
+.theme-doc-markdown ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.theme-doc-markdown ul li {
+  margin: 0.5rem 0;
+  line-height: 1.7;
+}
+
+/* Update tip admonition to match */
+.theme-admonition-tip {
+  background-color: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-left-width: 4px;
+  border-left-color: var(--ifm-color-primary);
+}
+
+/* Update sidebar styles */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-toc-border-color) !important;
+}
+
+.menu {
+  padding: 1.5rem !important;
+}
+
+.menu__link {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+}
+
+.menu__link--active {
+  font-weight: 500;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--ifm-color-primary);
+}
+
+/* Update table of contents */
+.table-of-contents {
+  padding: 1.5rem !important;
+  font-size: 0.875rem;
+}
+
+.table-of-contents__link {
+  padding: 0.375rem 0;
+}
+
+.table-of-contents__link:hover,
+.table-of-contents__link:hover code {
+  color: var(--ifm-color-primary);
+}
+
+.table-of-contents__link--active {
+  font-weight: 500;
+  color: var(--ifm-color-primary);
 }
