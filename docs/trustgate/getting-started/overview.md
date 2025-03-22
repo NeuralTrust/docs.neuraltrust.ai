@@ -1,6 +1,9 @@
 ---
+id: trustgate-overview
+title: Overview
 sidebar_position: 1
 sidebar_label: "Overview"
+slug: /trustgate/overview
 ---
 
 # Trust Gate 

@@ -46,8 +46,8 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: './sidebars.js',
           routeBasePath: '/',
+          sidebarPath: './sidebars.js',
           editUrl: ({ versionDocsDirPath, docPath, locale }) => {
             if (locale != 'en') {
               return 'https://docs.neuraltrust.ai';
@@ -89,6 +89,16 @@ const config = {
     require.resolve('./plugins/webpackPolyfillPlugin'),
   ],
 
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1.0',
+      },
+    },
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -107,18 +117,15 @@ const config = {
       },
       algolia: {
         // The application ID provided by Algolia
-        appId: 'HW1BIJOXAK',
+        appId: '2RE54Z0R13',
   
         // Public API key: it is safe to commit it
-        apiKey: '3d6824f8974966996459cc83fcabc8c7',
+        apiKey: 'f0c5174da9619fd3e18d3e1a6dc03b79',
   
-        indexName: 'neuraltrustio',
+        indexName: 'NeuralTrust',
   
         // Optional: see doc section below
         contextualSearch: true,
-  
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: 'external\\.com|domain\\.com',
   
         // Optional: Algolia search parameters
         searchParameters: {},
@@ -140,6 +147,21 @@ const config = {
           className: 'navbar-logo',
         },
         items: [
+          {
+            href: 'https://app.neuraltrust.ai',
+            position: 'left',
+            label: 'Platform',
+          },
+          {
+            href: 'https://neuraltrust.ai/blog',
+            position: 'left',
+            label: 'Blog',
+          },
+          {
+            href: 'https://neuraltrust.ai/contact',
+            position: 'left',
+            label: 'Contact us',
+          },
           {
             type: 'search',
             position: 'right',
