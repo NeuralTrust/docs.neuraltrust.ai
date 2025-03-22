@@ -120,7 +120,7 @@ const config = {
         appId: '2RE54Z0R13',
   
         // Public API key: it is safe to commit it
-        apiKey: 'f0c5174da9619fd3e18d3e1a6dc03b79',
+        apiKey: '44e5a47ead800794bfa9a1e981403032',
   
         indexName: 'NeuralTrust',
   
